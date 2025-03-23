@@ -21,8 +21,9 @@ export class AuthService {
     let user: User ={
       id: 1,
       email: 'sc@gmail.com',
-      username: 'test',
+      nom: 'test',
       token: 'sfknfngejt.314fsfvgf',
+      motdepasse: 'testPassword',
       registrationDate: new Date()
     }
 

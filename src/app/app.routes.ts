@@ -10,10 +10,14 @@ const loadLayoutComponent = () =>
   import('./shared/components/layout/layout.component').then(m => m.LayoutComponent);
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'user-space', pathMatch: 'full' },
+  { path: '', redirectTo: 'user-space/admin', pathMatch: 'full' },
   {
     path: 'sign-in', loadComponent: () =>
       import('./features/authentication/components/sign-in/sign-in.component').then(c => c.SignInComponent)
+  },
+  {
+    path: 'sign-up', loadComponent: () =>
+      import('./features/authentication/components/sign-up/sign-up.component').then(c => c.SignUpComponent)
   },
   {
     path: 'user-space',

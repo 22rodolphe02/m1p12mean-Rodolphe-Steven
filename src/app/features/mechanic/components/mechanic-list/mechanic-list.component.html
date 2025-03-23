@@ -40,10 +40,12 @@
         <td>
           <div class="d-flex align-items-center">
             <div class="circle circle-xl text-uppercase avatar">
-              {{mechanic.username.at(0)}}
+              @if (mechanic.nom) {
+                {{mechanic.nom.at(0)}}
+              }
             </div>
             <div class="d-flex flex-column ms-3">
-              <span class="text-secondary">{{mechanic.username}}</span>
+              <span class="text-secondary">{{mechanic.nom}}</span>
               <span class="text-muted">{{mechanic.email}}</span>
             </div>
           </div>
