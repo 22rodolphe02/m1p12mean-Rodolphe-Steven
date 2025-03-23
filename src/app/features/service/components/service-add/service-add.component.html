@@ -1,0 +1,50 @@
+<!--<p-toast />-->
+<div class="h-100">
+  <form [formGroup]="serviceForm">
+    <div class="d-flex h-100 flex-column justify-content-between align-items-end">
+      <div class="row">
+        <div class="d-flex flex-column">
+          <label class="mb-2">Nom</label>
+          <input type="text" class="col-10" pInputText formControlName="nom">
+        </div>
+
+        <div class="d-flex flex-column mt-2">
+          <label class="mb-2">Description</label>
+          <textarea rows="3" cols="30" pTextarea formControlName="description"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+          <div class="d-flex flex-column col">
+            <p-inputgroup>
+              <p-inputgroup-addon>MGA</p-inputgroup-addon>
+              <p-floatlabel variant="on">
+                <p-inputNumber
+                  inputStyleClass="form-number search-control"
+                  [minFractionDigits]="2" />
+                <label >Prix</label>
+              </p-floatlabel>
+            </p-inputgroup>
+          </div>
+          <div class="d-flex flex-column ms-3 col">
+            <p-inputgroup>
+              <p-inputgroup-addon>
+                <i class="pi pi-clock"></i>
+              </p-inputgroup-addon>
+              <p-floatlabel variant="on">
+                <p-inputNumber class="d-flex col-12"
+                               inputStyleClass="form-number col-12 search-control"
+                               [minFractionDigits]="2" />
+                <label >Durée</label>
+              </p-floatlabel>
+            </p-inputgroup>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p-button (click)="submit()" [rounded]="true" severity="success" label="enregistrer"></p-button>
+      </div>
+    </div>
+  </form>
+
+</div>

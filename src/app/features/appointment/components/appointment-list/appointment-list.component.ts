@@ -60,14 +60,14 @@ export class AppointmentListComponent {
         clientName: 'Reparation pneu',
       },
       {
-        id: 3,
+        id: 4,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.CANCELLED,
         clientName: 'Reparation pneu',
       },
       {
-        id: 3,
+        id: 5,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.PENDING,

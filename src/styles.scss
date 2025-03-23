@@ -234,5 +234,16 @@ a{
 //  margin-top: .8rem;
 //}
 
+.p-toast-message-content {
+  align-items: center !important;
+}
+
+.avatar{
+  background: var(--p-pink-100);
+  color: var(--p-pink-600);
+
+  //background: var(--p-blue-50);
+  //color: var(--p-blue-500);
+}
 
 

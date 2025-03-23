@@ -9,7 +9,6 @@ import {Button} from 'primeng/button';
 @Component({
   selector: 'app-planning-page',
   imports: [
-    PlanningComponent,
     AppointmentListComponent,
     PaginationComponent,
     Button

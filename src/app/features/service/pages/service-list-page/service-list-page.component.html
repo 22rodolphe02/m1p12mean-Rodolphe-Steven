@@ -9,7 +9,7 @@
       </div>
     </div>
     <div>
-      <p-button label="Nouveau" icon="pi pi-plus" [rounded]="true"></p-button>
+      <p-button (click)="create()" label="Nouveau" icon="pi pi-plus" [rounded]="true"></p-button>
     </div>
   </div>
 
@@ -22,4 +22,16 @@
     </div>
   </div>
 
+  <p-dialog [modal]="true" position="top" [(visible)]="createMode" contentStyleClass="h-100" [style]="{ width: '30%', height: '80%' }">
+    <ng-template #header>
+      <div class="d-flex align-items-center">
+        <span class="pi pi-pen-to-square me-2"></span>
+        <span class="fw-medium fs-5">Creation de service</span>
+      </div>
+    </ng-template>
+    <div class="h-100">
+      <g-service-add (success)="isSave($event)"></g-service-add>
+    </div>
+
+  </p-dialog>
 </div>

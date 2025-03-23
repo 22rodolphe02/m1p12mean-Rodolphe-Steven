@@ -2,13 +2,14 @@ import {Component, Input} from '@angular/core';
 import {Service} from '../../models/service.model';
 import {CurrencyPipe} from '@angular/common';
 import {Button} from 'primeng/button';
+import {Dialog} from "primeng/dialog";
 
 @Component({
   selector: 'g-service-list',
-  imports: [
-    CurrencyPipe,
-    Button
-  ],
+    imports: [
+        CurrencyPipe,
+        Button,
+    ],
   templateUrl: './service-list.component.html',
   styleUrl: './service-list.component.scss'
 })
