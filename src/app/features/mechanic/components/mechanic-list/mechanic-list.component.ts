@@ -6,7 +6,6 @@ import {Mechanic} from '../../models/mechanic.model';
 @Component({
   selector: 'g-mechanic-list',
   imports: [
-    CurrencyPipe,
     DatePipe,
     RouterLink
   ],
@@ -27,25 +26,25 @@ export class MechanicListComponent {
         id: 1,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        username: 'Jean Dupon'
+        nom: 'Jean Dupon'
       },
       {
         id: 2,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        username: 'Jean Dupon'
+        nom: 'Jean Dupon'
       },
       {
         id: 3,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        username: 'Jean Dupon'
+        nom: 'Jean Dupon'
       },
       {
         id: 4,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        username: 'Jean Dupon'
+        nom: 'Jean Dupon'
       }
     ]
   }

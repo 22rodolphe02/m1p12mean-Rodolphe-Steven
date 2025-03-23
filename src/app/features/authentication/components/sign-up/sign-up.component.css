@@ -1,0 +1,30 @@
+.auth-img{
+  background-size: cover;
+//width: 100%;
+//height: calc(100vh - 3rem);
+  position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+  background: url("/img/auth-bg-v1.jpg") no-repeat center;
+  color: #e1e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding-bottom: 3rem;
+
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #0c0c0c;
+  //background: #201f20;
+    opacity: 0.8;
+    border-radius: 1rem;
+  }
+}
