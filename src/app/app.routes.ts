@@ -4,6 +4,8 @@ import {clientRoutes} from './features/client/client.routes';
 import {planningRoutes} from './features/appointment/planning.routes';
 import {serviceRoutes} from './features/service/service.routes';
 import {mechanicRoutes} from './features/mechanic/mechanic.routes';
+import {Role} from './core/models/user.model';
+import {AuthGuard} from './core/auth/auth.guard';
 
 
 const loadLayoutComponent = () =>
@@ -34,7 +36,9 @@ export const routes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: () => adminRoutes
+        loadChildren: () => adminRoutes,
+        data: { roles: [Role.ADMIN]},
+        // canActivate: [AuthGuard]
       }
 
     ]
