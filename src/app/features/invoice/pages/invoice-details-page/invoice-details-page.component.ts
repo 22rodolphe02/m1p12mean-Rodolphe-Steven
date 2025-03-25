@@ -9,10 +9,6 @@ import {InvoiceDetailComponent} from '../../components/invoice-detail/invoice-de
 @Component({
   selector: 'g-invoice-details-page',
   imports: [
-    Button,
-    ClientPersonalDetailComponent,
-    RouterOutlet,
-    RouterLink,
     InvoiceDetailComponent
   ],
   templateUrl: './invoice-details-page.component.html',
