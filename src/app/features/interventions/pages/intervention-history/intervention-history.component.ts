@@ -22,7 +22,8 @@ interface EventItem {
   imports: [
     CommonModule,
     Timeline,
-    PaginationComponent
+    PaginationComponent,
+    Button
   ],
   templateUrl: './intervention-history.component.html',
   styleUrl: './intervention-history.component.scss'
@@ -37,5 +38,10 @@ export class InterventionHistoryComponent {
       {title: 'Moteur', status: 'En attente', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', type : 'danger' },
       {title: 'Roue', status: 'Facturé', date: '16/10/2020 10:00', icon: 'pi pi-check', type : 'success' }
     ];
+  }
+
+  eventFinished(event: EventItem): boolean{
+    return event.status === 'Terminé';
+
   }
 }

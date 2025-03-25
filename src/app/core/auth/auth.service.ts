@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { User } from '../models/user.model';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {Role, User} from '../models/user.model';
+import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 
 @Injectable({
@@ -24,7 +24,8 @@ export class AuthService {
       nom: 'test',
       token: 'sfknfngejt.314fsfvgf',
       motdepasse: 'testPassword',
-      registrationDate: new Date()
+      registrationDate: new Date(),
+      role: Role.ADMIN
     }
 
     this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
@@ -38,6 +39,12 @@ export class AuthService {
           localStorage.setItem('currentUser', JSON.stringify(user)); // Stocker l'utilisateur dans le localStorage
         })
       );
+  }
+
+  getRole(): Role{
+    const user: User = JSON.parse(<string>localStorage.getItem('currentUser'))
+
+    return user.role
   }
 
   // Méthode pour se déconnecter

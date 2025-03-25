@@ -40,8 +40,16 @@
                   <span class="fw-semibold">{{event.status}}</span>
                 </div>
               </div>
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
+              <div class="d-flex flex-column">
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
+                </div>
+
+                @if (eventFinished(event)) {
+                  <div class="d-flex justify-content-end">
+                    <p-button label="facturer" severity="success" [outlined]="true" [rounded]="true"></p-button>
+                  </div>
+                }
               </div>
             </div>
           </div>

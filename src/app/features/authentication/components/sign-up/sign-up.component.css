@@ -1,7 +1,5 @@
 .auth-img{
   background-size: cover;
-//width: 100%;
-//height: calc(100vh - 3rem);
   position: relative;
   z-index: 1;
   border-radius: 1rem;
@@ -23,7 +21,6 @@
     top: 0;
     left: 0;
     background: #0c0c0c;
-  //background: #201f20;
     opacity: 0.8;
     border-radius: 1rem;
   }
