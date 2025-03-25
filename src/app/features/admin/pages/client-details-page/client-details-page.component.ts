@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {ClientPersonalDetailComponent} from '../../components/client-personal-detail/client-personal-detail.component';
+import {ClientPersonalDetailComponent} from '../../../client/components/client-personal-detail/client-personal-detail.component';
 import {Button} from 'primeng/button';
 
 @Component({

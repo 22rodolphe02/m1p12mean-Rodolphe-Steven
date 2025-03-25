@@ -17,8 +17,7 @@
     </div>
   </div>
   <div class="d-flex flex-column justify-content-between">
-    <g-invoice-list></g-invoice-list>
-
+    <g-invoice-list [actionLink]="getActionLink()"></g-invoice-list>
     <div class="d-flex justify-content-end mt-5">
       <g-pagination [totalItems]="50"></g-pagination>
     </div>

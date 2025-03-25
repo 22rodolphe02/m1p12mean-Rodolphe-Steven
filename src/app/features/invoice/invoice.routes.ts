@@ -1,11 +1,18 @@
 import {Routes} from '@angular/router';
 
-const InvoiceListComponent = () =>
-  import('../invoice/pages/invoice-list-page/invoice-list-page.component').then(m => m.InvoiceListPageComponent);
+
+
+
+const InvoiceDetailsPageComponent = () =>
+  import('../invoice/pages/invoice-details-page/invoice-details-page.component').then(m => m.InvoiceDetailsPageComponent);
 
 export const invoiceRoutes: Routes = [
-  {
-    path: '',
-    loadComponent: InvoiceListComponent
-  },
+  // {
+  //   path: '',
+  //   loadComponent: InvoiceListComponent
+  // },
+  // {
+  //   path: ':id',
+  //   loadComponent: InvoiceListComponent
+  // },
 ]

@@ -7,6 +7,13 @@ export interface User {
   email: string;
   registrationDate?: Date,
   token?: string; // Token JWT (optionnel)
+  role: Role,
+}
+
+export enum Role{
+  ADMIN = 'admin',
+  CLIENT = 'client',
+  MECHANICAL = 'mecanicien'
 }
 
 // export interface UserLogin{
