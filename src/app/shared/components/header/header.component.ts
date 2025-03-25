@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Avatar} from 'primeng/avatar';
-import {RouterLink, RouterModule} from '@angular/router';
+import {IsActiveMatchOptions, Router, RouterModule} from '@angular/router';
 import {HeaderMenu} from '../../../core/models/menu.model';
 
 @Component({
@@ -14,4 +13,19 @@ import {HeaderMenu} from '../../../core/models/menu.model';
 export class HeaderComponent {
 
   @Input({alias: 'menu'}) menus: HeaderMenu[] = []
+
+  public activeUrl: IsActiveMatchOptions = {
+    fragment: "ignored",
+    matrixParams: "ignored",
+    paths: "subset",  // Permet de garder l’état actif pour les sous-routes
+    queryParams: "ignored"
+  };
+
+
+  // test: IsActiveMatchOptions
+
+  // @Inject(Router) router !: Router
+
+  constructor(private router: Router) {
+  }
 }

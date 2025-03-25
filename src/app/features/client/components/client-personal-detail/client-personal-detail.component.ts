@@ -33,17 +33,17 @@ export class ClientPersonalDetailComponent {
     this.tabs = [
       {
         label : "Véhicules",
-        link : `/user-space/clients/${this.id}`,
+        link : `/user-space/admin/clients/${this.id}`,
         icon: 'pi pi-car'
       },
       {
         label : "Interventions",
-        link : `/user-space/clients/${this.id}/interventions-history`,
+        link : `/user-space/admin/clients/${this.id}/interventions-history`,
         icon: 'pi pi-cog'
       },
       {
         label : "Factures",
-        link :  `/user-space/clients/${this.id}/invoices`,
+        link :  `/user-space/admin/clients/${this.id}/invoices`,
         icon: 'pi pi-receipt'
       }
     ]

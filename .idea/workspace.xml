@@ -7,17 +7,8 @@
     <list default="true" id="447f1bdd-253f-40ae-951d-1e129499bc36" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-list-page/client-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-list-page/client-list-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +45,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/sign-up&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/invoice-details&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/data/M1/Rojo/exam/garage-m1-front/public/img&quot;,
@@ -78,11 +69,11 @@
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\admin\pages" />
+      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages" />
+      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages\client-details-page" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\vehicle\services" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\core\models" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\shared\components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -157,7 +148,12 @@
       <workItem from="1742499270388" duration="604000" />
       <workItem from="1742536952439" duration="4031000" />
       <workItem from="1742565444581" duration="441000" />
-      <workItem from="1742710225490" duration="1329000" />
+      <workItem from="1742710225490" duration="5267000" />
+      <workItem from="1742816818892" duration="324000" />
+      <workItem from="1742817290336" duration="481000" />
+      <workItem from="1742823478677" duration="3869000" />
+      <workItem from="1742833513797" duration="10161000" />
+      <workItem from="1742881258982" duration="2922000" />
     </task>
     <servers />
   </component>

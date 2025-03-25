@@ -5,7 +5,6 @@ import {DatePipe} from '@angular/common';
 @Component({
   selector: 'g-appointment-details',
   imports: [
-    Avatar,
     DatePipe
   ],
   templateUrl: './appointment-details.component.html',

@@ -4,13 +4,24 @@ import {clientRoutes} from './features/client/client.routes';
 import {planningRoutes} from './features/appointment/planning.routes';
 import {serviceRoutes} from './features/service/service.routes';
 import {mechanicRoutes} from './features/mechanic/mechanic.routes';
+import {Role} from './core/models/user.model';
+import {AuthGuard} from './core/auth/auth.guard';
 
 
 const loadLayoutComponent = () =>
   import('./shared/components/layout/layout.component').then(m => m.LayoutComponent);
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'user-space/admin', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    redirectTo: '/sign-in',
+    pathMatch: 'full'
+  },
   {
     path: 'sign-in', loadComponent: () =>
       import('./features/authentication/components/sign-in/sign-in.component').then(c => c.SignInComponent)
@@ -25,24 +36,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: () => adminRoutes
-      },
-      {
-        path: 'clients',
-        loadChildren: () => clientRoutes
-      },
-      {
-        path: 'appointments',
-        loadChildren: () => planningRoutes
-      },
-      {
-        path: 'services',
-        loadChildren: () => serviceRoutes
-      },
-      {
-        path: 'mechanics',
-        loadChildren: () => mechanicRoutes
-      },
+        loadChildren: () => adminRoutes,
+        data: { roles: [Role.ADMIN]},
+        // canActivate: [AuthGuard]
+      }
+
     ]
   }
 ];

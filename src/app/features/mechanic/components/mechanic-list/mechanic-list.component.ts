@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {CurrencyPipe, DatePipe} from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {Mechanic} from '../../models/mechanic.model';
+import {Role} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'g-mechanic-list',
@@ -26,25 +27,29 @@ export class MechanicListComponent {
         id: 1,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon'
+        nom: 'Jean Dupon',
+        role: Role.MECHANICAL
       },
       {
         id: 2,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon'
+        nom: 'Jean Dupon',
+        role: Role.MECHANICAL
       },
       {
         id: 3,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon'
+        nom: 'Jean Dupon',
+        role: Role.MECHANICAL
       },
       {
         id: 4,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon'
+        nom: 'Jean Dupon',
+        role: Role.MECHANICAL
       }
     ]
   }

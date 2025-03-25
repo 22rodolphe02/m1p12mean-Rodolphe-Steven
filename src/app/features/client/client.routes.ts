@@ -3,16 +3,22 @@ import {invoiceRoutes} from '../invoice/invoice.routes';
 import {vehicleRoutes} from '../vehicle/vehicle.routes';
 
 const ClientDetailComponent = () =>
-  import('./pages/client-details-page/client-details-page.component').then(m => m.ClientDetailsPageComponent);
+  import('../admin/pages/client-details-page/client-details-page.component').then(m => m.ClientDetailsPageComponent);
 
 const InterventionHistory = () =>
   import('../interventions/pages/intervention-history/intervention-history.component').then(m => m.InterventionHistoryComponent);
 
+const ClientDetailsInvoiceListPageComponent = () =>
+  import('../admin/pages/client-invoices-page/client-invoices-page.component').then(m => m.ClientInvoicesPageComponent);
+
+
+const InvoiceDetailsPageComponent = () =>
+  import('../invoice/pages/invoice-details-page/invoice-details-page.component').then(m => m.InvoiceDetailsPageComponent);
 
 export const clientRoutes: Routes = [
   {
     path: '', loadComponent: () =>
-      import('./pages/client-list-page/client-list-page.component').then(c => c.ClientListPageComponent),
+      import('../admin/pages/client-list-page/client-list-page.component').then(c => c.ClientListPageComponent),
   },
   {
     path: ':id',
@@ -23,7 +29,7 @@ export const clientRoutes: Routes = [
         children: [
           {
             path: 'vehicles',
-            children: vehicleRoutes
+            children: vehicleRoutes,
           },
           {
             path: 'interventions-history',
@@ -31,7 +37,16 @@ export const clientRoutes: Routes = [
           },
           {
             path: 'invoices',
-            children: invoiceRoutes
+            children: [
+              {
+                path: '',
+                loadComponent: ClientDetailsInvoiceListPageComponent
+              },
+              {
+                path: ':id',
+                loadComponent: InvoiceDetailsPageComponent
+              },
+            ]
           },
           {
             path: '',
