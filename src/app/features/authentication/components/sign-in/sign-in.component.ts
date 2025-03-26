@@ -15,7 +15,7 @@ import { AuthService } from '../../../../core/auth/auth.service';
 import { environment } from '../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { Dialog } from 'primeng/dialog';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -28,6 +28,7 @@ import { DropdownModule } from 'primeng/dropdown';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
+    Dialog
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
@@ -36,6 +37,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   private apiUrl = environment.apiUrl;
   roles: { label: string; value: string }[] = [];
+  displayError = false;
 
   constructor(
     private http: HttpClient,
@@ -70,8 +72,14 @@ export class SignInComponent implements OnInit {
   onSubmit(): void {
     const { email, password, role } = this.loginForm.value;
     const roleId = role;
-    this.authService.login(email, password, roleId).subscribe(() => {
-      this.router.navigate(['/sign-up']); // Rediriger après connexion
+
+    this.authService.login(email, password, roleId).subscribe({
+      next: () => {
+        this.router.navigate(['/sign-up']); // Redirection après connexion réussie
+      },
+      error: () => {
+        this.displayError = true; // Afficher le pop-up en cas d'erreur
+      },
     });
   }
 }
