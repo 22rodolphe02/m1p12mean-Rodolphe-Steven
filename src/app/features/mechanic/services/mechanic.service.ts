@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { ResourceService } from '../../../core/services/resource.service';
+import { Mechanic } from '../models/mechanic.model';
+import { HttpClient } from '@angular/common/http';
 import {ResourceService} from '../../../core/services/resource.service';
 import {User} from '../../../core/models/user.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
@@ -10,13 +13,18 @@ import {environment} from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MechanicService extends ResourceService<User>{
+export class MechanicService extends ResourceService<Mechanic> {
 
-  constructor(http: HttpClient) {
-    super(http);
-    this.setApiUrl("users");
+  constructor(httpClient : HttpClient) {
+    super(httpClient);
+    this.setApiUrl('users');
   }
 
+  getNombreMechanic(){
+    const url = this.apiUrl + "/nombremecanicien";
+    const valeur = this.http.get<{ nombreMecanicien : number }>(url);
+    return valeur;
+  }
   override getAll(params?: HttpParams, page: { index: number; limit: number } = {
     index: 1,
     limit: 10
