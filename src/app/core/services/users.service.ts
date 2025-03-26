@@ -20,12 +20,12 @@ export class UserService {
     role: string
   ): Observable<any> {
     return this.http.post(`${this.apiUrl}/users`, {
-      nom,
-      prenom,
-      email,
+      name : nom,
+      firstName : prenom,
+      email : email,
       numero,
-      motdepasse,
-      role,
+      password : motdepasse,
+      roleId : role,
     });
   }
 }

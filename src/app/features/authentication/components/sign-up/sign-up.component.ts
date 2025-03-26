@@ -1,60 +1,80 @@
-import { Component } from '@angular/core';
-import {Button} from "primeng/button";
-import {InputText} from "primeng/inputtext";
-import {Password} from "primeng/password";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from '../../../../core/auth/auth.service';
-import {Router, RouterLink} from '@angular/router';
-import {Select} from 'primeng/select';
-import {InputMask} from 'primeng/inputmask';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { environment } from '../../../../../environments/environment';
+import { DropdownModule } from 'primeng/dropdown';
+import { UserService } from '../../../../core/services/users.service';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { Password } from 'primeng/password';
+import { Button } from 'primeng/button';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-sign-up',
   imports: [
-    Button,
+    CommonModule,
+    FormsModule,
     InputText,
     Password,
+    Button,
+    RouterModule,
     ReactiveFormsModule,
-    RouterLink,
-    Select,
-    InputMask
+    DropdownModule,
   ],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
-})
-export class SignUpComponent {
-  inscriptionForm: FormGroup;
+  styleUrls: ['./sign-up.component.scss'],
 
-  roles: string[] = [
-    "Admin",
-    "Mécanicien",
-    "Client"
-  ]
+})
+export class SignUpComponent implements OnInit {
+  inscriptionForm: FormGroup;
+  roles: { label: string; value: string }[] = [];
+  private apiUrl = environment.apiUrl;
 
   constructor(
+    private http: HttpClient,
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
-    private router: Router
+    private userService: UserService // Injecter le service d'inscription
   ) {
     this.inscriptionForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      numero: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      motdepasse: ['', Validators.required],
-      role: ['', Validators.required]
+      numero: ['', [Validators.required]],
+      motdepasse: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.fetchRoles();
+  }
+
+  fetchRoles(): void {
+    const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
+    this.http.get<{ _id: string; nom: string }[]>(url).subscribe({
+      next: (data) => {
+        this.roles = data.map((role) => ({ label: role.nom, value: role._id }));
+      },
+      error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
     });
   }
 
   onSubmit(): void {
+    const { nom, prenom, email, numero, motdepasse, role } = this.inscriptionForm.value;
 
-    console.log("form value = ", this.inscriptionForm.value)
-
-    if (this.inscriptionForm.valid) {
-      const { email, password } = this.inscriptionForm.value;
-      this.authService.login(email, password).subscribe(() => {
-        this.router.navigate(['/']); // Rediriger vers la page d'accueil après connexion
-      });
-    }
+    this.userService.signUp(nom, prenom, email, numero, motdepasse, role).subscribe({
+      next: () => {
+        // Rediriger vers la page de connexion après l'inscription réussie
+        this.router.navigate(['/sign-in']);
+      },
+      error: (err) => console.error('Erreur lors de l\'inscription:', err),
+    });
   }
 }
