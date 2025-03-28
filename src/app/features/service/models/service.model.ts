@@ -1,5 +1,5 @@
 export interface Service{
-  id: number,
+  _id: number | string,
   nom: string,
   prix: number,
   description: string,

@@ -7,7 +7,6 @@ import {Button} from 'primeng/button';
   selector: 'g-appointment-list',
   imports: [
     DatePipe,
-    Button
   ],
   templateUrl: './appointment-list.component.html',
   styleUrl: './appointment-list.component.scss'
@@ -38,14 +37,14 @@ export class AppointmentListComponent {
 
     this.appointments = [
       {
-        id: 1,
+        _id: 1,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.PENDING,
         clientName: 'Johann bris',
       },
       {
-        id: 2,
+        _id: 2,
         start: new Date('2025-03-26 10:00:00'),
         end: new Date('2025-03-26 12:00:00'),
         status: AppointmentStatus.CONFIRMED,
@@ -53,21 +52,21 @@ export class AppointmentListComponent {
         mechanical: 'John Billing'
       },
       {
-        id: 3,
+        _id: 3,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.CANCELLED,
         clientName: 'Reparation pneu',
       },
       {
-        id: 4,
+        _id: 4,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.CANCELLED,
         clientName: 'Reparation pneu',
       },
       {
-        id: 5,
+        _id: 5,
         start: new Date(),
         end: new Date(),
         status: AppointmentStatus.PENDING,

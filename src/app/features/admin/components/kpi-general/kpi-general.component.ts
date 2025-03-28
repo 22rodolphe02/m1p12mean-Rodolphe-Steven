@@ -6,7 +6,6 @@ import {Kpi} from '../../../../core/models/kpi.model';
 @Component({
   selector: 'g-kpi-general',
     imports: [
-        Button,
         KpiCardComponent
     ],
   templateUrl: './kpi-general.component.html',
@@ -16,13 +15,11 @@ export class KpiGeneralComponent {
 
   interventionData: Kpi[] = [
     { value: 20, label: 'En cours', color: 'primary' },
-    { value: 3, label: 'En attente', color: 'warning' },
     { value: 6, label: 'Terminés', color: 'success' }
   ];
 
   mechanicData: Kpi[] = [
-    { value: 4, label: 'Occupé', color: 'danger' },
-    { value: 6, label: 'Libre', color: 'success' }
+    { value: 10 },
   ]
 
   appointmentData: Kpi[] = [

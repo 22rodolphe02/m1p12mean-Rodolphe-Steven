@@ -1,0 +1,16 @@
+<div class="d-flex flex-column">
+  @if (services.isLoading()) {
+    <g-loader></g-loader>
+  } @else if (services.hasValue()){
+    <div class="row">
+      @for (service of serviceData.data; track service._id; let index = $index) {
+        <div class="col-4 mb-3">
+          <g-service-item [selectable]="true" [data]="service" [selected]=isSelected(service) (onClick)="select(service, $event)"></g-service-item>
+        </div>
+      }
+    </div>
+
+  }
+
+
+</div>

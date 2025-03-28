@@ -43,8 +43,8 @@ export class InterventionService extends ResourceService<Intervention>{
     // Ajouter la pagination
     params = params.set('page', pagination.page.toString()).set('limit', pagination.limit.toString());
 
-    // return this.http.get<Intervention[]>(preparedUrl, { params });
-    return this.getAll(params)
+    return this.http.get<Intervention[]>(preparedUrl, { params });
+    // return this.getAll(params)
 
 
   }

@@ -85,7 +85,7 @@ export class PlanningComponent implements OnDestroy{
   fakePlannings(){
     this.plannings = [
       {
-        id: 1,
+        _id: 1,
         name: 'Michel Sebastien',
         status: AppointmentStatus.CANCELLED,
         start: new Date('2025-03-18 08:30:00'),
@@ -93,7 +93,7 @@ export class PlanningComponent implements OnDestroy{
         statusClass: 'danger'
       },
       {
-        id: 1,
+        _id: 1,
         name: 'Michel Sebastien',
         status: AppointmentStatus.CONFIRMED,
         start: new Date('2025-03-20 08:30:00'),
@@ -101,7 +101,7 @@ export class PlanningComponent implements OnDestroy{
         statusClass: 'success'
       },
       {
-        id: 1,
+        _id: 1,
         name: 'Michel Sebastien',
         status: AppointmentStatus.PENDING,
         start: new Date('2025-03-21 15:30:00'),
@@ -117,7 +117,7 @@ export class PlanningComponent implements OnDestroy{
     this.calendarOptions = {
       ...this.calendarOptions,
       events: this.plannings.map(planning => ({
-        id: planning.id.toString(),
+        id: planning._id.toString(),
         title: planning.name, // Nom de la personne
         start: planning.start.toISOString(), // Conversion en format ISO
         end: planning.end.toISOString(),

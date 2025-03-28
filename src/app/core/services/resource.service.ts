@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {catchError, map, Observable, throwError} from 'rxjs';
+import {ApiResponse} from '../models/response.model';
+import {MessageService} from 'primeng/api';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ResourceService<T> {
+export class ResourceService<T, C = T> {
 
   protected apiUrl!: string;
 
@@ -27,23 +29,23 @@ export class ResourceService<T> {
   };
 
   // Récupérer tous les éléments
-  getAll(params?: HttpParams): Observable<T[]> {
-    return this.http.get<T[]>(this.apiUrl, {params});
+  getAll(params?: HttpParams): Observable<ApiResponse<T[]>> {
+    return this.http.get<ApiResponse<T[]>>(this.apiUrl, {params});
   }
 
   // Récupérer un élément par son ID
-  getById(id: number | string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}/${id}`, this.httpOptions);
+  getById(id: number | string): Observable<ApiResponse<T>> {
+    return this.http.get<ApiResponse<T>>(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 
   // Créer un nouvel élément
-  create(item: T): Observable<T> {
-    return this.http.post<T>(this.apiUrl, item, this.httpOptions);
+  create(item: C): Observable<ApiResponse<T>> {
+    return this.http.post<ApiResponse<T>>(this.apiUrl, item, this.httpOptions);
   }
 
   // Mettre à jour un élément existant
-  update(id: number | string, item: T): Observable<T> {
-    return this.http.put<T>(`${this.apiUrl}/${id}`, item, this.httpOptions);
+  update(id: number | string, item: T): Observable<ApiResponse<T>> {
+    return this.http.put<ApiResponse<T>>(`${this.apiUrl}/${id}`, item, this.httpOptions);
   }
 
   // Supprimer un élément par son ID

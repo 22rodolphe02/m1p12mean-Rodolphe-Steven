@@ -39,6 +39,10 @@ export const routes: Routes = [
         loadChildren: () => adminRoutes,
         data: { roles: [Role.ADMIN]},
         // canActivate: [AuthGuard]
+      },
+      {
+        path: 'client',
+        loadChildren: () => clientRoutes
       }
 
     ]

@@ -13,13 +13,9 @@ import {Button} from 'primeng/button';
     PaginationComponent,
     Button
   ],
-  providers: [DialogService],
   templateUrl: './planning-page.component.html',
   styleUrl: './planning-page.component.scss'
 })
 export class PlanningPageComponent {
-  ref: DynamicDialogRef | undefined;
 
-  constructor(private dialogService: DialogService) {
-  }
 }
