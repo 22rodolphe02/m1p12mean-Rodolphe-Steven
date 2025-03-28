@@ -15,7 +15,8 @@ $colors: (
   --g-primary-label: var(--p-amber-);
   --bs-primary: var(--p-amber-500);
   --g-primary: var(--p-amber-400);
-  --g-body-bg: #fbfbfb;
+  //--g-body-bg: #fbfbfb;
+  --g-body-bg: #f4f8fb;
 }
 
 html, body{
@@ -179,9 +180,10 @@ html, body{
   margin-right: 1rem;
 
   .logo-text{
-    background: -webkit-linear-gradient(var(--p-amber-700), var(--p-amber-400), var(--p-amber-300));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--p-amber-600);
+    //background: -webkit-linear-gradient(var(--p-amber-700), var(--p-amber-400), var(--p-amber-300));
+    //-webkit-background-clip: text;
+    //-webkit-text-fill-color: transparent;
   }
 }
 
@@ -244,6 +246,10 @@ a{
 
   //background: var(--p-blue-50);
   //color: var(--p-blue-500);
+}
+
+.cursor-pointer{
+  cursor: pointer !important;
 }
 
 

@@ -32,3 +32,49 @@ export const adminHeaderMenuData: HeaderMenu[] = [
     link: '/user-space/admin/mechanics'
   },
 ]
+
+
+export const clientHeaderMenuData: HeaderMenu[] = [
+  {
+    id: 1,
+    label: 'Rendez-vous',
+    icon: 'pi pi-send',
+    link: '/user-space/client/appointments'
+  },
+  {
+    id: 2,
+    label: 'Voitures',
+    icon: 'pi pi-car',
+    link: '/user-space/client/interventions'
+  },
+  {
+    id: 3,
+    label: 'Factures',
+    icon: 'pi pi-cog',
+    link: '/user-space/clients/invoices'
+  },
+]
+
+export const mechanicalHeaderMenuData: HeaderMenu[] = [
+  {
+    id: 1,
+    label: 'Rendez-vous',
+    icon: 'pi pi-send',
+    link: '/user-space/client/appointments'
+  },
+  {
+    id: 2,
+    label: 'Interventions',
+    icon: 'pi pi-cog',
+    link: '/user-space/client/interventions'
+  },
+]
+
+export const menuByRole = {
+  admin: adminHeaderMenuData,
+  client: clientHeaderMenuData,
+  mechanical: mechanicalHeaderMenuData
+}
+
+
+

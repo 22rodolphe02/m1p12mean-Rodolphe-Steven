@@ -24,11 +24,9 @@ import {
     CommonModule,
     Button,
     NgApexchartsModule,
-    PlanningComponent,
     KpiGeneralComponent,
     LastInterventionsComponent,
     RevenueByServiceComponent,
-    InterventionsStatChartComponent,
   ],
   templateUrl: './admin-dashboard-page.component.html',
   styleUrl: './admin-dashboard-page.component.scss'

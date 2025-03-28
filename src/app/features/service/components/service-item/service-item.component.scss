@@ -1,0 +1,31 @@
+.circle-xxl{
+  //width: 6rem;
+  //height: 6rem;
+
+  width: 5rem;
+  height: 5rem;
+}
+
+.avatar{
+  background: var(--p-blue-100);
+  color: var(--p-blue-500);
+}
+
+
+
+.selectable:hover, .selectable.active{
+  border-color: var(--p-emerald-500);
+}
+
+.selectable.active{
+  background: var(--p-emerald-50);
+}
+
+.desc{
+  //border-color: var(--p-blue-400);
+}
+
+.desc-select{
+  border-color: var(--p-emerald-400);
+  background: var(--p-emerald-50);
+}

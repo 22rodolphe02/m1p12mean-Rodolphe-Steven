@@ -4,186 +4,59 @@
     <th>
       <div class="d-flex align-items-center">
         <span>Id</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Nom</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Nombre de Véhicule</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Nombre d'intervention</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Date d'inscription</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a (click)="onClick(1)" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a (click)="onClick(1)" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a (click)="onClick(1)" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a (click)="onClick(1)" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a (click)="onClick(1)" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a (click)="onClick(1)" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
+    @for (client of clients; track client.id) {
+      <tr>
+        <td>
+          <span>{{client.id}}</span>
+        </td>
+        <td>
+          <a class="link text-capitalize" routerLink="{{actionLink}}/{{client.id}}">
+            {{client.nom}} {{client.prenom}}
+          </a>
+        </td>
+        <td>
+          {{client.numberOfVehicle}}
+        </td>
+        <td>
+          {{client.numberOfIntervention}}
+        </td>
+        <td>
+          <div class="d-flex ">
+            <div class="d-flex align-items-center badge-secondary text-secondary">
+              <span class="">{{client.registrationDate | date: 'longDate'}}</span>
+            </div>
+
+          </div>
+        </td>
+      </tr>
+    }
+
+
   </tbody>
 </table>
 
