@@ -7,7 +7,9 @@ export interface Intervention{
 }
 
 export enum InterventionStatus {
-  PENDING = 'En attente',
-  DONE = 'Terminé',
-  IN_PROGRESS = 'En cours',
+  PENDING = 'en attente',
+  DONE = 'terminé',
+  IN_PROGRESS = 'en cours',
+  BILLED = 'facturée',
+  PAID = 'payé'
 }

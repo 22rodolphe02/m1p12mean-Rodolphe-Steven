@@ -1,57 +1,7 @@
 <div class="row">
-  @for (vehicle of vehicles; track vehicle) {
+  @for (vehicle of data(); track vehicle._id) {
     <div class="col-3 my-2">
-
-      <div class="card-custom">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex align-items-center">
-            <div class="circle border me-2">
-              <i class="pi pi-calendar"></i>
-            </div>
-            <div class="d-flex flex-column">
-              <span class="small text-muted">Date d'ajout</span>
-              <span class="fw-medium">Nov, 12 2024</span>
-            </div>
-          </div>
-          <div>
-            <div class="badge-success d-flex small align-items-center">
-              <i class="pi pi-circle-on me-2" style="font-size: .5rem" ></i>
-              <span class="text-capitalize">operational</span>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
-        </div>
-        <div class="border-top pt-3">
-
-          <div class="d-flex align-items-center">
-            <i class="pi pi-circle-off me-2" style="color: var(--p-red-500)"></i>
-            <span class="text-capitalize ">Kilometrage</span>
-            <span class="text-muted ms-2">85 000Km</span>
-          </div>
-
-          <div class="d-flex align-items-center mt-1">
-            <i class="pi pi-circle-off me-2" style="color: var(--p-blue-500)"></i>
-            <span class="text-capitalize ">Modèle</span>
-            <span class="text-muted ms-2">Peugeot 2024</span>
-          </div>
-
-          <div class="d-flex align-items-center mt-1">
-            <i class="pi pi-circle-off me-2 " style="color: var(--p-amber-500)"></i>
-            <span class="text-capitalize ">Immatriculation</span>
-            <span class="text-muted ms-2">AB-456-CD</span>
-          </div>
-
-          <div class="d-flex align-items-center mt-1">
-            <i class="pi pi-circle-off me-2 " style="color: var(--p-emerald-500)"></i>
-            <span class="text-capitalize ">Dernier visite</span>
-            <div class="badge-secondary small fw-medium ms-2">
-              <span>Fev, 24 2025</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        <g-vehicle-item [item]="vehicle" [actionLink]="actionLink()"></g-vehicle-item>
     </div>
   }
 

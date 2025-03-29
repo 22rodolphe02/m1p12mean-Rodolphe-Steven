@@ -4,6 +4,9 @@ import {Card} from 'primeng/card';
 import {Button} from 'primeng/button';
 import {CommonModule} from '@angular/common';
 import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
+import {InterventionStatus} from '../../models/intervention.model';
+import {SelectButton} from 'primeng/selectbutton';
+import {FormsModule} from '@angular/forms';
 
 
 interface EventItem {
@@ -23,13 +26,17 @@ interface EventItem {
     CommonModule,
     Timeline,
     PaginationComponent,
-    Button
+    SelectButton,
+    FormsModule
   ],
   templateUrl: './intervention-history.component.html',
   styleUrl: './intervention-history.component.scss'
 })
 export class InterventionHistoryComponent {
   events: EventItem[];
+
+  statusList = Object.values(InterventionStatus)
+  filter: string = InterventionStatus.DONE;
 
   constructor() {
     this.events = [

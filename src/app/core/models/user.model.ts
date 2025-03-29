@@ -3,7 +3,6 @@ export interface User {
   nom?: string;
   prenom?: string,
   motdepasse?: string,
-  numero?: string,
   email: string;
   registrationDate?: Date,
   token?: string; // Token JWT (optionnel)

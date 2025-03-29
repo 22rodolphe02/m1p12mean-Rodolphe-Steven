@@ -11,10 +11,12 @@ import {Appointment, AppointmentCreate, AppointmentStatus} from '../../../appoin
 import {AppointmentService} from '../../../appointment/services/appointment.service';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {Select} from 'primeng/select';
+import {CommonModule, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-client-appointment-add-page',
   imports: [
+    CommonModule,
     Button,
     ServiceItemComponent,
     DatePicker,
@@ -22,7 +24,7 @@ import {Select} from 'primeng/select';
     SelectServiceComponent,
     Dialog,
     RouterLink,
-    Select
+    Select,
   ],
   templateUrl: './client-appointment-add-page.component.html',
   styleUrl: './client-appointment-add-page.component.scss'

@@ -5,6 +5,7 @@ import {Button} from 'primeng/button';
 import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
 import {RouterLink} from '@angular/router';
 import {LoaderComponent} from '../../../../shared/components/loader/loader.component';
+import {VehicleStatus} from '../../../vehicle/models/vehicle.model';
 
 @Component({
   selector: 'g-client-appointments-page',
@@ -18,5 +19,6 @@ import {LoaderComponent} from '../../../../shared/components/loader/loader.compo
   styleUrl: './client-appointments-page.component.scss'
 })
 export class ClientAppointmentsPageComponent {
+
 
 }
