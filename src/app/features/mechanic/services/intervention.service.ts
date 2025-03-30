@@ -3,11 +3,12 @@ import { ResourceService } from '../../../core/services/resource.service';
 import { Mechanic } from '../models/mechanic.model';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../../core/models/user.model';
+import { Intervention } from '../../interventions/models/intervention.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class InterventionService extends ResourceService<User> {
+export class InterventionService extends ResourceService<Intervention> {
   constructor(httpClient: HttpClient) {
     super(httpClient);
     this.setApiUrl('interventions');
@@ -20,5 +21,19 @@ export class InterventionService extends ResourceService<User> {
       data: { encours: number; facturee: number; terminee: number; enattente: number }
       message: string;
     }>(url);
+  }
+
+  getAllIntervention(){
+    const url = this.apiUrl + '/interventionEnCours';
+    return this.http.get<{
+      success: boolean;
+      data: { encours: number; facturee: number; terminee: number; enattente: number } // change ici car je le prends ici
+      message: string;
+    }>(url);
+  }
+
+  getOngoingInterventions() {
+    const url = this.apiUrl + '/getOngoingInterventionForDashboard';
+    return this.http.get<{ success: boolean; data: Intervention[] }>(url);
   }
 }

@@ -27,4 +27,30 @@ export class InterventionListComponent {
     return this.interventionService.getStatusClass(status)
   }
 
+  // @Input({ alias: 'url' }) apiUrl?: string;
+  // interventions: Intervention[] = [];
+  // private subscription!: Subscription;
+  //
+  // constructor(private interventionService: InterventionService) {}
+  //
+  // ngOnDestroy(): void {
+  //   if (this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
+  //
+  // ngOnInit(): void {
+  //   this.setInterventions();
+  // }
+  //
+  // public setInterventions() {
+  //   this.subscription = this.interventionService
+  //     .getOngoingInterventions()
+  //     .subscribe((response: any) => {
+  //       if (response.success) {
+  //         this.interventions = response.data;
+  //       }
+  //     });
+  // }
+
 }
