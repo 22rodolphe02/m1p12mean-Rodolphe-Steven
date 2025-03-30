@@ -16,6 +16,7 @@ import { environment } from '../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { Dialog } from 'primeng/dialog';
+import { RoleService } from '../../../../core/services/role.service';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -28,22 +29,21 @@ import { Dialog } from 'primeng/dialog';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
-    Dialog
+    Dialog,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
-  private apiUrl = environment.apiUrl;
   roles: { label: string; value: string }[] = [];
   displayError = false;
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private roleService: RoleService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -53,19 +53,11 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchRoles();
-  }
-
-  fetchRoles(): void {
-    const url = `${this.apiUrl}/roles`;
-    console.log('URL = ' + url);
-    this.http.get<{ _id: string; nom: string }[]>(url).subscribe({
-      next: (data) => {
-        this.roles = data.map((role) => ({ label: role.nom, value: role._id }));
-        console.log('Rôles récupérés:', this.roles);
+    this.roleService.fetchRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
       },
-      error: (err) =>
-        console.error('Erreur lors de la récupération des rôles:', err),
+      error: (err) => console.error('Erreur lors du chargement des rôles:', err),
     });
   }
 
@@ -75,7 +67,8 @@ export class SignInComponent implements OnInit {
 
     this.authService.login(email, password, roleId).subscribe({
       next: () => {
-        this.router.navigate(['/sign-up']); // Redirection après connexion réussie
+        this.router.navigate(['/user-space/admin']); // Redirection après connexion réussie
+        // this.router.navigate(['/sign-up']); // Redirection après connexion réussie
       },
       error: () => {
         this.displayError = true; // Afficher le pop-up en cas d'erreur

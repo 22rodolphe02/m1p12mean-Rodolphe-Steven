@@ -15,7 +15,7 @@ export class MechanicService extends ResourceService<Mechanic> {
 
   getNombreMechanic(){
     const url = this.apiUrl + "/nombremecanicien";
-    const valeur = this.http.get<{ nombreMecanicien : number }>(url);
+    const valeur = this.http.get<{ success: boolean, data: number, message: string }>(url);
     return valeur;
   }
 
