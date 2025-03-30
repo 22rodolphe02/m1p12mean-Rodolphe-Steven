@@ -19,7 +19,6 @@ export class InterventionService extends ResourceService<Intervention>{
     return this.filteredInterventions(filters, sort, pagination)
   }
 
-
   /*
   * GET /interventions?filter=status:active,age:gt:30&sort=nom:asc&page=2&limit=10
   * */
