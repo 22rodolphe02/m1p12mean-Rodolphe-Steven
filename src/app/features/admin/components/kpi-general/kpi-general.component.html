@@ -1,26 +1,23 @@
 <div class="d-flex justify-content-around align-items-center mt-5">
-  <div class=" col-auto">
+  <div class="col-auto">
     <div class="d-flex justify-content-between">
-      <div class="fw-medium fs-5 ">
-        Revenus
+      <div class="fw-medium fs-5">Revenus</div>
+      <div>
+        <p-button [text]="true" icon="pi pi-chevron-down" label="Aujourd'hui" [rounded]="true"></p-button>
       </div>
-<!--      <div>-->
-<!--        <p-button [text]="true"  icon="pi pi-chevron-down" label="Aujourd'hui" [rounded]="true"></p-button>-->
-<!--      </div>-->
     </div>
     <div class="d-flex align-items-center">
-        <span class="fs-3 fw-bold text-gray-300">
-          MGA 2500,800.02
+      <span class="fs-3 fw-bold text-gray-300">
+        {{ revenus ? ('MGA ' + revenus) : '...chargement' }}
+      </span>
+      <div class="badge-warning ms-2 d-flex align-items-center">
+        <span>
+          <i class="pi pi-angle-double-down"></i>
         </span>
-<!--      <div class="badge-warning ms-2 d-flex align-items-center">-->
-<!--          <span>-->
-<!--            <i class="pi pi-angle-double-down"></i>-->
-<!--          </span>-->
-<!--        <span class="ms-1">-->
-<!--            7.90-->
-<!--          </span>-->
-<!--      </div>-->
-
+        <span class="ms-1">
+          {{ variation ? variation : '...chargement' }}
+        </span>
+      </div>
     </div>
   </div>
 
@@ -28,15 +25,15 @@
     <g-kpi-card
       title="Interventions"
       icon="pi pi-cog"
-      [data]="interventionData"
-      actionLink="/user-space/admin/interventions"
+      [data]="interventionData ? interventionData : '...chargement'"
+      actionLink="/interventions"
     >
     </g-kpi-card>
     <g-kpi-card
       title="Mécaniciens"
       icon="pi pi-users"
-      [data]="mechanicData"
-      actionLink="/user-space/"
+      [data]="mechanicData ? mechanicData : '...chargement'"
+      actionLink="/mechanics"
     >
     </g-kpi-card>
 
@@ -44,7 +41,7 @@
       title="Rendez-vous"
       icon="pi pi-send"
       iconColor="var(--g-primary)"
-      [data]="appointmentData"
+      [data]="appointmentData ? appointmentData : '...chargement'"
       [darkMode]="true"
       actionLink="/appointments"
     >
@@ -54,7 +51,7 @@
       iconColor="var(--p-red-400)"
       icon="pi pi-box"
       contentColor="var(--p-red-300)"
-      [data]="pieceData"
+      [data]="pieceData ? pieceData : '...chargement'"
     ></g-kpi-card>
   </div>
 </div>

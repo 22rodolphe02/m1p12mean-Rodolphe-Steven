@@ -87,8 +87,8 @@ export class KpiGeneralComponent {
         this.interventionData = [
           { value: data.data.encours, label: 'En cours', color: 'primary' },
           { value: data.data.enattente, label: 'En attente', color: 'warning' },
-          { value: data.data.terminee, label: 'Terminés', color: 'success' },
-          { value: data.data.facturee, label: 'Facturés', color: '#007bff' },
+          // { value: data.data.terminee, label: 'Terminés', color: 'success' },
+          { value: data.data.facturee, label: 'Facturés', color: 'success' },
         ];
         console.log(
           'Nouvelle valeur de interventionData :',
