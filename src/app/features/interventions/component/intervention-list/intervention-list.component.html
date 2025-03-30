@@ -11,24 +11,34 @@
   <tbody>
     <tr *ngFor="let intervention of interventions">
       <td>
-        <a href="#" class="link">{{ intervention.client }}</a>
+        <a href="#" class="link">
+          {{ intervention.client ? (intervention.client.name || 'Inconnu') + ' ' + (intervention.client.firstName || '') : '...chargement' }}
+        </a>
       </td>
       <td>
         <div class="d-flex flex-column">
-          <a href="#" class="link">{{ intervention.vehicle }}</a>
+          <a href="#" class="link">
+            {{ intervention.vehicle ? (intervention.vehicle.nom || 'Non défini') : '...chargement' }}
+          </a>
         </div>
       </td>
       <td>
-        <a href="#" class="link">{{ intervention.mecanicien }}</a>
+        <a href="#" class="link">
+          {{ intervention.mecanicien ? (intervention.mecanicien.name || 'Inconnu') + ' ' + (intervention.mecanicien.firstName || '') : '...chargement' }}
+        </a>
       </td>
       <td>
         <div class="d-flex align-items-center">
           <i class="pi pi-circle-on c-primary"></i>
-          <span class="ms-2 text-muted">{{ intervention.status }}</span>
+          <span class="ms-2 text-muted">
+            {{ intervention.status ? intervention.status : '...chargement' }}
+          </span>
         </div>
       </td>
       <td>
-        <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary">{{ intervention.remainingTime }}</span>
+        <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary">
+          {{ intervention.remainingTime ? intervention.remainingTime : '...chargement' }}
+        </span>
       </td>
     </tr>
   </tbody>
