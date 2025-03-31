@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Intervention} from '../models/intervention.model';
+import {Intervention, ServicePerformed} from '../models/intervention.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResourceService} from '../../../core/services/resource.service';
+import {Service} from '../../service/models/service.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,17 @@ export class InterventionService extends ResourceService<Intervention>{
 
   }
 
+  public getTotalEstimationTime(intervention: Intervention): number{
+    let time = 0
+    const services: ServicePerformed[] | undefined = intervention.services;
+    if (services){
+      for (const service of services) {
+        time += service.duree
+      }
+    }
 
+    return time;
+
+  }
 
 }

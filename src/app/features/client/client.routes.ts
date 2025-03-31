@@ -12,6 +12,9 @@ const ClientVehiclesListPageComponent = () =>
 const ClientVehicleAddPageComponent = () =>
   import('../client/pages/client-vehicle-add-page/client-vehicle-add-page.component').then(m => m.ClientVehicleAddPageComponent);
 
+const VehicleDetailsPageComponent = () =>
+  import('../vehicle/pages/vehicle-details-page/vehicle-details-page.component').then(m => m.VehicleDetailsPageComponent);
+
 export const clientRoutes: Routes = [
   {
     path: '',
@@ -20,7 +23,7 @@ export const clientRoutes: Routes = [
   },
   {
     path: 'vehicles',
-    children: [
+    loadChildren: () => [
       {
         path: '',
         loadComponent: ClientVehiclesListPageComponent
@@ -28,12 +31,16 @@ export const clientRoutes: Routes = [
       {
         path: 'new',
         loadComponent: ClientVehicleAddPageComponent
+      },
+      {
+        path: ':id',
+        loadComponent: VehicleDetailsPageComponent
       }
     ]
   },
   {
     path: 'appointments',
-    children: [
+    loadChildren: () => [
       {
         path: '',
         loadComponent: ClientAppointmentsPageComponent

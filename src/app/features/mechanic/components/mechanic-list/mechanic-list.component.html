@@ -30,11 +30,11 @@
   </tr>
   </thead>
   <tbody>
-    @for (mechanic of mechanics; track mechanic.id) {
+    @for (mechanic of mechanics; track mechanic._id) {
       <tr>
         <td>
           <a [routerLink]="'/'" class="link">
-            MEC-00{{mechanic.id}}
+            MEC-00{{mechanic._id}}
           </a>
         </td>
         <td>

@@ -28,6 +28,7 @@ $colors: (
 html, body{
   font-size: 14px;
   font-family: "Urbanist", sans-serif;
+  background: var(--g-body-bg);
   //font-family: "Alpino-Regular", sans-serif;
 }
 
@@ -257,6 +258,15 @@ a{
 
 .cursor-pointer{
   cursor: pointer !important;
+}
+
+.total-table{
+  margin-bottom: 0 !important;
+  --bs-table-bg: var(--g-body-bg);
+}
+
+.total-card{
+  background: var(--g-body-bg);
 }
 
 

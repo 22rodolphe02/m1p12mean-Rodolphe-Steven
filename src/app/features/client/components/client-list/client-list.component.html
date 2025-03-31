@@ -29,13 +29,13 @@
   </tr>
   </thead>
   <tbody>
-    @for (client of clients; track client.id) {
+    @for (client of clients; track client._id) {
       <tr>
         <td>
-          <span>{{client.id}}</span>
+          <span>{{client._id}}</span>
         </td>
         <td>
-          <a class="link text-capitalize" routerLink="{{actionLink}}/{{client.id}}">
+          <a class="link text-capitalize" routerLink="{{actionLink}}/{{client._id}}">
             {{client.nom}} {{client.prenom}}
           </a>
         </td>

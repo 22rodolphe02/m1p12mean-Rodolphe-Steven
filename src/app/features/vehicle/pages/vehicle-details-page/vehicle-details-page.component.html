@@ -1,0 +1,217 @@
+<div class="d-flex justify-content-center">
+  <div class="col-12">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="d-flex align-items-center">
+        <p-button severity="secondary" [routerLink]="'/user-space/admin/clients'"
+                  icon="pi pi-arrow-left" [rounded]="true" [outlined]="true"></p-button>
+        <span class="sub-title ms-2">Intervention</span>
+        <span class="fw-bold d-flex align-items-center">
+          <i class="pi pi-hashtag ms-1"></i>2
+        </span>
+      </div>
+    </div>
+    <div class="card-custom">
+      <div class="d-flex justify-content-between">
+        <div class="col">
+          <g-vehicle-info></g-vehicle-info>
+        </div>
+        <div class="col-3" >
+
+          <div class="card-custom total-card" >
+            <div class="mb-3">
+              <span class="fs-6 fw-medium">Durée restant</span>
+            </div>
+            <table class="table table-borderless total-table">
+              <tbody>
+<!--              <tr >-->
+<!--                <td class="text-capitalize text-secondary">Sous total</td>-->
+<!--                <td>-->
+<!--                  <div class="d-flex flex-column align-items-end text-secondary">-->
+<!--                    {{getEstimateTime(intervention) | number}} min-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
+              <!--                  <tr class="">-->
+              <!--                    <td class="text-capitalize text-secondary">Tax</td>-->
+              <!--                    <td>-->
+              <!--                      <div class="d-flex flex-column align-items-end text-secondary">-->
+              <!--                        {{0 | currency: 'MGA ' : 'symbol': '1.2-2'}}-->
+              <!--                      </div>-->
+              <!--                    </td>-->
+              <!--                  </tr>-->
+              <tr>
+                <td class="text-capitalize text-secondary">Total</td>
+                <td class="fs-4 fw-semibold">
+                  <div class="d-flex flex-column align-items-end">
+                    {{getEstimateTime(intervention) | number}} Min
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column mb-4">
+            <div class="d-flex align-items-center">
+              <i class="pi pi-cog fs-6 text-primary me-2"></i>
+              <span class="fs-5 fw-medium ">Interventions</span>
+            </div>
+            <span class="small text-muted mt-1">
+              Suivez ici les interventions concernant cette voiture.
+            </span>
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="col-2 ">
+            <div class="mb-2 text-secondary d-flex align-items-center">
+              <i class="pi pi-link me-2"></i>
+              <span>Mécanicien :</span>
+            </div>
+            <div class="border m-1 p-1 rounded-3">
+              <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                <div class="d-flex align-items-center">
+                  <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                  </div>
+                  <div class="d-flex flex-column ms-2">
+                    <span class="text-capitalize">{{intervention.mecanicien?.nom}}</span>
+                    <span class="text-secondary">{{intervention.mecanicien?.email}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="d-flex flex-column mt-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-5">
+              <div class="">
+                <span class="fs-5 ">Services effectués</span>
+              </div>
+              <div class="mt-2">
+                <table class="table table-custom">
+                  <thead class="table-header">
+                  <tr>
+                    <th>
+                      <div class="d-flex">
+                        info
+                      </div>
+                    </th>
+                    <th>
+                      <div class="d-flex">
+                        prix unitaire
+                      </div>
+                    </th>
+                    <th>
+                      <div class="d-flex">
+                        durée
+                      </div>
+                    </th>
+                    <th>
+                      <div class="d-flex">
+                        action
+                      </div>
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @for (service of intervention.services; track service._id) {
+                      <tr>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span>{{service.nom}}</span>
+                            <div class="d-flex mt-2"  >
+                              <div class="col-8 border p-2 rounded-3 text-secondary" style="border-style: dashed !important;">
+                                {{service.description}}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <span>{{service.prix | currency : 'MGA ': 'symbol': '1.2-2'}}</span>
+                        </td>
+                        <td>
+                          <div class=" d-flex">
+                            <div class="badge-success">
+                              <span>{{service.duree}}<span class="ms-1">min</span></span>
+                            </div>
+
+                          </div>
+                        </td>
+                        <td>
+                          <p-button [rounded]="true" label="Terminer" [outlined]="true"></p-button>
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+            <div class="col-5">
+              <div class="card-custom " >
+                <span class=" fs-5 fw-medium">Pièces utilisé</span>
+                <div>
+
+                  <table class="table table-custom mt-2 ">
+
+                    <tbody>
+                      @for (piece of intervention.pieces; track piece._id) {
+                        <tr>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span>{{piece.nom}}</span>
+                              <div class="d-flex text-secondary">
+                                <span class=" ">prix unitaire:</span>
+                                <span class="ms-2">{{piece.prixUnitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                              </div>
+                            </div>
+
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column align-items-end">
+                              <div class="d-flex flex-column">
+                                <!--                              <span class="fw-medium">{{piece. | currency:'MGA ' : 'symbol': '1.2-2' }}</span>-->
+                                <span class="text-secondary">{{piece.quantite | number}} PCS</span>
+                              </div>
+
+                            </div>
+
+                          </td>
+                        </tr>
+                      }
+                    <!--                  <tr >-->
+                    <!--                    <td class="py-3 border-0">Total</td>-->
+                    <!--                    <td class="fw-semibold border-0">-->
+                    <!--                      <div class="d-flex flex-column align-items-end">-->
+                    <!--                        {{data.pieces.total | currency: 'MGA ' : 'symbol': '1.2-2'}}-->
+                    <!--                      </div>-->
+                    <!--                    </td>-->
+                    <!--                  </tr>-->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+<!--          <div class="mt-4 d-flex">-->
+<!--            -->
+<!--          </div>-->
+        </div>
+        <!--        <router-outlet></router-outlet>-->
+      </div>
+    </div>
+
+  </div>
+</div>

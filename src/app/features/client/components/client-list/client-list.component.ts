@@ -31,7 +31,7 @@ export class ClientListComponent{
   fakeData(){
     this.clients = [
       {
-        id: 1,
+        _id: 1,
         nom: "Dupont",
         prenom: "Jean",
         motdepasse: "securePass123",
@@ -43,7 +43,7 @@ export class ClientListComponent{
         numberOfIntervention: 5
       },
       {
-        id: 2,
+        _id: 2,
         nom: "Martin",
         prenom: "Sophie",
         motdepasse: "myStrongPass456",
@@ -55,7 +55,7 @@ export class ClientListComponent{
         numberOfIntervention: 2
       },
       {
-        id: 3,
+        _id: 3,
         nom: "Lemoine",
         prenom: "Paul",
         motdepasse: "paulPass789",
