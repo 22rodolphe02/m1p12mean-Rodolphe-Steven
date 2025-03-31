@@ -38,8 +38,18 @@ export class InterventionService extends ResourceService<Intervention> {
     return this.http.get<{ success: boolean; data: Intervention[] }>(url);
   }
 
-  getStatsForChart() {
-    const url = this.apiUrl + '/statChiffreAffaireByService';
+  getStatsForChartPie() {
+    const url = this.apiUrl + '/statChiffreAffaireByService/montant';
     return this.http.get<StatsResponse>(url);
+  }
+
+  getStatsForChartBar() {
+    const url = this.apiUrl + '/statChiffreAffaireByService/pourcentage';
+    return this.http.get<StatsResponse>(url);
+  }
+
+  getTotalRevenueService() {
+    const url = this.apiUrl + '/totalRevenueService';
+    return this.http.get<{ success: boolean, data: { chiffreAffaire: string }, message: string }>(url);
   }
 }
