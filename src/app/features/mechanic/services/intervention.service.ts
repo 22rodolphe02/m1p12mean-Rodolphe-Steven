@@ -4,6 +4,7 @@ import { Mechanic } from '../models/mechanic.model';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../../core/models/user.model';
 import { Intervention } from '../../interventions/models/intervention.model';
+import { StatsResponse } from '../models/statsforcharts.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,10 @@ export class InterventionService extends ResourceService<Intervention> {
   getOngoingInterventions() {
     const url = this.apiUrl + '/getOngoingInterventionForDashboard';
     return this.http.get<{ success: boolean; data: Intervention[] }>(url);
+  }
+
+  getStatsForChart() {
+    const url = this.apiUrl + '/statChiffreAffaireByService';
+    return this.http.get<StatsResponse>(url);
   }
 }

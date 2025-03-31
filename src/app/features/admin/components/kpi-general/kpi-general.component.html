@@ -8,14 +8,14 @@
     </div>
     <div class="d-flex align-items-center">
       <span class="fs-3 fw-bold text-gray-300">
-        {{ revenus ? ('MGA ' + revenus) : '...chargement' }}
+        MGA 2000000
       </span>
       <div class="badge-warning ms-2 d-flex align-items-center">
         <span>
           <i class="pi pi-angle-double-down"></i>
         </span>
         <span class="ms-1">
-          {{ variation ? variation : '...chargement' }}
+          10
         </span>
       </div>
     </div>
@@ -25,33 +25,32 @@
     <g-kpi-card
       title="Interventions"
       icon="pi pi-cog"
-      [data]="interventionData ? interventionData : '...chargement'"
+      [data]="interventionData"
       actionLink="/interventions"
-    >
-    </g-kpi-card>
+    ></g-kpi-card>
+
     <g-kpi-card
       title="Mécaniciens"
       icon="pi pi-users"
-      [data]="mechanicData ? mechanicData : '...chargement'"
+      [data]="mechanicData"
       actionLink="/mechanics"
-    >
-    </g-kpi-card>
+    ></g-kpi-card>
 
     <g-kpi-card
       title="Rendez-vous"
       icon="pi pi-send"
       iconColor="var(--g-primary)"
-      [data]="appointmentData ? appointmentData : '...chargement'"
+      [data]="appointmentData"
       [darkMode]="true"
       actionLink="/appointments"
-    >
-    </g-kpi-card>
+    ></g-kpi-card>
+
     <g-kpi-card
       title="Pièces en rupture"
       iconColor="var(--p-red-400)"
       icon="pi pi-box"
       contentColor="var(--p-red-300)"
-      [data]="pieceData ? pieceData : '...chargement'"
+      [data]="pieceData"
     ></g-kpi-card>
   </div>
 </div>
