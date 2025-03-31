@@ -6,7 +6,7 @@
         <span>Garage</span>
       </div>
       <span>
-        <p-button label="Go back" icon="pi pi-arrow-left" styleClass="w-100 rounded-3" [text]="true"  />
+        <p-button label="Go back" icon="pi pi-arrow-left" styleClass="w-100 rounded-3" [text]="true" />
       </span>
     </div>
     <div class="col-9">
@@ -14,17 +14,17 @@
         <span class="fs-4 fw-medium">Get Started Now</span>
         <span class="small">Enter your credentials to access your account</span>
       </div>
-      <form [formGroup]="inscriptionForm" >
-        <div class=" row flex-grow-1 justify-content-center align-items-center">
+      <form [formGroup]="inscriptionForm">
+        <div class="row flex-grow-1 justify-content-center align-items-center">
           <div class="mt-5">
             <div class="row justify-content-between">
               <div class="d-flex flex-column col">
                 <label class="mb-1">Nom</label>
-                <input type="email" class="rounded-3 " formControlName="nom" pInputText placeholder="John" />
+                <input type="text" class="rounded-3 " formControlName="nom" pInputText placeholder="John" />
               </div>
               <div class="d-flex flex-column col">
                 <label class="mb-1">Prénom</label>
-                <input type="email" class="rounded-3 " formControlName="nom" pInputText placeholder="Peter" />
+                <input type="text" class="rounded-3 " formControlName="prenom" pInputText placeholder="Peter" />
               </div>
             </div>
 
@@ -36,11 +36,9 @@
 
               <div class="d-flex flex-column col">
                 <label class="mb-1">Numéro de téléphone</label>
-<!--                <p-inputmask mask="a*-999-a999" formControlName="numero" placeholder="a*-999-a999" />-->
-                <p-inputmask mask="(+261) 99 99 999 99" formControlName="numero" placeholder="(+261) 34 01 234 56" />
+                <input type="text" class="rounded-3 " formControlName="numero" pInputText placeholder="(+261) 34 01 234 56" />
               </div>
             </div>
-
 
             <div class="d-flex flex-column mt-4">
               <label class="mb-1">Mot de passe</label>
@@ -49,24 +47,24 @@
 
             <div class="d-flex flex-column mt-4">
               <label class="mb-1">Choisissez votre rôle</label>
-              <p-select formControlName="role" [options]="roles" placeholder="choisi un role" class="w-full md:w-56" />
+              <p-dropdown formControlName="role" [options]="roles" placeholder="Choisis un rôle" class="w-full md:w-56" optionLabel="label" optionValue="value" />
             </div>
           </div>
         </div>
         <div class="d-flex flex-column mt-4">
-          <p-button label="login" (onClick)="onSubmit()" styleClass="w-100 rounded-3"  />
+          <p-button label="Inscrire" (onClick)="onSubmit()" styleClass="w-100 rounded-3" />
         </div>
       </form>
     </div>
     <div class="d-flex col-auto mt-4 align-items-center">
       <span>Déjà un compte ?</span>
       <span class="">
-        <p-button label="Connectez-vous ici" routerLink="/sign-in" [link]="true" styleClass="rounded-3"  />
-        </span>
+        <p-button label="Connectez-vous ici" routerLink="/sign-in" [link]="true" styleClass="rounded-3" />
+      </span>
     </div>
   </div>
   <div class="col-7 auth-img">
     <span class="fs-4">Bienvenue dans votre espace garage.</span>
-    <span class="small">Connectez-vous pour gérer vos interventions et véhicules en toute simplicité.</span>
+    <span class="small">Inscrivez-vous pour accéder à toutes les fonctionnalités.</span>
   </div>
 </div>

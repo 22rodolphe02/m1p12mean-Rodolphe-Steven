@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   // Méthode pour se connecter
-  login(email: string, password: string): Observable<User> {
+  login(email: string, password: string, roleId: string): Observable<User> {
     let user: User ={
       id: 1,
       email: 'sc@gmail.com',
@@ -32,7 +32,7 @@ export class AuthService {
     localStorage.setItem('currentUser', JSON.stringify(user));
 
     return this.http
-      .post<User>(`${this.apiUrl}/garage/api/auth/login`, { email, password })
+      .post<User>(`${this.apiUrl}/users/login`, { email, password, roleId })
       .pipe(
         tap((user) => {
           this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
