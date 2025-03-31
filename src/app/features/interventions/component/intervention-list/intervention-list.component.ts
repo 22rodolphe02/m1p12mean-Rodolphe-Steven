@@ -1,3 +1,5 @@
+// ROD
+
 // import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 // import {InterventionService} from '../../services/intervention.service';
 // import {Intervention} from '../../models/intervention.model';
@@ -47,6 +49,8 @@
 
 // }
 
+// STEVEN
+
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 // import { InterventionService } from '../../services/intervention.service';
 import { CommonModule } from '@angular/common';
@@ -61,9 +65,38 @@ import { Subscription } from 'rxjs';
   templateUrl: './intervention-list.component.html',
   styleUrl: './intervention-list.component.scss',
 })
+
+// export class InterventionListComponent implements OnInit, OnDestroy {
+//   @Input({ alias: 'url' }) apiUrl?: string;
+//   interventions: Intervention[] = []; // modifie ceci stp, change Intervention par var ou const ou let ou je ne sais pas pour que ca ne pose pas problemes dans ma page liste
+//   private subscription!: Subscription;
+
+//   constructor(private interventionService: InterventionService) {}
+
+//   ngOnDestroy(): void {
+//     if (this.subscription) {
+//       this.subscription.unsubscribe();
+//     }
+//   }
+
+//   ngOnInit(): void {
+//     this.setInterventions();
+//   }
+
+//   public setInterventions() {
+//     this.subscription = this.interventionService
+//       .getOngoingInterventions()
+//       .subscribe((response: any) => {
+//         if (response.success) {
+//           this.interventions = response.data;
+//         }
+//       });
+//   }
+// }
+
 export class InterventionListComponent implements OnInit, OnDestroy {
   @Input({ alias: 'url' }) apiUrl?: string;
-  interventions: Intervention[] = [];
+  interventions: any[] = []; // Modification ici
   private subscription!: Subscription;
 
   constructor(private interventionService: InterventionService) {}
