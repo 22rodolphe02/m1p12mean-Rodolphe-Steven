@@ -18,6 +18,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { Dialog } from 'primeng/dialog';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {MessageService} from 'primeng/api';
+import {Select} from 'primeng/select';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -30,7 +31,8 @@ import {MessageService} from 'primeng/api';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
-    Dialog
+    Dialog,
+    Select
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',

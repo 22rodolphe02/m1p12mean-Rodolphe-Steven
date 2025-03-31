@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ClientPersonalDetailComponent} from '../../../client/components/client-personal-detail/client-personal-detail.component';
 import {Button} from 'primeng/button';
+import {ClientService} from '../../../client/services/client.service';
 
 @Component({
   selector: 'g-client-details-page',
@@ -15,5 +16,6 @@ import {Button} from 'primeng/button';
 })
 export class ClientDetailsPageComponent {
 
-
+  constructor(private userService: ClientService) {
+  }
 }

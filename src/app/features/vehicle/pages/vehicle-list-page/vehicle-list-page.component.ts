@@ -5,9 +5,11 @@ import {InputText} from 'primeng/inputtext';
 import {VehicleListComponent} from '../../components/vehicle-list/vehicle-list.component';
 import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
 import {catchError, map, Observable, of} from 'rxjs';
-import {Vehicle} from '../../models/vehicle.model';
+import {Vehicle, VehicleStatus} from '../../models/vehicle.model';
 import {VehicleService} from '../../services/vehicle.service';
 import {AsyncPipe} from '@angular/common';
+import {SelectButton} from 'primeng/selectbutton';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-vehicle-list-page',
@@ -17,12 +19,18 @@ import {AsyncPipe} from '@angular/common';
     InputText,
     VehicleListComponent,
     PaginationComponent,
-    AsyncPipe
+    AsyncPipe,
+    SelectButton,
+    FormsModule
   ],
   templateUrl: './vehicle-list-page.component.html',
   styleUrl: './vehicle-list-page.component.scss'
 })
 export class VehicleListPageComponent {
+
+  statusList = Object.values(VehicleStatus)
+
+  filter: string = VehicleStatus.OPERATIONAL
 
   @Input() clientId?: number
 

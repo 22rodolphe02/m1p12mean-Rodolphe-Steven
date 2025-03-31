@@ -45,7 +45,7 @@ export const clientHeaderMenuData: HeaderMenu[] = [
     id: 2,
     label: 'Voitures',
     icon: 'pi pi-car',
-    link: '/user-space/client/interventions'
+    link: '/user-space/client/vehicles'
   },
   {
     id: 3,

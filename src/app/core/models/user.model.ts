@@ -1,12 +1,11 @@
 export interface User {
-  id?: number;
-  nom?: string;
-  prenom?: string,
-  motdepasse?: string,
-  numero?: string,
+  _id?: number | string;
+  nom: string;
+  prenom: string,
+  motdepasse: string,
   email: string;
-  registrationDate?: Date,
-  token?: string; // Token JWT (optionnel)
+  registrationDate: Date,
+  token: string; // Token JWT (optionnel)
   role: Role,
 }
 

@@ -19,13 +19,14 @@ export class AuthService {
   // Méthode pour se connecter
   login(email: string, password: string, roleId: string): Observable<User> {
     let user: User ={
-      id: 1,
+      _id: 1,
       email: 'sc@gmail.com',
       nom: 'test',
       token: 'sfknfngejt.314fsfvgf',
       motdepasse: 'testPassword',
       registrationDate: new Date(),
-      role: Role.ADMIN
+      role: Role.ADMIN,
+      prenom: 'Test'
     }
 
     this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant

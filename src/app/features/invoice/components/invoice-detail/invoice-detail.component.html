@@ -73,9 +73,7 @@
         <tbody>
           @for (service of data.services.details; track service.serviceId) {
             <tr>
-              <td>
-                {{service.nom}}
-              </td>
+              <td>{{service.nom}}</td>
               <td>
                 <span >{{service.quantite}}</span>
               </td>
@@ -107,7 +105,7 @@
           <table class="table table-custom mt-2 ">
 
             <tbody>
-              @for (piece of data.pieces.details; track piece.pieceId) {
+              @for (piece of data.pieces.details; track piece._id) {
                 <tr>
                   <td>
                     <div class="d-flex flex-column">

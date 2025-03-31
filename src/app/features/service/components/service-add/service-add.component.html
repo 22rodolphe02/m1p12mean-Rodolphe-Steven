@@ -42,7 +42,7 @@
                   formControlName="duree"
                   inputStyleClass="form-number col-12 search-control"
                   [ngClass]="{'ng-dirty': !isValid('duree'), 'ng-invalid': !isValid('duree')}"
-                  [minFractionDigits]="2"
+                  [useGrouping]="false"
                 />
                 <label >Durée</label>
               </p-floatlabel>

@@ -52,14 +52,14 @@ export class InvoiceDetailComponent {
       pieces: {
         details: [
           {
-            pieceId: 1,
+            _id: 1,
             nom: "Filtre à huile",
             prixUnitaire: 20,
             quantite: 1,
             montant: 40
           },
           {
-            pieceId: 2,
+            _id: 2,
             nom: "Plaquettes de frein",
             prixUnitaire: 30,
             quantite: 1,

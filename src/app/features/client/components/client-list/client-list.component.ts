@@ -31,11 +31,10 @@ export class ClientListComponent{
   fakeData(){
     this.clients = [
       {
-        id: 1,
+        _id: 1,
         nom: "Dupont",
         prenom: "Jean",
         motdepasse: "securePass123",
-        numero: "0601020304",
         email: "jean.dupont@example.com",
         registrationDate: new Date("2024-01-15"),
         token: "eyJhbGciOiJIUzI1NiIsIn...",
@@ -44,11 +43,10 @@ export class ClientListComponent{
         numberOfIntervention: 5
       },
       {
-        id: 2,
+        _id: 2,
         nom: "Martin",
         prenom: "Sophie",
         motdepasse: "myStrongPass456",
-        numero: "0611121314",
         email: "sophie.martin@example.com",
         registrationDate: new Date("2023-11-22"),
         token: "eyJhbGciOiJIUzI1NiIsIn...",
@@ -57,11 +55,10 @@ export class ClientListComponent{
         numberOfIntervention: 2
       },
       {
-        id: 3,
+        _id: 3,
         nom: "Lemoine",
         prenom: "Paul",
         motdepasse: "paulPass789",
-        numero: "0622334455",
         email: "paul.lemoine@example.com",
         registrationDate: new Date("2024-02-10"),
         token: "eyJhbGciOiJIUzI1NiIsIn...",

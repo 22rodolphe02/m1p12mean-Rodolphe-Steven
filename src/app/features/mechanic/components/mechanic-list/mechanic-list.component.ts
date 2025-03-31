@@ -24,32 +24,44 @@ export class MechanicListComponent {
   fakeData(){
     this.mechanics = [
       {
-        id: 1,
+        _id: 1,
         registrationDate: new Date(),
         email: 'test@gmail.com',
         nom: 'Jean Dupon',
-        role: Role.MECHANICAL
+        role: Role.MECHANICAL,
+        prenom: '',
+        motdepasse: '',
+        token: ''
       },
       {
-        id: 2,
+        _id: 2,
         registrationDate: new Date(),
         email: 'test@gmail.com',
         nom: 'Jean Dupon',
-        role: Role.MECHANICAL
+        role: Role.MECHANICAL,
+        prenom: '',
+        motdepasse: '',
+        token: ''
       },
       {
-        id: 3,
+        _id: 3,
         registrationDate: new Date(),
         email: 'test@gmail.com',
         nom: 'Jean Dupon',
-        role: Role.MECHANICAL
+        role: Role.MECHANICAL,
+        prenom: '',
+        motdepasse: '',
+        token: ''
       },
       {
-        id: 4,
+        _id: 4,
         registrationDate: new Date(),
         email: 'test@gmail.com',
         nom: 'Jean Dupon',
-        role: Role.MECHANICAL
+        role: Role.MECHANICAL,
+        prenom: '',
+        motdepasse: '',
+        token: ''
       }
     ]
   }

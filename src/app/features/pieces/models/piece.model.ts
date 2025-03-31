@@ -1,12 +1,12 @@
 export interface Piece{
-  pieceId: number,
+  _id: number | string,
   nom: string,
   prixUnitaire: number,
   quantite: number,
 }
 
 export interface PieceDetail {
-  pieceId: number,
+  _id: number | string,
   nom: string,
   prixUnitaire: number
   quantite: number;
