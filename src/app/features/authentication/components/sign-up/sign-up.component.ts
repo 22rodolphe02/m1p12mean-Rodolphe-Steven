@@ -14,6 +14,8 @@ import { InputText } from 'primeng/inputtext';
 import { Password } from 'primeng/password';
 import { Button } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import {ApiResponse} from '../../../../core/models/response.model';
+import {User} from '../../../../core/models/user.model';
 @Component({
   selector: 'app-sign-up',
   imports: [
@@ -58,9 +60,16 @@ export class SignUpComponent implements OnInit {
 
   fetchRoles(): void {
     const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
-    this.http.get<{ _id: string; nom: string }[]>(url).subscribe({
-      next: (data) => {
-        this.roles = data.map((role) => ({ label: role.nom, value: role._id }));
+
+    // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
+    //
+    // })
+
+    this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
+      next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
+        console.log("roles = ", data)
+        this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
+
       },
       error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
     });

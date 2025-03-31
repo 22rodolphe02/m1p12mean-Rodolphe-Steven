@@ -16,6 +16,8 @@ import { environment } from '../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { Dialog } from 'primeng/dialog';
+import {ApiResponse} from '../../../../core/models/response.model';
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -43,7 +45,8 @@ export class SignInComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -59,13 +62,15 @@ export class SignInComponent implements OnInit {
   fetchRoles(): void {
     const url = `${this.apiUrl}/roles`;
     console.log('URL = ' + url);
-    this.http.get<{ _id: string; nom: string }[]>(url).subscribe({
+    this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
       next: (data) => {
-        this.roles = data.map((role) => ({ label: role.nom, value: role._id }));
+        this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
         console.log('Rôles récupérés:', this.roles);
       },
-      error: (err) =>
-        console.error('Erreur lors de la récupération des rôles:', err),
+      error: (err: ApiResponse<any>) =>{
+        this.messageService.add({severity: 'danger', detail: err.message});
+        // console.error('Erreur lors de la récupération des rôles:', err)
+      }
     });
   }
 
