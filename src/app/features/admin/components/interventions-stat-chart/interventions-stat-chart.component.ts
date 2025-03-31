@@ -22,7 +22,7 @@ export class InterventionsStatChartComponent implements OnInit {
   }
 
   setInterventionStat() {
-    this.interventionService.getStatsForChart().subscribe(response => {
+    this.interventionService.getStatsForChartBar().subscribe(response => {
       if (response.success && response.data) {
         const serviceNames = Object.keys(response.data);
         const serviceValues = Object.values(response.data);
