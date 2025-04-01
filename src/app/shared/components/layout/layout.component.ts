@@ -28,15 +28,15 @@ export class LayoutComponent {
   setMenus(): void{
     const role = this.authService.getRole();
 
-    // if (role === Role.MECHANICAL){
-    //   this.menus = menuByRole.mechanical;
-    //   return ;
-    // }else if(role == Role.CLIENT){
-    //   this.menus = menuByRole.client
-    // }
-    //
-    // this.menus = menuByRole.admin;
+    if (role === Role.MECHANICAL){
+      this.menus = menuByRole.mechanical;
+      return ;
+    }else if(role === Role.CLIENT){
+      this.menus = menuByRole.client
+    }else if(role === Role.ADMIN) {
+      this.menus = menuByRole.admin;
+    }
 
-    this.menus = menuByRole.client
+    // this.menus = menuByRole.client
   }
 }

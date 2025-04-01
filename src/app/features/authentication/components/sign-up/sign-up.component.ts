@@ -16,6 +16,9 @@ import { Button } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {User} from '../../../../core/models/user.model';
+import {Select} from 'primeng/select';
+import {InputMask} from 'primeng/inputmask';
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-sign-up',
   imports: [
@@ -27,6 +30,8 @@ import {User} from '../../../../core/models/user.model';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
+    Select,
+    InputMask,
   ],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
@@ -42,6 +47,7 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private messageService: MessageService,
     private userService: UserService // Injecter le service d'inscription
   ) {
     this.inscriptionForm = this.fb.group({
@@ -80,6 +86,7 @@ export class SignUpComponent implements OnInit {
 
     this.userService.signUp(nom, prenom, email, numero, motdepasse, role).subscribe({
       next: () => {
+        this.messageService.add({severity: 'success', detail:'votre inscription réussie', life: 5000})
         // Rediriger vers la page de connexion après l'inscription réussie
         this.router.navigate(['/sign-in']);
       },

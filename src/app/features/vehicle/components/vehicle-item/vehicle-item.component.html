@@ -7,7 +7,7 @@
       <div class="d-flex flex-column">
         <span class="small text-muted">Date d'ajout</span>
 <!--        <span class="fw-medium">Nov, 12 2024</span>-->
-        <span class="fw-medium">{{item().addedDate | date}}</span>
+        <span class="fw-medium">{{item().createdAt | date}}</span>
       </div>
     </div>
     <div>
@@ -35,7 +35,7 @@
     <div class="d-flex align-items-center">
       <i class="pi pi-circle-off me-2" style="color: var(--p-red-500)"></i>
       <span class="text-capitalize ">Kilométrage</span>
-      <span class="text-muted ms-2">{{item().mileage | number}} Km</span>
+      <span class="text-muted ms-2">{{item().kilometrage | number}} Km</span>
     </div>
 
     <div class="d-flex align-items-center mt-1">
@@ -53,7 +53,7 @@
     <div class="d-flex align-items-center mt-1">
       <i class="pi pi-circle-off me-2 " style="color: var(--p-cyan-500)"></i>
       <span class="text-capitalize ">Marque</span>
-      <span class="text-muted ms-2">{{item().mark}}</span>
+      <span class="text-muted ms-2">{{item().marque}}</span>
     </div>
 
     @if (item().lastVisit) {

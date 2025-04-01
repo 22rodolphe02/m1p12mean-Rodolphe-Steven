@@ -4,7 +4,8 @@ import {inject} from '@angular/core';
 import {catchError, mergeMap, Observable, takeWhile, throwError, timer} from 'rxjs';
 
 export const httpErrorInterceptor: HttpInterceptorFn = (req, next): Observable<any> => {
-  const notificationService = inject(MessageService);
+
+  const messageService = inject(MessageService);
 
   console.log("salut")
 
@@ -12,7 +13,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next): Observable<a
     catchError((error: HttpErrorResponse) => {
       return retryStrategy()(throwError(() => error)).pipe(
         catchError((finalError: HttpErrorResponse) => {
-          handleError(finalError, notificationService);
+          handleError(finalError, messageService);
           return throwError(() => finalError);
         })
       );
@@ -34,7 +35,8 @@ function retryStrategy(maxRetries = 2, delayMs = 1000) {
   );
 }
 
-function handleError(error: HttpErrorResponse, notificationService: MessageService): void {
+function handleError(error: HttpErrorResponse, messageService: MessageService): void {
+
   let userMessage = 'Une erreur est survenue';
 
   if (error.status === 0) {
@@ -47,5 +49,6 @@ function handleError(error: HttpErrorResponse, notificationService: MessageServi
     userMessage = 'Non autorisé. Veuillez vous connecter.';
   }
 
-  notificationService.add({severity: 'danger', summary:'', detail: userMessage});
+  console.log("eba aaaaa")
+  messageService.add({severity: 'error', detail: userMessage, life: 5000})
 }

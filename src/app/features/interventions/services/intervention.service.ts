@@ -1,9 +1,14 @@
-import { Injectable } from '@angular/core';
-import {Intervention, ServicePerformed} from '../models/intervention.model';
+import {Injectable} from '@angular/core';
+import {
+  Intervention,
+  InterventionDetail,
+  InterventionStatus,
+  ServicePerformedStatus
+} from '../models/intervention.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResourceService} from '../../../core/services/resource.service';
-import {Service} from '../../service/models/service.model';
+import {ApiResponse} from '../../../core/models/response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,17 +55,36 @@ export class InterventionService extends ResourceService<Intervention>{
 
   }
 
-  public getTotalEstimationTime(intervention: Intervention): number{
-    let time = 0
-    const services: ServicePerformed[] | undefined = intervention.services;
-    if (services){
-      for (const service of services) {
-        time += service.duree
-      }
+  public getStatusClass(status: InterventionStatus): string{
+    if (status === InterventionStatus.DONE){
+      return 'primary'
+    }else if (status === InterventionStatus.PAID){
+      return 'success'
+    }else if (status === InterventionStatus.IN_PROGRESS){
+      return 'warning'
     }
+    return ''
+  }
 
-    return time;
+  public getStatusServiceClass(status: ServicePerformedStatus): string{
+    if (status === ServicePerformedStatus.DONE){
+      return 'success'
+    }else if (status === ServicePerformedStatus.IN_PROGRESS){
+      return 'warning'
+    }
+    return ''
+  }
 
+  public getDetailsById(id: number | string): Observable<ApiResponse<InterventionDetail>>{
+    const preparedUrl = `${this.apiUrl}/${id}/details`;
+
+    return this.http.get<ApiResponse<InterventionDetail>>(preparedUrl);
+  }
+
+  public getLatestByVehicleId(vehicleId: number | string): Observable<ApiResponse<InterventionDetail>>{
+    const preparedUrl = `${this.apiUrl}/latest/vehicles/${vehicleId}`;
+
+    return this.http.get<ApiResponse<InterventionDetail>>(preparedUrl);
   }
 
 }

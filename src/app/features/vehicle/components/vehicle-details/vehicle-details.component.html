@@ -1,0 +1,244 @@
+<div class="d-flex flex-column">
+  <div class="d-flex justify-content-between">
+    <div class="col">
+      <g-vehicle-info [data]="data().info"></g-vehicle-info>
+    </div>
+    @if (getIntervention()){
+      <div class="col-3" >
+
+        <div class="card-custom total-card" >
+          <div class="mb-3">
+            <span class="fs-6 fw-medium">Durée restant</span>
+          </div>
+          <table class="table table-borderless total-table">
+            <tbody>
+            <tr>
+              <td class="text-capitalize text-secondary">Total</td>
+              <td class="fs-4 fw-semibold">
+                <div class="d-flex flex-column align-items-end">
+                  {{getIntervention()!.estimateTime | number}} Min
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  </div>
+  @if (!getIntervention()){
+    <div class="p-3">
+      <div class="d-flex flex-column">
+        <div class="d-flex align-items-center">
+          <i class="pi pi-cog fs-6 text-primary me-2"></i>
+          <span class="fs-5 fw-medium ">Intervention</span>
+        </div>
+        <span class="small text-muted mt-1">
+        Suivez ici les interventions concernant cette voiture.
+      </span>
+      </div>
+      <div class="mt-4 d-flex align-items-center justify-content-center" style="height: 15rem; width: 100%">
+        <i class="pi pi-info-circle me-2"></i>
+        <span class="">Ce véhicule ne présente aucun historique d'intervention</span>
+      </div>
+    </div>
+  } @else {
+    <div class="p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-column mb-4">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+              <i class="pi pi-cog fs-6 text-primary me-2"></i>
+              <span class="fs-5 fw-medium ">Intervention</span>
+            </div>
+            <div class="badge-{{getStatusClass(getIntervention()!.status)}} d-flex align-items-center">
+              <span><i class="pi pi-circle-on me-2" style="font-size: .5rem"></i></span>
+              <span>{{getIntervention()!.status}}</span>
+            </div>
+          </div>
+          <span class="small text-muted mt-1">
+              Suivez ici les interventions concernant cette voiture.
+            </span>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column">
+        <div class="mb-2 text-secondary d-flex align-items-center">
+          <i class="pi pi-link me-2"></i>
+          <span>Person :</span>
+        </div>
+        <div class="d-flex">
+          <div class="col-2">
+            <div class="border m-1 p-1 rounded-3">
+              <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                <div class="d-flex align-items-center">
+                  <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                  </div>
+                  <div class="d-flex flex-column">
+                  <span class="fw-medium fs-6 ms-2">
+                    Mécanicien
+                  </span>
+                    <div class="d-flex ms-2">
+                      <span class="text-capitalize">{{getIntervention()!.mechanical.name}},</span>
+                      <span class="text-secondary ms-1">{{getIntervention()!.mechanical.email}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="border m-1 p-1 rounded-3">
+              <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                <div class="d-flex align-items-center">
+                  <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                  </div>
+                  <div class="d-flex flex-column">
+                  <span class="fw-medium fs-6 ms-2">
+                    Client
+                  </span>
+                    <div class="d-flex ms-2">
+                      <span class="text-capitalize">{{getIntervention()!.client.name}},</span>
+                      <span class="text-secondary ms-1">{{getIntervention()!.client.email}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="col-7">
+            <div class="">
+              <span class="fs-5 ">Services effectués</span>
+            </div>
+            <div class="mt-2">
+              <table class="table table-custom">
+                <thead class="table-header">
+                <tr>
+                  <th>
+                    <div class="d-flex">
+                      info
+                    </div>
+                  </th>
+                  <th>
+                    <div class="d-flex">
+                      prix unitaire
+                    </div>
+                  </th>
+                  <th>
+                    <div class="d-flex">
+                      durée
+                    </div>
+                  </th>
+                  <th>
+                    <div class="d-flex">
+                      status
+                    </div>
+                  </th>
+                  @if (isOwner()) {
+                    <th>
+                      <div class="d-flex">
+                        action
+                      </div>
+                    </th>
+                  }
+
+                </tr>
+                </thead>
+                <tbody>
+                  @for (service of getIntervention()!.services; track service._id) {
+                    <tr>
+                      <td>
+                        <div class="d-flex flex-column">
+                          <span>{{service.nom}}</span>
+                          <div class="d-flex mt-2"  >
+                            <div class=" border p-2 rounded-3 text-secondary"
+                                 style="border-style: dashed !important; border-color: var(--p-blue-400) !important;">
+                              {{service.description}}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td style="width: 12rem;">
+                        <span>{{service.prix | currency : 'MGA ': 'symbol': '1.2-2'}}</span>
+                      </td>
+                      <td>
+                        <div class=" d-flex">
+                          <div class="badge-secondary fw-medium">
+                            <span class="">{{service.duree}}</span>
+                            <span class="ms-1">min</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge-{{getServiceStatusClass(service.etat)}} d-flex align-items-center">
+                          <span><i class="pi pi-circle-on me-2" style="font-size: .5rem"></i></span>
+                          <span>{{service.etat}}</span>
+                        </div>
+                      </td>
+                      @if (isOwner()){
+                        <td>
+                          <p-button [rounded]="true" label="Terminer" [outlined]="true"></p-button>
+                        </td>
+                      }
+
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card-custom " >
+              <span class=" fs-5 fw-medium">Pièces utilisé</span>
+              <div>
+
+                <table class="table table-custom mt-2 ">
+
+                  <tbody>
+                    @for (piece of getIntervention()!.pieces; track piece._id) {
+                      <tr>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span>{{piece.nom}}</span>
+                            <div class="d-flex text-secondary">
+                              <span class=" ">prix unitaire:</span>
+                              <span class="ms-2">{{piece.prixUnitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                            </div>
+                          </div>
+
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column align-items-end">
+                            <div class="d-flex flex-column">
+                              <!--                              <span class="fw-medium">{{piece. | currency:'MGA ' : 'symbol': '1.2-2' }}</span>-->
+                              <span class="text-secondary">{{piece.quantite | number}} PCS</span>
+                            </div>
+
+                          </div>
+
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

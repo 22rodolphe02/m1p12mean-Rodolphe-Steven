@@ -13,8 +13,6 @@ import {VehicleItemComponent} from '../vehicle-item/vehicle-item.component';
 export class VehicleListComponent {
   vehicles: number[] = [];
 
-  // vehicleService: VehicleService = inject(VehicleService)
-
   data = input<Vehicle[]>([])
 
   actionLink = input<string>()
@@ -23,21 +21,21 @@ export class VehicleListComponent {
   constructor() {
     this.vehicles = Array.from(Array(6).keys()).map(i => i + 1);
 
-    this.fakeData();
+    // this.fakeData();
   }
 
-  fakeData(){
-    for (let i = 0; i < 6; i++) {
-      this.data().push({
-        _id: '1',
-        status: VehicleStatus.OPERATIONAL,
-        lastVisit: new Date(),
-        mileage: 85000,
-        model: 'Peugeot 2020',
-        mark: 'Toyota',
-        immatriculation: 'AD-182-BD',
-        addedDate: new Date()
-      })
-    }
-  }
+  // fakeData(){
+  //   for (let i = 0; i < 6; i++) {
+  //     this.data().push({
+  //       _id: '1',
+  //       status: VehicleStatus.OPERATIONAL,
+  //       lastVisit: new Date(),
+  //       kilometrage: 85000,
+  //       model: 'Peugeot 2020',
+  //       marque: 'Toyota',
+  //       immatriculation: 'AD-182-BD',
+  //       createdAt: new Date()
+  //     })
+  //   }
+  // }
 }

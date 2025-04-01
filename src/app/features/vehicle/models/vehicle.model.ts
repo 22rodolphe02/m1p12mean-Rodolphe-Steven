@@ -1,15 +1,24 @@
+import {InterventionDetail} from '../../interventions/models/intervention.model';
+
 export interface Vehicle{
   _id?: number | string;
-  mark: string,
-  addedDate: Date,
-  mileage: number,
+  userId ?: string
+  marque: string,
   model: string,
+  annee?: string | number
+  kilometrage: number,
   immatriculation: string,
+  createdAt?: Date,
   lastVisit?: Date,
-  status?: VehicleStatus
+  status?: VehicleStatus,
 }
 
 export enum VehicleStatus{
   OPERATIONAL = 'operationnel',
   REPARATION = 'en reparation'
+}
+
+export interface VehicleDetail{
+  info: Vehicle,
+  intervention?: InterventionDetail
 }

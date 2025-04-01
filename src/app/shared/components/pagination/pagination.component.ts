@@ -21,7 +21,7 @@ export class PaginationComponent implements OnInit{
   pages: number[] = [];
 
   ngOnInit(): void {
-    this.pageChanged.emit(this.pageIndex)
+    // this.pageChanged.emit(this.pageIndex)
     this.setPages();
   }
 
@@ -35,8 +35,6 @@ export class PaginationComponent implements OnInit{
     if (this.totalPages <= 6) {
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     } else {
-
-      console.log(this.totalPages)
 
       let start = Math.max(1, this.pageIndex - 2);
       let end = Math.min(this.totalPages, this.pageIndex + 2);
@@ -56,7 +54,9 @@ export class PaginationComponent implements OnInit{
 
   onChangePage(page: number): void {
 
+    console.log("page ==== ", page, " total pages ==== ", this.totalPages)
     if (page >= 1 && page <= this.totalPages) {
+      console.log("coucoudddd")
       this.pageIndex = page;
       this.setPages();
       this.pageChanged.emit(page);
