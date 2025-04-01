@@ -29,7 +29,13 @@ export class ResourceService<T, C = T> {
   };
 
   // Récupérer tous les éléments
-  getAll(params?: HttpParams): Observable<ApiResponse<T[]>> {
+  getAll(params?: HttpParams, page: {index: number, limit: number} = {index: 1, limit: 10}): Observable<ApiResponse<T[]>> {
+    // if (page !== undefined && limit !== undefined) {
+      params = params || new HttpParams();
+      params = params
+        .set('page', page.index.toString())
+        .set('limit', page.limit.toString());
+    // }
     return this.http.get<ApiResponse<T[]>>(this.apiUrl, {params});
   }
 

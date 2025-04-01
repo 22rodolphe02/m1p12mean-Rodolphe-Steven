@@ -27,40 +27,40 @@ export class MechanicListComponent {
         _id: 1,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon',
+        name: 'Jean Dupon',
         role: Role.MECHANICAL,
-        prenom: '',
-        motdepasse: '',
+        firstName: '',
+        password: '',
         token: ''
       },
       {
         _id: 2,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon',
+        name: 'Jean Dupon',
         role: Role.MECHANICAL,
-        prenom: '',
-        motdepasse: '',
+        firstName: '',
+        password: '',
         token: ''
       },
       {
         _id: 3,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon',
+        name: 'Jean Dupon',
         role: Role.MECHANICAL,
-        prenom: '',
-        motdepasse: '',
+        firstName: '',
+        password: '',
         token: ''
       },
       {
         _id: 4,
         registrationDate: new Date(),
         email: 'test@gmail.com',
-        nom: 'Jean Dupon',
+        name: 'Jean Dupon',
         role: Role.MECHANICAL,
-        prenom: '',
-        motdepasse: '',
+        firstName: '',
+        password: '',
         token: ''
       }
     ]

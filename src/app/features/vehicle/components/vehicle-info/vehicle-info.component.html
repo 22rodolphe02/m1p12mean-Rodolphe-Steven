@@ -17,7 +17,7 @@
           <div class="d-flex flex-column">
             <span class="small text-muted">Date d'ajout</span>
             <!--        <span class="fw-medium">Nov, 12 2024</span>-->
-            <span class="fw-medium">{{data().addedDate | date}}</span>
+            <span class="fw-medium">{{data().createdAt | date}}</span>
           </div>
         </div>
 <!--        <div class=" fs-4 fw-medium text-capitalize"></div>-->
@@ -30,7 +30,7 @@
         <div class="d-flex align-items-center">
           <i class="pi pi-circle-off me-2" style="color: var(--p-red-300)"></i>
           <span class="text-capitalize ">Kilométrage</span>
-          <span class="text-muted ms-2">{{data().mileage | number}} Km</span>
+          <span class="text-muted ms-2">{{data().kilometrage | number}} Km</span>
         </div>
 
         <div class="d-flex align-items-center mt-2">
@@ -48,7 +48,7 @@
         <div class="d-flex align-items-center mt-2">
           <i class="pi pi-circle-off me-2 " style="color: var(--p-cyan-300)"></i>
           <span class="text-capitalize ">Marque</span>
-          <span class="text-muted ms-2">{{data().mark}}</span>
+          <span class="text-muted ms-2">{{data().marque}}</span>
         </div>
       </div>
     </div>

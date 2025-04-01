@@ -1,13 +1,13 @@
 <div>
 
-<!--  <div class="d-flex align-items-center mb-3">-->
-<!--    <div>-->
-<!--      <p-button [rounded]="true" severity="secondary" routerLink="/user-space/client" [outlined]="true" icon="pi pi-arrow-left"></p-button>-->
-<!--    </div>-->
-<!--    <div class="sub-title ms-2">-->
-<!--      Véhicules-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="d-flex align-items-center mb-3">-->
+  <!--    <div>-->
+  <!--      <p-button [rounded]="true" severity="secondary" routerLink="/user-space/client" [outlined]="true" icon="pi pi-arrow-left"></p-button>-->
+  <!--    </div>-->
+  <!--    <div class="sub-title ms-2">-->
+  <!--      Véhicules-->
+  <!--    </div>-->
+  <!--  </div>-->
 
   <div class="card-custom">
     <div class="d-flex justify-content-between align-items-center">
@@ -29,11 +29,35 @@
 
     </div>
 
-    <div class="my-3 d-flex flex-column justify-content-between align-items-end">
-      <g-vehicle-list [actionLink]="'/user-space/client/vehicles'"></g-vehicle-list>
-      <div class="mt-4">
-        <g-pagination [totalItems]="40"></g-pagination>
-      </div>
+    <div class="my-3 d-flex flex-column ">
+      @if (loading) {
+        <div class="d-flex justify-content-center align-items-center">
+          <g-loader ></g-loader>
+        </div>
+      }
+      @if (vehicles$ | async; as apiResponse) {
+        <!--        @if (apiResponse) {-->
+        <div>
+          <g-vehicle-list
+            [data]="apiResponse.data"
+            [actionLink]="'/user-space/client/vehicles'"
+          ></g-vehicle-list>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-end">
+          <g-pagination
+            [totalItems]="apiResponse.pagination?.total || 0"
+            [pageIndex]="apiResponse.pagination?.currentPage || 1"
+            [pageSize]="apiResponse.pagination?.limit!"
+            (page)="onPageChange($event)"
+          ></g-pagination>
+        </div>
+      }
+
+
+
+
+
     </div>
   </div>
 

@@ -2,12 +2,16 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {provideHttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi} from '@angular/common/http';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 
 import Aura from '@primeng/themes/aura';
 import {definePreset} from '@primeng/themes';
+// import {httpErrorInterceptor} from './core/interceptors/http-error.interceptor';
+import {MessageService} from 'primeng/api';
+import {httpErrorInterceptor} from './core/interceptors/http-error.interceptor';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 const MyPreset = definePreset(Aura, {
   semantic: {
@@ -28,8 +32,11 @@ const MyPreset = definePreset(Aura, {
 });
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
-  provideHttpClient(),
+  providers: [MessageService,provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+    provideAnimations(),
+    provideHttpClient(
+      withInterceptors([httpErrorInterceptor]),
+    ),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

@@ -1,12 +1,12 @@
 <div class="">
-  <div class="d-flex align-items-center mb-3">
-    <div>
-      <p-button [rounded]="true" severity="secondary" routerLink="/user-space/client/appointments" [outlined]="true" icon="pi pi-arrow-left"></p-button>
-    </div>
-    <div class="sub-title ms-2">
-      Ajout du véhicule
-    </div>
-  </div>
+<!--  <div class="d-flex align-items-center mb-3">-->
+<!--    <div>-->
+<!--      <p-button [rounded]="true" severity="secondary" routerLink="/user-space/client/appointments" [outlined]="true" icon="pi pi-arrow-left"></p-button>-->
+<!--    </div>-->
+<!--    <div class="sub-title ms-2">-->
+<!--      Ajout du véhicule-->
+<!--    </div>-->
+<!--  </div>-->
 
   <div class=" card-custom shadow p-5">
     <div class="row justify-content-center">
@@ -24,7 +24,7 @@
                 </span>
                 </div>
               </div>
-              <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+              <form [formGroup]="vehicleForm"  (ngSubmit)="onSubmit()">
 
                 <div class="field mb-3">
                   <div class="mb-1">
@@ -32,36 +32,38 @@
                     <label for="marque">Marque</label>
                   </div>
                   <span class="w-100">
-              <input pInputText id="marque" formControlName="marque" class="p-inputtext w-100" placeholder="Ex: Toyota">
-            </span>
+                    <input pInputText id="marque"
+                     [ngClass]="{'ng-invalid ng-dirty' : !isValid('marque')}"
+                     formControlName="marque" class="p-inputtext w-100" placeholder="Ex: Toyota">
+                  </span>
                 </div>
 
                 <div class="field mb-3">
                   <div class="mb-1">
-<!--                    <i class="pi pi-tag me-2 text-secondary"></i>-->
                     <label for="modele">Modèle</label>
                   </div>
                   <span class="p-input-icon-left w-100">
-              <input pInputText id="modele" formControlName="model" class="p-inputtext w-100" placeholder="Ex: Corolla">
-            </span>
+                    <input pInputText id="modele"
+                           [ngClass]="{'ng-invalid ng-dirty' : !isValid('model')}"
+                           formControlName="model" class="p-inputtext w-100" placeholder="Ex: Corolla">
+                  </span>
                 </div>
 
                 <div class="row justify-content-between mb-3">
                   <div class="field col-6 ">
                     <div class="mb-1">
-<!--                      <i class="pi pi-calendar me-1 text-secondary"></i>-->
                       <label for="annee">Année</label>
                     </div>
-                    <p-calendar [readonlyInput]="true" id="annee" formControlName="year" view="year" dateFormat="yy" inputStyleClass="w-100"></p-calendar>
+                    <p-datePicker  [readonlyInput]="true" [inputStyleClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''"  id="annee" formControlName="year" view="year" dateFormat="yy" inputStyleClass="w-100" />
+<!--                    <p-calendar [readonlyInput]="true" [inputStyleClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''"  id="annee" formControlName="year" view="year" dateFormat="yy" inputStyleClass="w-100"></p-calendar>-->
                   </div>
                   <div class="col-6">
                     <div class="field ">
                       <div class="mb-1">
-<!--                        <i class="pi pi-tag me-2 text-secondary"></i>-->
                         <label >Kilométrage</label>
                       </div>
                       <span class="p-input-icon-left w-100">
-                      <p-inputNumber formControlName="kilometrage"></p-inputNumber>
+                      <p-inputNumber [inputStyleClass]="!isValid('kilometrage') ? 'ng-invalid ng-dirty' : ''" formControlName="kilometrage"></p-inputNumber>
                     </span>
                     </div>
 
@@ -74,7 +76,7 @@
                     <label for="immatriculation">Immatriculation</label>
                   </div>
                   <span class="p-input-icon-left w-100">
-                <input pInputText id="immatriculation" formControlName="immatriculation" class="p-inputtext w-100" placeholder="Ex: AB-123-CD">
+                <input pInputText id="immatriculation" [ngClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''" formControlName="immatriculation" class="p-inputtext w-100" placeholder="Ex: AB-123-CD">
               </span>
                 </div>
 
@@ -83,7 +85,7 @@
                     <p-button [rounded]="true" routerLink="/user-space/client/vehicles" label="Annuler" severity="secondary" icon="pi pi-times" ></p-button>
                   </div>
                   <div class="ms-3">
-                    <p-button [rounded]="true" label="Ajouter le Véhicule" icon="pi pi-check" ></p-button>
+                    <p-button [rounded]="true" [loading]="submitted" label="Ajouter le Véhicule" (click)="onSubmit()" icon="pi pi-check" ></p-button>
                   </div>
                 </div>
 
