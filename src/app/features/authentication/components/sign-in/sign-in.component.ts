@@ -13,12 +13,13 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { environment } from '../../../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { Dialog } from 'primeng/dialog';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {MessageService} from 'primeng/api';
 import {Select} from 'primeng/select';
+import {Role} from '../../../../core/models/user.model';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -31,7 +32,6 @@ import {Select} from 'primeng/select';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
-    Dialog,
     Select
   ],
   templateUrl: './sign-in.component.html',
@@ -67,13 +67,15 @@ export class SignInComponent implements OnInit {
     this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
       next: (data) => {
         this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
-        console.log('Rôles récupérés:', this.roles);
       },
-      error: (err: ApiResponse<any>) =>{
-        this.messageService.add({severity: 'danger', detail: err.message});
-        // console.error('Erreur lors de la récupération des rôles:', err)
+      error: (err: HttpErrorResponse) =>{
+        this.messageService.add({severity: 'error', detail: err.error.message});
       }
     });
+  }
+
+  findRole(roleId: string){
+    return this.roles.filter(role => role.value === roleId)[0]
   }
 
   onSubmit(): void {
@@ -82,9 +84,19 @@ export class SignInComponent implements OnInit {
 
     this.authService.login(email, password, roleId).subscribe({
       next: () => {
-        this.router.navigate(['/sign-up']); // Redirection après connexion réussie
+        const role = this.findRole(roleId);
+        // console.log("roles === ", role.value)
+        // console.log("role enum === ", Role.CLIENT)
+        if (Role.CLIENT === role.label){
+          this.router.navigate(['/user-space/client'])
+        }else if(Role.ADMIN === role.label){
+          this.router.navigate(['/user-space/admin']);
+        }else if(Role.MECHANICAL === role.label){
+          this.router.navigate(['/user-space/mechanic'])
+        }
       },
-      error: () => {
+      error: (err: HttpErrorResponse) => {
+        this.messageService.add({severity: 'error', detail: err.error.message, life: 5000, summary: 'Erreur'});
         this.displayError = true; // Afficher le pop-up en cas d'erreur
       },
     });

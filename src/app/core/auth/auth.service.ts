@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, map, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Role, User} from '../models/user.model';
 import {Router} from '@angular/router';
@@ -18,32 +18,46 @@ export class AuthService {
 
   // Méthode pour se connecter
   login(email: string, password: string, roleId: string): Observable<User> {
-    let user: User ={
-      _id: 1,
-      email: 'sc@gmail.com',
-      nom: 'test',
-      token: 'sfknfngejt.314fsfvgf',
-      motdepasse: 'testPassword',
-      registrationDate: new Date(),
-      role: Role.ADMIN,
-      prenom: 'Test'
-    }
+    // let user!: User
 
-    this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    // this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
+    // localStorage.setItem('currentUser', JSON.stringify(user));
 
     return this.http
-      .post<User>(`${this.apiUrl}/users/login`, { email, password, roleId })
+      .post<any>(`${this.apiUrl}/users/login`, { email, password, roleId })
       .pipe(
-        tap((user) => {
+        map(response => {
+          const user : User = {
+            _id: response._id,
+            name: response.nom,
+            firstName: response.firstName,
+            email: response.email,
+            registrationDate: new Date(response.createdAt),
+            role: this.mapRole(response.roleId?.nom),
+            roleId: response.roleId.roleId,
+            token: '',
+          }
           this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
           localStorage.setItem('currentUser', JSON.stringify(user)); // Stocker l'utilisateur dans le localStorage
+          return user
         })
+
       );
   }
 
+  private mapRole(roleName: string): Role {
+    switch(roleName?.toLowerCase()) {
+      case 'admin': return Role.ADMIN;
+      case 'mechanic': return Role.MECHANICAL;
+      default: return Role.CLIENT;
+    }
+  }
+
   getRole(): Role{
+
     const user: User = JSON.parse(<string>localStorage.getItem('currentUser'))
+
+    console.log("current user === ", user.role)
 
     return user.role
   }
@@ -62,6 +76,7 @@ export class AuthService {
 
   // Méthode pour récupérer l'utilisateur courant
   getCurrentUser(): User | null {
-    return this.currentUserSubject.value;
+    const user: User = JSON.parse(<string>localStorage.getItem('currentUser'))
+    return user;
   }
 }

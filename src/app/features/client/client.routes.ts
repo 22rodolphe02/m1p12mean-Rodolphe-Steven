@@ -13,7 +13,7 @@ const ClientVehicleAddPageComponent = () =>
   import('../client/pages/client-vehicle-add-page/client-vehicle-add-page.component').then(m => m.ClientVehicleAddPageComponent);
 
 const VehicleDetailsPageComponent = () =>
-  import('../vehicle/pages/vehicle-details-page/vehicle-details-page.component').then(m => m.VehicleDetailsPageComponent);
+  import('./pages/client-vehicle-details-page/client-vehicle-details-page.component').then(m => m.ClientVehicleDetailsPageComponent);
 
 export const clientRoutes: Routes = [
   {
