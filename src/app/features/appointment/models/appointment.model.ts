@@ -1,14 +1,14 @@
 import {Service} from '../../service/models/service.model';
+import {User} from '../../../core/models/user.model';
 
 export interface Appointment{
-  _id: number,
-  name?: string,
-  clientName?: string,
+  _id: number | string,
+  client?: User,
   description?:string,
   start: Date,
-  end: Date,
   status: AppointmentStatus,
-  mechanical?: string,
+  mechanical?: User,
+  serviceTime?: number,
   services ?: Service[]
 }
 

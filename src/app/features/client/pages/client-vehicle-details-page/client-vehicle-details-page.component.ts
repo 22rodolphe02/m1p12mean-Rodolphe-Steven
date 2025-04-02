@@ -1,22 +1,16 @@
-import {Component, input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Button} from 'primeng/button';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {VehicleInfoComponent} from '../../../vehicle/components/vehicle-info/vehicle-info.component';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {
-  Intervention, InterventionDetail,
-  InterventionStatus,
-  ServicePerformedStatus
+  InterventionDetail
 } from '../../../interventions/models/intervention.model';
-import {Role, User} from '../../../../core/models/user.model';
-import {AsyncPipe, CurrencyPipe, DecimalPipe} from '@angular/common';
+import {AsyncPipe, Location} from '@angular/common';
 import {InterventionService} from '../../../interventions/services/intervention.service';
 import {catchError, finalize, map, Observable, of, switchMap} from 'rxjs';
-import {ApiResponse} from '../../../../core/models/response.model';
 import {MessageService} from 'primeng/api';
 import {VehicleDetailsComponent} from '../../../vehicle/components/vehicle-details/vehicle-details.component';
 import {LoaderComponent} from '../../../../shared/components/loader/loader.component';
-import {tap} from 'rxjs/operators';
-import {Vehicle, VehicleDetail} from "../../../vehicle/models/vehicle.model";
+import {VehicleDetail} from "../../../vehicle/models/vehicle.model";
 import {VehicleService} from "../../../vehicle/services/vehicle.service";
 
 @Component({
@@ -28,6 +22,7 @@ import {VehicleService} from "../../../vehicle/services/vehicle.service";
     LoaderComponent,
     AsyncPipe
   ],
+  providers: [AsyncPipe],
   templateUrl: './client-vehicle-details-page.component.html',
   styleUrl: './client-vehicle-details-page.component.scss'
 })
@@ -42,10 +37,12 @@ export class ClientVehicleDetailsPageComponent {
   constructor(private interventionService: InterventionService,
               private route: ActivatedRoute,
               private vehicleService: VehicleService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private location: Location) {
 
     this.route.params.subscribe( params => {
       this.vehicleId = params['id'];
+      console.log("vehicles id === ", this.vehicleId)
     })
 
     this.loadData();
@@ -58,6 +55,7 @@ export class ClientVehicleDetailsPageComponent {
 
     this.combinedData$ = this.interventionService.getLatestByVehicleId(this.vehicleId).pipe(
       switchMap(interventionResponse => {
+        console.log("intervention response ==== ", interventionResponse)
         if (interventionResponse.data) {
 
           return of(this.toDetails(interventionResponse.data));
@@ -73,7 +71,7 @@ export class ClientVehicleDetailsPageComponent {
       catchError(err => {
 
         const message = 'Erreur lors du chargement des interventions';
-        this.messageService.add({severity: 'error', detail: message});
+        this.messageService.add({severity: 'error', detail: message, sticky: true, closable: true});
 
         return this.vehicleService.getById(this.vehicleId).pipe(
           map(vehicleResponse => ({
@@ -92,5 +90,9 @@ export class ClientVehicleDetailsPageComponent {
       info: detail.vehicle,
       intervention: detail
     };
+  }
+
+  back() {
+    this.location.back();
   }
 }

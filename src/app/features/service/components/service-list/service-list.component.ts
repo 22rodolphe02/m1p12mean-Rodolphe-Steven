@@ -30,28 +30,28 @@ export class ServiceListComponent {
 
     // this.services = [
     //   {
-    //     id: 1,
+    //     _id: 1,
     //     nom: 'Reparation complète',
     //     description: 'Changement de pneu, et revision de tous les problème du moteur',
     //     prix: 25000,
     //     duree: 120
     //   },
     //   {
-    //     id: 2,
+    //     _id: 2,
     //     nom: 'Changement de pneu',
     //     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi corporis cupiditate debitis dolore dolorem et excepturi, expedita facilis, fuga hic, inventore libero molestias optio quisquam sint soluta vero voluptatem.',
     //     prix: 25000,
     //     duree: 120
     //   },
     //   {
-    //     id: 3,
+    //     _id: 3,
     //     nom: 'Reparation complète',
     //     description: 'Changement de pneu, et revision de tous les problème du moteur',
     //     prix: 25000,
     //     duree: 120
     //   },
     //   {
-    //     id: 4,
+    //     _id: 4,
     //     nom: 'Reparation complète',
     //     description: 'Changement de pneu, et revision de tous les problème du moteur',
     //     prix: 25000,

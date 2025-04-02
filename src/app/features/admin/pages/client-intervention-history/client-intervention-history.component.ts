@@ -4,7 +4,7 @@ import {Card} from 'primeng/card';
 import {Button} from 'primeng/button';
 import {CommonModule} from '@angular/common';
 import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
-import {InterventionStatus} from '../../models/intervention.model';
+import {InterventionStatus} from '../../../interventions/models/intervention.model';
 import {SelectButton} from 'primeng/selectbutton';
 import {FormsModule} from '@angular/forms';
 
@@ -29,10 +29,10 @@ interface EventItem {
     SelectButton,
     FormsModule
   ],
-  templateUrl: './intervention-history.component.html',
-  styleUrl: './intervention-history.component.scss'
+  templateUrl: './client-intervention-history.component.html',
+  styleUrl: './client-intervention-history.component.scss'
 })
-export class InterventionHistoryComponent {
+export class ClientInterventionHistoryComponent {
   events: EventItem[];
 
   statusList = Object.values(InterventionStatus)

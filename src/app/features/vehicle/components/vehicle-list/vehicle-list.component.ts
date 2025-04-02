@@ -28,7 +28,7 @@ export class VehicleListComponent {
   //   for (let i = 0; i < 6; i++) {
   //     this.data().push({
   //       _id: '1',
-  //       status: VehicleStatus.OPERATIONAL,
+  //       statut: VehicleStatus.OPERATIONAL,
   //       lastVisit: new Date(),
   //       kilometrage: 85000,
   //       model: 'Peugeot 2020',

@@ -6,44 +6,87 @@
   <component name="ChangeListManager">
     <list default="true" id="447f1bdd-253f-40ae-951d-1e129499bc36" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/core/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/config/menu.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/config/menu.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/core/interceptors/http-error.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/interceptors/http-error.interceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/core/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/services/resource.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/services/resource.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/admin.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/admin.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-details-page/client-details-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-details-page/client-details-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-details-page/client-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-details-page/client-details-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/models/appointment.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/models/appointment.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/pages/planning-page/planning-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/planning.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/planning.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/services/appointment.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/services/appointment.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/client.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/client.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/components/client-list/client-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/client-list/client-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/components/client-list/client-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/client-list/client-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/components/client-personal-detail/client-personal-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/client-personal-detail/client-personal-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/components/client-personal-detail/client-personal-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/client-personal-detail/client-personal-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/models/client.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/models/client.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-add-page/client-vehicle-add-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-add-page/client-vehicle-add-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-add-page/client-vehicle-add-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-add-page/client-vehicle-add-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicles-list-page/client-vehicles-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicles-list-page/client-vehicles-list-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicles-list-page/client-vehicles-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicles-list-page/client-vehicles-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/services/client.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/services/client.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/interventions/models/intervention.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/models/intervention.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-details-page/intervention-details-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-details-page/intervention-details-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-details-page/intervention-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-details-page/intervention-details-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-history/intervention-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-history/intervention-history.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-history/intervention-history.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/pages/intervention-history/intervention-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/interventions/services/intervention.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/services/intervention.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/invoice.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/invoice.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/models/invoice.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/models/invoice.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/services/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/services/invoice.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-info/vehicle-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-info/vehicle-info.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-info/vehicle-info.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-info/vehicle-info.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/mechanic.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/mechanic.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/service/components/service-list/service-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/components/service-list/service-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-list/vehicle-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-list/vehicle-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/models/vehicle.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/models/vehicle.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-details-page/vehicle-details-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-details-page/vehicle-details-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-details-page/vehicle-details-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-details-page/vehicle-details-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/services/vehicle.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/services/vehicle.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/layout/layout.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/loader/loader.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/loader/loader.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-list-page/vehicle-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-vehicle-list-page/client-vehicle-list-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-list-page/vehicle-list-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-vehicle-list-page/client-vehicle-list-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-list-page/vehicle-list-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-vehicle-list-page/client-vehicle-list-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/pages/vehicle-list-page/vehicle-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-vehicle-list-page/client-vehicle-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/vehicle.routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/header/header.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/components/loader/loader.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/loader/loader.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +123,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/client-vehicle&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/client-appointments&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/data/M1/Rojo/exam/garage-m1-front/public/img&quot;,
@@ -104,9 +147,9 @@
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\admin\pages" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\vehicle\components" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\admin\pages" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages\client-details-page" />
       <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\vehicle\services" />
     </key>
@@ -194,6 +237,7 @@
       <workItem from="1743055775983" duration="24341000" />
       <workItem from="1743145121716" duration="9853000" />
       <workItem from="1743485188822" duration="15140000" />
+      <workItem from="1743573102312" duration="20055000" />
     </task>
     <servers />
   </component>

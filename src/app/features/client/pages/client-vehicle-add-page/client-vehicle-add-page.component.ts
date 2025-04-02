@@ -7,7 +7,7 @@ import {Calendar} from 'primeng/calendar';
 import {InputNumber} from 'primeng/inputnumber';
 import {Vehicle, VehicleStatus} from '../../../vehicle/models/vehicle.model';
 import {VehicleItemComponent} from '../../../vehicle/components/vehicle-item/vehicle-item.component';
-import {NgClass} from '@angular/common';
+import {CommonModule, NgClass} from '@angular/common';
 import {MessageService} from 'primeng/api';
 import {VehicleService} from '../../../vehicle/services/vehicle.service';
 import {ApiResponse} from '../../../../core/models/response.model';
@@ -18,13 +18,13 @@ import {User} from '../../../../core/models/user.model';
 @Component({
   selector: 'g-client-vehicle-add-page',
   imports: [
+    CommonModule,
     Button,
     RouterLink,
     InputText,
     ReactiveFormsModule,
     InputNumber,
     VehicleItemComponent,
-    NgClass,
     DatePicker
   ],
   templateUrl: './client-vehicle-add-page.component.html',

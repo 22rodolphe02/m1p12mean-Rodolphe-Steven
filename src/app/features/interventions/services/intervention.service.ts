@@ -20,6 +20,24 @@ export class InterventionService extends ResourceService<Intervention>{
     this.setApiUrl("interventions")
   }
 
+  getAllByMechanical(mechanicalId: string, page: {index: number, limit: number} = {index: 1, limit: 10}):
+    Observable<ApiResponse<Intervention[]>>{
+
+    let params = new HttpParams();
+    params = params
+      .set('page', page.index.toString())
+      .set('limit', page.limit.toString());
+
+    const preparedUrl = `${this.apiUrl}/mechanics/${mechanicalId}`
+
+    return this.http.get<ApiResponse<Intervention[]>>(preparedUrl, {params})
+  }
+
+  public markAsFinish(data: {interventionId: string, serviceId: string}): Observable<ApiResponse<InterventionDetail>>{
+    const preparedUrl = `${this.apiUrl}/finirService`;
+    return  this.http.post<ApiResponse<InterventionDetail>>(preparedUrl, data);
+  }
+
 
   public getInterventions(filters: { [key: string]: string }, sort: string, pagination: { page: number, limit: number }): Observable<Intervention[]>{
     return this.filteredInterventions(filters, sort, pagination)
@@ -27,7 +45,7 @@ export class InterventionService extends ResourceService<Intervention>{
 
 
   /*
-  * GET /interventions?filter=status:active,age:gt:30&sort=nom:asc&page=2&limit=10
+  * GET /interventions?filter=statut:active,age:gt:30&sort=nom:asc&page=2&limit=10
   * */
   public filteredInterventions(filters: { [key: string]: string }, sort: string, pagination: { page: number, limit: number }, url?: string): Observable<Intervention[]>{
     const preparedUrl = `${this.apiUrl}${url}`
@@ -76,7 +94,7 @@ export class InterventionService extends ResourceService<Intervention>{
   }
 
   public getDetailsById(id: number | string): Observable<ApiResponse<InterventionDetail>>{
-    const preparedUrl = `${this.apiUrl}/${id}/details`;
+    const preparedUrl = `${this.apiUrl}/details/${id}`;
 
     return this.http.get<ApiResponse<InterventionDetail>>(preparedUrl);
   }

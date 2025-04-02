@@ -9,7 +9,7 @@ export interface Intervention{
   mecanicien?: User,
   vehicle?: Vehicle,
   status: InterventionStatus,
-  estimateTime: Date | number,
+  estimateTime: number,
   services?: ServicePerformed[],
   pieces: PiecePerformed[]
 }
@@ -27,7 +27,7 @@ export interface InterventionDetail{
 
 export enum InterventionStatus {
   PENDING = 'en attente',
-  DONE = 'terminé',
+  DONE = 'terminee',
   IN_PROGRESS = 'en cours',
   PAID = 'payé'
 }

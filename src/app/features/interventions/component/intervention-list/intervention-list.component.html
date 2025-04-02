@@ -3,7 +3,7 @@
   <tr>
     <th>
       <div class="d-flex align-items-center">
-        <span>Client</span>
+        <span>Véhicule</span>
         <div class="d-flex flex-column ms-2">
           <i class="pi pi-sort-up"></i>
         </div>
@@ -11,10 +11,7 @@
     </th>
     <th>
       <div class="d-flex align-items-center">
-        <span>Véhicule</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
+        <span>Client</span>
       </div>
     </th>
     <th>
@@ -44,165 +41,71 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a href="" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a href="" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a href="" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a href="" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a href="" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a href="" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a href="" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a href="" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a href="" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a href="" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a href="" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a href="" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
-  <tr>
-    <!--            <td>-->
-    <!--              <div class="circle c-primary bg-black" >-->
-    <!--                <span class="fw-bold">1</span>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <td>
-      <a href="" class="link">
-        Johan Anderson
-      </a>
-    </td>
-    <td>
-      <div class="d-flex flex-column">
-        <a href="" class="link">Citroen C4</a>
-        <span class="text-muted">DD 7542</span>
-      </div>
-    </td>
-    <td>
-      <a href="" class="link">
-        Maylis Peter
-      </a>
-    </td>
-    <td>
-      <div class="d-flex align-items-center">
-        <i class="pi pi-circle-on c-primary" ></i>
-        <span class="ms-2 text-muted">En attente</span>
-      </div>
-    </td>
-    <td>
-      <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >4h 10min</span>
-    </td>
-  </tr>
+    @for (intervention of interventions; track intervention._id){
+      <tr>
+        <td>
+          <div class="d-flex flex-column" >
+            <a class="link text-capitalize" routerLink="{{actionLink()}}/{{intervention._id}}">{{intervention.vehicle?.model}}</a>
+            <span class="text-muted">{{intervention.vehicle?.immatriculation}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex">
+            <div class="col-8">
+              <div class="border m-1 p-1 rounded-3">
+                <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                  <div class="d-flex align-items-center">
+                    <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                    </div>
+                    <div class="d-flex flex-column ms-2">
+                      <span class="text-capitalize">{{intervention.client?.firstName}} {{intervention!.client?.name}}</span>
+                      <span class="text-secondary">{{intervention!.client?.email}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td >
+          <div class="d-flex">
+            <div class="col-8">
+              <div class="border m-1 p-1 rounded-3">
+                <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                  <div class="d-flex align-items-center">
+                    <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                    </div>
+                    <div class="d-flex flex-column ms-2">
+                      <span class="text-capitalize">{{intervention.mecanicien?.firstName}} {{intervention!.mecanicien?.name}}</span>
+                      <span class="text-secondary">{{intervention!.mecanicien?.email}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex">
+            <div class="d-flex align-items-center badge-{{getStatusClass(intervention.status)}}">
+              <i class="pi pi-circle-on" style="font-size: .5rem" ></i>
+              <span class="ms-2">{{intervention.status}}</span>
+            </div>
+          </div>
+
+        </td>
+        <td>
+          <span class="rounded-4 py-2 px-3 bg-dark fw-medium small c-primary" >{{intervention.estimateTime}} min</span>
+        </td>
+      </tr>
+    }
+
+
   </tbody>
 </table>

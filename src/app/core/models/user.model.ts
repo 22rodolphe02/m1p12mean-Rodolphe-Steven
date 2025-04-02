@@ -4,7 +4,7 @@ export interface User {
   firstName: string,
   password?: string,
   email: string;
-  registrationDate: Date,
+  createdAt: Date,
   token: string; // Token JWT (optionnel)
   role: Role,
   roleId?: string,

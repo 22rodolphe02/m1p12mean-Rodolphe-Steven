@@ -3,20 +3,24 @@ import {clientRoutes} from '../client/client.routes';
 import {planningRoutes} from '../appointment/planning.routes';
 import {serviceRoutes} from '../service/service.routes';
 import {mechanicRoutes} from '../mechanic/mechanic.routes';
-import {vehicleRoutes} from '../vehicle/vehicle.routes';
 
 const ClientDetailComponent = () =>
   import('../admin/pages/client-details-page/client-details-page.component').then(m => m.ClientDetailsPageComponent);
 
 const InterventionHistory = () =>
-  import('../interventions/pages/intervention-history/intervention-history.component').then(m => m.InterventionHistoryComponent);
+  import('./pages/client-intervention-history/client-intervention-history.component').then(m => m.ClientInterventionHistoryComponent);
 
 const ClientDetailsInvoiceListPageComponent = () =>
   import('../admin/pages/client-invoices-page/client-invoices-page.component').then(m => m.ClientInvoicesPageComponent);
 
-
 const InvoiceDetailsPageComponent = () =>
   import('../invoice/pages/invoice-details-page/invoice-details-page.component').then(m => m.InvoiceDetailsPageComponent);
+
+const VehicleListComponent = () =>
+  import('../admin/pages/client-vehicle-list-page/client-vehicle-list-page.component').then(m => m.ClientVehicleListPageComponent);
+
+const MechanicListComponent = () =>
+  import('../mechanic/pages/mechanic-list-page/mechanic-list-page.component').then(m => m.MechanicListPageComponent);
 
 export const adminRoutes: Routes = [
   {
@@ -43,7 +47,7 @@ export const adminRoutes: Routes = [
             children: [
               {
                 path: 'vehicles',
-                children: vehicleRoutes,
+                loadComponent: VehicleListComponent
               },
               {
                 path: 'interventions-history',
@@ -57,7 +61,7 @@ export const adminRoutes: Routes = [
                     loadComponent: ClientDetailsInvoiceListPageComponent
                   },
                   {
-                    path: ':id',
+                    path: ':_id',
                     loadComponent: InvoiceDetailsPageComponent
                   },
                 ]
@@ -83,6 +87,6 @@ export const adminRoutes: Routes = [
   },
   {
     path: 'mechanics',
-    loadChildren: () => mechanicRoutes
-  },
+    loadComponent: MechanicListComponent
+  }
 ];

@@ -12,7 +12,7 @@ export const invoiceRoutes: Routes = [
   //   loadComponent: InvoiceListComponent
   // },
   // {
-  //   path: ':id',
+  //   path: ':_id',
   //   loadComponent: InvoiceListComponent
   // },
 ]

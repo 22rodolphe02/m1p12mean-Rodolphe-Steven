@@ -12,7 +12,7 @@ const ClientVehiclesListPageComponent = () =>
 const ClientVehicleAddPageComponent = () =>
   import('../client/pages/client-vehicle-add-page/client-vehicle-add-page.component').then(m => m.ClientVehicleAddPageComponent);
 
-const VehicleDetailsPageComponent = () =>
+const ClientVehicleDetailsPageComponent = () =>
   import('./pages/client-vehicle-details-page/client-vehicle-details-page.component').then(m => m.ClientVehicleDetailsPageComponent);
 
 export const clientRoutes: Routes = [
@@ -34,7 +34,7 @@ export const clientRoutes: Routes = [
       },
       {
         path: ':id',
-        loadComponent: VehicleDetailsPageComponent
+        loadComponent: ClientVehicleDetailsPageComponent
       }
     ]
   },

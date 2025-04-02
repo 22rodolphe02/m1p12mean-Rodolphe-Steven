@@ -40,6 +40,9 @@ import {Role} from '../../../../core/models/user.model';
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   private apiUrl = environment.apiUrl;
+
+  submitted: boolean = false;
+
   roles: { label: string; value: string }[] = [];
   displayError = false;
 
@@ -63,7 +66,6 @@ export class SignInComponent implements OnInit {
 
   fetchRoles(): void {
     const url = `${this.apiUrl}/roles`;
-    console.log('URL = ' + url);
     this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
       next: (data) => {
         this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
@@ -79,14 +81,18 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitted = true;
     const { email, password, role } = this.loginForm.value;
     const roleId = role;
 
     this.authService.login(email, password, roleId).subscribe({
       next: () => {
+        console.log("salut")
         const role = this.findRole(roleId);
-        // console.log("roles === ", role.value)
-        // console.log("role enum === ", Role.CLIENT)
+
+        console.log("role ==== ", role.label === Role.MECHANICAL)
+
+        this.submitted = false;
         if (Role.CLIENT === role.label){
           this.router.navigate(['/user-space/client'])
         }else if(Role.ADMIN === role.label){
@@ -94,9 +100,11 @@ export class SignInComponent implements OnInit {
         }else if(Role.MECHANICAL === role.label){
           this.router.navigate(['/user-space/mechanic'])
         }
+
       },
       error: (err: HttpErrorResponse) => {
         this.messageService.add({severity: 'error', detail: err.error.message, life: 5000, summary: 'Erreur'});
+        this.submitted = false;
         this.displayError = true; // Afficher le pop-up en cas d'erreur
       },
     });

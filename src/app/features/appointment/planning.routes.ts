@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 
 const PlanningPageComponent = () =>
-  import('../appointment/pages/planning-page/planning-page.component').then(m => m.PlanningPageComponent);
+  import('../admin/pages/admin-appointments-list-page/admin-appointments-list-page.component').then(m => m.AdminAppointmentsListPageComponent);
 
 export const planningRoutes: Routes = [
   {

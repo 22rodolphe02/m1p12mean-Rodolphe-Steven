@@ -5,15 +5,14 @@ import {catchError, mergeMap, Observable, takeWhile, throwError, timer} from 'rx
 
 export const httpErrorInterceptor: HttpInterceptorFn = (req, next): Observable<any> => {
 
-  const messageService = inject(MessageService);
+  // const messageService = inject(MessageService);
 
-  console.log("salut")
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       return retryStrategy()(throwError(() => error)).pipe(
         catchError((finalError: HttpErrorResponse) => {
-          handleError(finalError, messageService);
+          // handleError(finalError, messageService);
           return throwError(() => finalError);
         })
       );
@@ -35,20 +34,19 @@ function retryStrategy(maxRetries = 2, delayMs = 1000) {
   );
 }
 
-function handleError(error: HttpErrorResponse, messageService: MessageService): void {
-
-  let userMessage = 'Une erreur est survenue';
-
-  if (error.status === 0) {
-    userMessage = 'Impossible de se connecter au serveur. Vérifiez votre connexion internet.';
-  } else if (error.status >= 500) {
-    userMessage = 'Problème serveur. Veuillez réessayer plus tard.';
-  } else if (error.status === 404) {
-    userMessage = 'Ressource non trouvée.';
-  } else if (error.status === 401 || error.status === 403) {
-    userMessage = 'Non autorisé. Veuillez vous connecter.';
-  }
-
-  console.log("eba aaaaa")
-  messageService.add({severity: 'error', detail: userMessage, life: 5000})
-}
+// function handleError(error: HttpErrorResponse, messageService: MessageService): void {
+//
+//   let userMessage = 'Une erreur est survenue';
+//
+//   if (error.statut === 0) {
+//     userMessage = 'Impossible de se connecter au serveur. Vérifiez votre connexion internet.';
+//   } else if (error.statut >= 500) {
+//     userMessage = 'Problème serveur. Veuillez réessayer plus tard.';
+//   } else if (error.statut === 404) {
+//     userMessage = 'Ressource non trouvée.';
+//   } else if (error.statut === 401 || error.statut === 403) {
+//     userMessage = 'Non autorisé. Veuillez vous connecter.';
+//   }
+//
+//   messageService.add({severity: 'error', detail: userMessage, life: 5000})
+// }

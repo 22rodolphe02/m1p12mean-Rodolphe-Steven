@@ -60,13 +60,13 @@ export const mechanicalHeaderMenuData: HeaderMenu[] = [
     id: 1,
     label: 'Rendez-vous',
     icon: 'pi pi-send',
-    link: '/user-space/client/appointments'
+    link: '/user-space/mechanic/appointments'
   },
   {
     id: 2,
     label: 'Interventions',
     icon: 'pi pi-cog',
-    link: '/user-space/client/interventions'
+    link: '/user-space/mechanic/interventions'
   },
 ]
 

@@ -25,7 +25,7 @@ export class MechanicListComponent {
     this.mechanics = [
       {
         _id: 1,
-        registrationDate: new Date(),
+        createdAt: new Date(),
         email: 'test@gmail.com',
         name: 'Jean Dupon',
         role: Role.MECHANICAL,
@@ -35,7 +35,7 @@ export class MechanicListComponent {
       },
       {
         _id: 2,
-        registrationDate: new Date(),
+        createdAt: new Date(),
         email: 'test@gmail.com',
         name: 'Jean Dupon',
         role: Role.MECHANICAL,
@@ -45,7 +45,7 @@ export class MechanicListComponent {
       },
       {
         _id: 3,
-        registrationDate: new Date(),
+        createdAt: new Date(),
         email: 'test@gmail.com',
         name: 'Jean Dupon',
         role: Role.MECHANICAL,
@@ -55,7 +55,7 @@ export class MechanicListComponent {
       },
       {
         _id: 4,
-        registrationDate: new Date(),
+        createdAt: new Date(),
         email: 'test@gmail.com',
         name: 'Jean Dupon',
         role: Role.MECHANICAL,

@@ -1,13 +1,11 @@
 import {Component, input} from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import {provideAnimations} from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'g-loader',
   imports: [],
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.scss',
-  providers: [provideAnimations()],
   animations: [
     trigger('messageChange', [
       transition(':increment, :decrement', [
