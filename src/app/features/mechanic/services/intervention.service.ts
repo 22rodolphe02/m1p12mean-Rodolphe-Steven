@@ -52,4 +52,9 @@ export class InterventionService extends ResourceService<Intervention> {
     const url = this.apiUrl + '/totalRevenueService';
     return this.http.get<{ success: boolean, data: { chiffreAffaire: string }, message: string }>(url);
   }
+
+  getTotalRevenueToday() {
+    const url = this.apiUrl + '/totalRevenueToday';
+    return this.http.get<{ success: boolean, data: { chiffreAffaire: string }, message: string }>(url);
+  }
 }
