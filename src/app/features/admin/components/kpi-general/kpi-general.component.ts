@@ -46,11 +46,20 @@ export class KpiGeneralComponent {
     },
   ];
 
+  revenueData: Kpi[] = [
+    /// et c'est icie que je veux le mettre stp
+    {
+      value: 25,
+      label: '',
+    },
+  ];
+
   ngOnInit(): void {
     this.setAppoitmentData();
     this.setMechanicDataNumber();
     this.setPieceData();
     this.setInterventionData();
+    this.setRevenueData();
   }
 
   setMechanicDataNumber() {
@@ -94,6 +103,20 @@ export class KpiGeneralComponent {
           'Nouvelle valeur de interventionData :',
           this.interventionData
         );
+      },
+      (error) => {
+        console.error('Erreur API :', error);
+      }
+    );
+  }
+
+  setRevenueData() {
+    this.interventionService.getTotalRevenueToday().subscribe(
+      (data) => {
+        console.log('Revenus reçus :', data);
+        this.revenueData = [
+          { value: data.data.chiffreAffaire, label: "Aujourd'hui" },
+        ];
       },
       (error) => {
         console.error('Erreur API :', error);
