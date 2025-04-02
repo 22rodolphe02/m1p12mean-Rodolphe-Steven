@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, model} from '@angular/core';
 import {
   InterventionDetail,
   InterventionStatus,
@@ -11,6 +11,9 @@ import {InterventionService} from '../../../interventions/services/intervention.
 import {VehicleDetail} from '../../models/vehicle.model';
 import {AuthService} from '../../../../core/auth/auth.service';
 import {Role} from '../../../../core/models/user.model';
+import {MessageService} from 'primeng/api';
+import {tap} from 'rxjs/operators';
+import {catchError} from 'rxjs';
 
 
 @Component({
@@ -25,17 +28,21 @@ import {Role} from '../../../../core/models/user.model';
   styleUrl: './vehicle-details.component.scss'
 })
 export class VehicleDetailsComponent {
-  data = input.required<VehicleDetail>();
+  data = model.required<VehicleDetail>();
 
   constructor(private interventionService: InterventionService,
-              private authService: AuthService) {
-    // this.fakeIntervention();
-    // console.log("dat")
+              private authService: AuthService,
+              private messageService: MessageService) {
   }
 
   isOwner(){
     const role = this.authService.getRole();
     return role === Role.MECHANICAL;
+
+  }
+
+  showing(status: ServicePerformedStatus){
+    return this.isOwner() && status === ServicePerformedStatus.IN_PROGRESS;
 
   }
 
@@ -48,6 +55,30 @@ export class VehicleDetailsComponent {
   }
 
   getIntervention(): InterventionDetail | undefined{
+    console.log("----- data = ", this.data())
     return this.data().intervention;
+  }
+
+  markAsFinish(serviceId: string | number) {
+    const interventionId: string = this.getIntervention()!._id as string;
+    this.interventionService.markAsFinish({interventionId: interventionId, serviceId: serviceId as string}).subscribe({
+      next: (response) => {
+        if (response.success){
+          this.messageService.add({severity: "success", detail: response.message, life: 4000})
+          const details: VehicleDetail = {
+            intervention: response.data,
+            info: response.data.vehicle
+          }
+
+          console.log("intervention === ", details.intervention)
+
+          this.data.set(details)
+        }
+      },
+      error: err => {
+        this.messageService.add({severity: 'danger', detail: 'une erreur s\'est produite ', sticky: true, closable: true})
+        throw err;
+      }
+    })
   }
 }

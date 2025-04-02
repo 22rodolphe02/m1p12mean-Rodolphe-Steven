@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InterventionHistoryComponent } from './intervention-history.component';
+import { ClientInterventionHistoryComponent } from './client-intervention-history.component';
 
 describe('InterventionHistoryComponent', () => {
-  let component: InterventionHistoryComponent;
-  let fixture: ComponentFixture<InterventionHistoryComponent>;
+  let component: ClientInterventionHistoryComponent;
+  let fixture: ComponentFixture<ClientInterventionHistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InterventionHistoryComponent]
+      imports: [ClientInterventionHistoryComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InterventionHistoryComponent);
+    fixture = TestBed.createComponent(ClientInterventionHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

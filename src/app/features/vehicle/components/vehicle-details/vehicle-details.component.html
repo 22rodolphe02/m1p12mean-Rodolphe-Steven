@@ -127,30 +127,20 @@
                 <thead class="table-header">
                 <tr>
                   <th>
-                    <div class="d-flex">
-                      info
-                    </div>
+                    <div class="d-flex">info</div>
                   </th>
                   <th>
-                    <div class="d-flex">
-                      prix unitaire
-                    </div>
+                    <div class="d-flex">prix unitaire</div>
                   </th>
                   <th>
-                    <div class="d-flex">
-                      durée
-                    </div>
+                    <div class="d-flex">durée</div>
                   </th>
                   <th>
-                    <div class="d-flex">
-                      status
-                    </div>
+                    <div class="d-flex">status</div>
                   </th>
                   @if (isOwner()) {
                     <th>
-                      <div class="d-flex">
-                        action
-                      </div>
+                      <div class="d-flex">action</div>
                     </th>
                   }
 
@@ -159,7 +149,7 @@
                 <tbody>
                   @for (service of getIntervention()!.services; track service._id) {
                     <tr>
-                      <td>
+                      <td style="width: 50%">
                         <div class="d-flex flex-column">
                           <span>{{service.nom}}</span>
                           <div class="d-flex mt-2"  >
@@ -182,14 +172,16 @@
                         </div>
                       </td>
                       <td>
-                        <div class="badge-{{getServiceStatusClass(service.etat)}} d-flex align-items-center">
-                          <span><i class="pi pi-circle-on me-2" style="font-size: .5rem"></i></span>
-                          <span>{{service.etat}}</span>
+                        <div class="d-flex">
+                          <div class="badge-{{getServiceStatusClass(service.etat)}} d-flex align-items-center">
+                            <span><i class="pi pi-circle-on me-2" style="font-size: .5rem"></i></span>
+                            <span>{{service.etat}}</span>
+                          </div>
                         </div>
                       </td>
-                      @if (isOwner()){
+                      @if (showing(service.etat)){
                         <td>
-                          <p-button [rounded]="true" label="Terminer" [outlined]="true"></p-button>
+                          <p-button [rounded]="true" label="Terminer" (onClick)="markAsFinish(service._id)" [outlined]="true"></p-button>
                         </td>
                       }
 

@@ -15,7 +15,7 @@ import {Button} from 'primeng/button';
 })
 export class InvoiceDetailComponent {
   @Input({alias: 'data'}) data!: InvoiceDetail
-  @Input({alias: 'id'}) id!: number
+  @Input({alias: '_id'}) id!: number
 
   constructor() {
     this.fakeData()

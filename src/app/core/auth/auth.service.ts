@@ -29,14 +29,15 @@ export class AuthService {
         map(response => {
           const user : User = {
             _id: response._id,
-            name: response.nom,
+            name: response.name,
             firstName: response.firstName,
             email: response.email,
-            registrationDate: new Date(response.createdAt),
+            createdAt: new Date(response.createdAt),
             role: this.mapRole(response.roleId?.nom),
             roleId: response.roleId.roleId,
             token: '',
           }
+
           this.currentUserSubject.next(user); // Mettre à jour l'utilisateur courant
           localStorage.setItem('currentUser', JSON.stringify(user)); // Stocker l'utilisateur dans le localStorage
           return user
@@ -56,9 +57,6 @@ export class AuthService {
   getRole(): Role{
 
     const user: User = JSON.parse(<string>localStorage.getItem('currentUser'))
-
-    console.log("current user === ", user.role)
-
     return user.role
   }
 
@@ -71,7 +69,9 @@ export class AuthService {
 
   // Méthode pour vérifier si l'utilisateur est connecté
   isAuthenticated(): boolean {
-    return !!this.currentUserSubject.value; // Retourne true si l'utilisateur est connecté
+    return !!this.getCurrentUser();
+
+    // return !!this.currentUserSubject.value; // Retourne true si l'utilisateur est connecté
   }
 
   // Méthode pour récupérer l'utilisateur courant

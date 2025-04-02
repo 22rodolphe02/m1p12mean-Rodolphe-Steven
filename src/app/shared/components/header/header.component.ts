@@ -1,11 +1,15 @@
 import {Component, Input} from '@angular/core';
 import {IsActiveMatchOptions, Router, RouterModule} from '@angular/router';
 import {HeaderMenu} from '../../../core/models/menu.model';
+import {AuthService} from '../../../core/auth/auth.service';
+import {Button} from 'primeng/button';
+import {User} from '../../../core/models/user.model';
 
 @Component({
   selector: 'g-header',
   imports: [
-    RouterModule
+    RouterModule,
+    Button
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -14,18 +18,19 @@ export class HeaderComponent {
 
   @Input({alias: 'menu'}) menus: HeaderMenu[] = []
 
-  public activeUrl: IsActiveMatchOptions = {
-    fragment: "ignored",
-    matrixParams: "ignored",
-    paths: "subset",  // Permet de garder l’état actif pour les sous-routes
-    queryParams: "ignored"
-  };
+  user!: User
+
+  constructor(private router: Router, private authService: AuthService) {
+    this.setUser();
+    // console.log("ussse  ==== ", this.user)
+  }
 
 
-  // test: IsActiveMatchOptions
+  logout(){
+    this.authService.logout();
+  }
 
-  // @Inject(Router) router !: Router
-
-  constructor(private router: Router) {
+  setUser(){
+    this.user = this.authService.getCurrentUser()!;
   }
 }

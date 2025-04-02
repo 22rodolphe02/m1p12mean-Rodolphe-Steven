@@ -16,7 +16,6 @@ import {DatePipe} from '@angular/common';
   styleUrl: './client-list.component.scss'
 })
 export class ClientListComponent{
-  currencyCode: string = 'MGA '
 
   @Output() rowId: EventEmitter<number> = new EventEmitter()
 
@@ -24,52 +23,47 @@ export class ClientListComponent{
 
   @Input({alias: 'data'}) clients: Client[] = []
 
-  constructor(private clientService: ClientService) {
+  constructor() {
     this.fakeData();
   }
 
   fakeData(){
-    this.clients = [
-      {
-        _id: 1,
-        name: "Dupont",
-        firstName: "Jean",
-        password: "securePass123",
-        email: "jean.dupont@example.com",
-        registrationDate: new Date("2024-01-15"),
-        token: "eyJhbGciOiJIUzI1NiIsIn...",
-        role: Role.CLIENT,
-        roleId: '44451d5f5sd',
-        numberOfVehicle: 2,
-        numberOfIntervention: 5
-      },
-      {
-        _id: 2,
-        roleId: '44451d5f5sd',
-        name: "Martin",
-        firstName: "Sophie",
-        password: "myStrongPass456",
-        email: "sophie.martin@example.com",
-        registrationDate: new Date("2023-11-22"),
-        token: "eyJhbGciOiJIUzI1NiIsIn...",
-        role: Role.CLIENT,
-        numberOfVehicle: 1,
-        numberOfIntervention: 2
-      },
-      {
-        _id: 3,
-        roleId: '44451d5f5sd',
-        name: "Lemoine",
-        firstName: "Paul",
-        password: "paulPass789",
-        email: "paul.lemoine@example.com",
-        registrationDate: new Date("2024-02-10"),
-        token: "eyJhbGciOiJIUzI1NiIsIn...",
-        role: Role.CLIENT,
-        numberOfVehicle: 3,
-        numberOfIntervention: 7
-      }
-    ];
+    // this.clients = [
+    //   {
+    //     _id: 1,
+    //     name: "Dupont",
+    //     firstName: "Jean",
+    //     password: "securePass123",
+    //     email: "jean.dupont@example.com",
+    //     createdAt: new Date("2024-01-15"),
+    //     token: "eyJhbGciOiJIUzI1NiIsIn...",
+    //     role: Role.CLIENT,
+    //     roleId: '44451d5f5sd',
+    //   },
+    //   {
+    //     _id: 2,
+    //     roleId: '44451d5f5sd',
+    //     name: "Martin",
+    //     firstName: "Sophie",
+    //     password: "myStrongPass456",
+    //     email: "sophie.martin@example.com",
+    //     createdAt: new Date("2023-11-22"),
+    //     token: "eyJhbGciOiJIUzI1NiIsIn...",
+    //     role: Role.CLIENT,
+    //   },
+    //   {
+    //     _id: 3,
+    //     roleId: '44451d5f5sd',
+    //     name: "Lemoine",
+    //     firstName: "Paul",
+    //     password: "paulPass789",
+    //     email: "paul.lemoine@example.com",
+    //     createdAt: new Date("2024-02-10"),
+    //     token: "eyJhbGciOiJIUzI1NiIsIn...",
+    //     role: Role.CLIENT,
+    //     numberOfIntervention: 7
+    //   }
+    // ];
   }
 
 

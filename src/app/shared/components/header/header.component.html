@@ -21,17 +21,19 @@
       </ul>
     </div>
     <div class="header-action">
-      <span class="circle border " style="color: var(--p-red-500); border-color:  var(--p-red-500) !important;">
-        <i class="pi pi-sign-out"></i>
-      </span>
+      <p-button icon="pi pi-sign-out" [outlined]="true" [rounded]="true" severity="danger" (onClick)="logout()"></p-button>
+<!--      <span class="circle border " style="color: var(&#45;&#45;p-red-500); border-color:  var(&#45;&#45;p-red-500) !important;">-->
+<!--        <i class="pi pi-sign-out"></i>-->
+<!--      </span>-->
       <div class="ms-3 d-flex justify-content-center align-items-center">
 <!--        <p-avatar shape="circle" icon="pi pi-user"  size="normal" ></p-avatar>-->
         <span class="circle border">
         <i class="pi pi-user"></i>
       </span>
         <div class="d-flex flex-column mx-3">
-          <span class="fw-medium">David Berge</span>
-          <span class="fw-light text-secondary">Administrateur</span>
+<!--          <span class="fw-medium">David Berge</span>-->
+          <span class="fw-medium text-capitalize">{{user.firstName}} {{user.name}}</span>
+          <span class="fw-light text-secondary text-capitalize">{{user.role}}</span>
         </div>
       </div>
     </div>

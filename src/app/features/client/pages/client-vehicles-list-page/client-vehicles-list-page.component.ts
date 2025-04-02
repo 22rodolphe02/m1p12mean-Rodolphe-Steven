@@ -33,9 +33,8 @@ import {tap} from 'rxjs/operators';
     FormsModule,
     LoaderComponent,
     AsyncPipe,
-    NgIf,
-    JsonPipe
   ],
+  providers: [AsyncPipe],
   templateUrl: './client-vehicles-list-page.component.html',
   styleUrl: './client-vehicles-list-page.component.scss'
 })
@@ -80,7 +79,7 @@ export class ClientVehiclesListPageComponent implements OnInit{
     this.loading = true;
 
 
-    return this.vehicleService.getAllByClient(user._id!, {index: this.currentPage, limit: 10}).pipe(
+    return this.vehicleService.getAllByClient(user._id!, {index: this.currentPage, limit: 10}, ).pipe(
       catchError(error => {
         const message = 'Erreur lors du chargement des véhicules';
         this.loading = false;

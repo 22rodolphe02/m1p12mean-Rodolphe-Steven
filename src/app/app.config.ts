@@ -8,7 +8,6 @@ import {providePrimeNG} from 'primeng/config';
 
 import Aura from '@primeng/themes/aura';
 import {definePreset} from '@primeng/themes';
-// import {httpErrorInterceptor} from './core/interceptors/http-error.interceptor';
 import {MessageService} from 'primeng/api';
 import {httpErrorInterceptor} from './core/interceptors/http-error.interceptor';
 import {provideAnimations} from '@angular/platform-browser/animations';

@@ -1,0 +1,56 @@
+<div>
+
+  <div class="card-custom ">
+    <div class="d-flex justify-content-between mb-4">
+      <div class="d-flex flex-column ">
+        <div class="d-flex align-items-center">
+          <i class="pi pi-send fs-6 text-primary me-2"></i>
+          <span class="fs-5 fw-medium ">Rendez vous</span>
+        </div>
+        <span class="small text-muted mt-1">
+        Accédez en un clin d'œil à tous vos rendez-vous, avec toutes leurs informations essentielles.
+      </span>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-between align-items-end">
+      <div class="col-12">
+        @if (loading) {
+          <div class="d-flex justify-content-center align-items-center">
+            <g-loader ></g-loader>
+          </div>
+        }
+        @if (appointments$ | async; as apiResponse) {
+          <!--        @if (apiResponse) {-->
+          <div>
+            <g-appointment-list
+              [data]="apiResponse.data"
+            ></g-appointment-list>
+          </div>
+
+          <div class="mt-4 d-flex justify-content-end">
+            <g-pagination
+              [totalItems]="apiResponse.pagination?.total || 0"
+              [pageIndex]="apiResponse.pagination?.currentPage || 1"
+              [pageSize]="apiResponse.pagination?.limit!"
+              (page)="onPageChange($event)"
+            ></g-pagination>
+          </div>
+        }
+      </div>
+      <!--      <div class="col-12 ">-->
+      <!--        <g-appointment-list></g-appointment-list>-->
+      <!--      </div>-->
+      <!--      <div>-->
+      <!--        <g-pagination ></g-pagination>-->
+      <!--      </div>-->
+    </div>
+
+  </div>
+
+  <!--  <div  style="height: calc(100vh - 18rem)">-->
+  <!--    <g-loader ></g-loader>-->
+  <!--  </div>-->
+
+
+</div>

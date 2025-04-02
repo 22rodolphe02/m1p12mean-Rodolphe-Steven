@@ -83,32 +83,32 @@ export class PlanningComponent implements OnDestroy{
   }
 
   fakePlannings(){
-    this.plannings = [
-      {
-        _id: 1,
-        name: 'Michel Sebastien',
-        status: AppointmentStatus.CANCELLED,
-        start: new Date('2025-03-18 08:30:00'),
-        end: new Date('2025-03-18 10:00:00'),
-        statusClass: 'danger'
-      },
-      {
-        _id: 1,
-        name: 'Michel Sebastien',
-        status: AppointmentStatus.CONFIRMED,
-        start: new Date('2025-03-20 08:30:00'),
-        end: new Date('2025-03-20 12:00:00'),
-        statusClass: 'success'
-      },
-      {
-        _id: 1,
-        name: 'Michel Sebastien',
-        status: AppointmentStatus.PENDING,
-        start: new Date('2025-03-21 15:30:00'),
-        end: new Date('2025-03-21 18:00:00'),
-        statusClass: 'warning'
-      }
-    ]
+    // this.plannings = [
+    //   {
+    //     _id: 1,
+    //     name: 'Michel Sebastien',
+    //     status: AppointmentStatus.CANCELLED,
+    //     start: new Date('2025-03-18 08:30:00'),
+    //     // end: new Date('2025-03-18 10:00:00'),
+    //     statusClass: 'danger'
+    //   },
+    //   {
+    //     _id: 1,
+    //     name: 'Michel Sebastien',
+    //     status: AppointmentStatus.CONFIRMED,
+    //     start: new Date('2025-03-20 08:30:00'),
+    //     // end: new Date('2025-03-20 12:00:00'),
+    //     statusClass: 'success'
+    //   },
+    //   {
+    //     _id: 1,
+    //     name: 'Michel Sebastien',
+    //     status: AppointmentStatus.PENDING,
+    //     start: new Date('2025-03-21 15:30:00'),
+    //     // end: new Date('2025-03-21 18:00:00'),
+    //     statusClass: 'warning'
+    //   }
+    // ]
   }
 
   initPlannings(){
@@ -118,9 +118,9 @@ export class PlanningComponent implements OnDestroy{
       ...this.calendarOptions,
       events: this.plannings.map(planning => ({
         id: planning._id.toString(),
-        title: planning.name, // Nom de la personne
+        title: planning.description, // Nom de la personne
         start: planning.start.toISOString(), // Conversion en format ISO
-        end: planning.end.toISOString(),
+        // end: planning.end.toISOString(),
         allDay: false,
         classNames: [`event-${planning.statusClass}`], // Ajoute une classe CSS pour le style
         extendedProps: {

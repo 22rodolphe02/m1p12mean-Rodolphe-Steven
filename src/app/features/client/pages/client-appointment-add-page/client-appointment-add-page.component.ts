@@ -11,7 +11,7 @@ import {Appointment, AppointmentCreate, AppointmentStatus} from '../../../appoin
 import {AppointmentService} from '../../../appointment/services/appointment.service';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {Select} from 'primeng/select';
-import {CommonModule, NgIf} from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-client-appointment-add-page',

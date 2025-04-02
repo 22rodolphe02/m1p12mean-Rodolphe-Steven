@@ -3,14 +3,6 @@
   <tr>
     <th>
       <div class="d-flex align-items-center">
-        <span>Id</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
-      </div>
-    </th>
-    <th>
-      <div class="d-flex align-items-center">
         <span>montant</span>
         <div class="d-flex flex-column ms-2">
           <i class="pi pi-sort-up"></i>
@@ -28,7 +20,7 @@
 
     <th>
       <div class="d-flex align-items-center">
-        <span>status</span>
+        <span>statut</span>
         <div class="d-flex flex-column ms-2">
           <i class="pi pi-sort-up"></i>
         </div>
@@ -37,27 +29,21 @@
   </tr>
   </thead>
   <tbody>
-    @for (invoice of numbers; track invoice) {
+    @for (invoice of data; track invoice._id) {
       <tr>
         <td>
+            {{invoice.total | currency: 'MGA ' : 'symbol': '1.2-2'}}
+        </td>
+        <td>
           <a [routerLink]="actionLink+'/1'" class="link">
-            INV-002
+            {{invoice.date | date: 'longDate'}}
           </a>
         </td>
         <td>
-          <span class="fw-bold text-muted">{{billing | currency }}</span>
-        </td>
-        <td>
-          <div class="d-flex flex-column">
-<!--            <a [routerLink]="'/'" class="link">Citroen C4</a>-->
-            <span class="text-muted">{{dateTest | date:'longDate'}}</span>
-          </div>
-        </td>
-        <td>
           <div class="d-flex align-items-center">
-            <div class="badge-success d-flex align-items-center">
+            <div class="badge-{{getStatusClass(invoice.statut)}} d-flex align-items-center">
               <i class="pi pi-circle-on" style="font-size: .5rem" ></i>
-              <span class="ms-2">payé</span>
+              <span class="ms-2">{{invoice.statut}}</span>
             </div>
           </div>
         </td>
