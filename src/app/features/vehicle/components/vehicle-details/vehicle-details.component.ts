@@ -39,7 +39,6 @@ import {InputNumber} from 'primeng/inputnumber';
     LoaderComponent,
     ReactiveFormsModule,
     InputNumber,
-    PercentPipe,
   ],
   templateUrl: './vehicle-details.component.html',
   styleUrl: './vehicle-details.component.scss'
