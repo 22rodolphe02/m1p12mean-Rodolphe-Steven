@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientInvoicesPageComponent } from './client-invoices-page.component';
+import { AdminClientsInvoicesPageComponent } from './admin-clients-invoices-page.component';
 
 describe('InvoiceListPageComponent', () => {
-  let component: ClientInvoicesPageComponent;
-  let fixture: ComponentFixture<ClientInvoicesPageComponent>;
+  let component: AdminClientsInvoicesPageComponent;
+  let fixture: ComponentFixture<AdminClientsInvoicesPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClientInvoicesPageComponent]
+      imports: [AdminClientsInvoicesPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ClientInvoicesPageComponent);
+    fixture = TestBed.createComponent(AdminClientsInvoicesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

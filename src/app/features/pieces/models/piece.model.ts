@@ -1,14 +1,20 @@
 export interface Piece{
-  _id: number | string,
+  _id?: number | string,
   nom: string,
-  prixUnitaire: number,
+  prixunitaire: number,
+  quantite: number,
+}
+
+export interface PieceAdd {
+  nom: string,
+  prixunitaire: number,
   quantite: number,
 }
 
 export interface PieceDetail {
   _id: number | string,
   nom: string,
-  prixUnitaire: number
+  prixunitaire: number
   quantite: number;
-  montant: number; // Calculé comme prixUnitaire * quantite
+  montant: number; // Calculé comme prixunitaire * quantite
 }

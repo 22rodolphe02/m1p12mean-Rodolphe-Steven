@@ -17,14 +17,12 @@ import {Role} from '../../../../core/models/user.model';
   styleUrl: './invoice-list.component.scss'
 })
 export class InvoiceListComponent {
-  numbers : number[] = []
 
   @Input({alias: 'data'}) data !: Invoice[];
 
   @Input({alias: 'actionLink', required: true}) actionLink!: string
 
   constructor(private invoiceService: InvoiceService, private authService: AuthService) {
-    this.numbers = Array.from(Array(6).keys()).map(i => i + 1);
 
   }
 

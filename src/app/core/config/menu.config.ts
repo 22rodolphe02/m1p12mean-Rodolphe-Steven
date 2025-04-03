@@ -31,6 +31,12 @@ export const adminHeaderMenuData: HeaderMenu[] = [
     icon: 'pi pi-users',
     link: '/user-space/admin/mechanics'
   },
+  {
+    id: 6,
+    label: 'Pièces',
+    icon: 'pi pi-wrench',
+    link: '/user-space/admin/pieces'
+  },
 ]
 
 
@@ -51,7 +57,7 @@ export const clientHeaderMenuData: HeaderMenu[] = [
     id: 3,
     label: 'Factures',
     icon: 'pi pi-cog',
-    link: '/user-space/clients/invoices'
+    link: '/user-space/client/invoices'
   },
 ]
 

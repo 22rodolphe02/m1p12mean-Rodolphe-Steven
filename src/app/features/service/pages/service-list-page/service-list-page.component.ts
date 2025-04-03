@@ -19,7 +19,6 @@ import {tap} from 'rxjs/operators';
     CommonModule,
     ServiceListComponent,
     Button,
-    RouterLink,
     PaginationComponent,
     Dialog,
     ServiceAddComponent,

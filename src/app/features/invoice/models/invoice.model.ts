@@ -14,7 +14,7 @@ export interface Invoice{
 export interface InvoiceDetail{
   date: Date,
   status: InvoiceStatus,
-  factureId: number,
+  factureId: number | string,
   nomClient: string,
   emailClient: string,
   numeroClient: string,
@@ -30,8 +30,8 @@ export interface InvoiceDetail{
 }
 
 export enum InvoiceStatus{
-  PAID = 'payé',
-  PENDING = 'non payé'
+  PAID = 'payee',
+  PENDING = 'non payee'
 }
 
 // export interface Invoice

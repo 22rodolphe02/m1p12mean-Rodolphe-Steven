@@ -1,24 +1,25 @@
 <div class="card-custom border-primary-subtle h-100 p-3" [ngClass]="{'cursor-pointer': selectable, 'selectable': selectable, 'active': select}"
      (click)="onSelect()">
-  <div class="d-flex rounded">
-    <div class="col-4 me-3 circle-xxl avatar circle d-flex align-items-center justify-content-center">
+  <div class="d-flex justify-content-between rounded">
+    <div class="col-3 card-custom d-flex align-items-center justify-content-center"
+         style="border-style: dashed; border-color: var(--p-emerald-400); background: var(--p-emerald-50)">
       <span class="fs-5 fw-semibold text-uppercase">
         Srv
       </span>
     </div>
-    <div class="col d-flex flex-column justify-content-between">
-      <div>
+    <div class="col-7">
+      <div class="mb-3">
         <span class="fw-medium " style="font-size: 1rem ;">{{service().nom}}</span>
       </div>
 
       <div class="">
         <div class="d-flex align-items-center mb-1">
-          <span class="pi pi-circle-off " style="color: var(--p-emerald-600)"></span>
+          <span class="pi pi-info-circle " style="color: var(--p-emerald-600); font-size: .8rem;"></span>
           <span class="ms-1 ">Durée:</span>
           <span class="ms-2 fw-medium text-secondary">{{service().duree}} min</span>
         </div>
         <div class="d-flex align-items-center ">
-          <span class="pi pi-circle-off" style="color: var(--p-amber-600)"></span>
+          <span class="pi pi-info-circle" style="color: var(--p-amber-600); font-size: .8rem;"></span>
           <span class="ms-1 ">Prix:</span>
           <span class="ms-2 fw-medium text-secondary">{{service().prix | currency: 'MGA '}}</span>
         </div>
@@ -28,7 +29,7 @@
     </div>
   </div>
 
-  <div class="d-flex flex-column mt-3">
+  <div class="d-flex flex-column mt-4">
 
     <div class="card-custom p-2 rounded-3 desc text-secondary" [class.desc-select]="select" >
       {{service().description}}

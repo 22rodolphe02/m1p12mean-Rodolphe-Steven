@@ -10,51 +10,60 @@ import {Service} from '../../../service/models/service.model';
 import {ServiceItemComponent} from '../../../service/components/service-item/service-item.component';
 import {Checkbox} from 'primeng/checkbox';
 import {FormsModule} from '@angular/forms';
-import {map,} from 'rxjs';
+import {catchError, finalize, map, Observable,} from 'rxjs';
 import {ServiceService} from '../../../service/services/service.service';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {rxResource} from '@angular/core/rxjs-interop';
 import {LoaderComponent} from '../../../../shared/components/loader/loader.component';
 import {tap} from 'rxjs/operators';
 import {log} from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
-import {JsonPipe} from '@angular/common';
+import {AsyncPipe, JsonPipe} from '@angular/common';
+import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'g-select-service',
   imports: [
     ServiceItemComponent,
     FormsModule,
-    LoaderComponent
+    LoaderComponent,
+    PaginationComponent,
+    AsyncPipe
   ],
   templateUrl: './select-service.component.html',
   styleUrl: './select-service.component.scss'
 })
 export class SelectServiceComponent {
-  // chosen = output<Service[]>()
 
-  chosen = model.required<Service[]>()
+  chosen = model.required<Service[]>();
 
-  // selectedServices: InputSignal<Service[]> = input.required<Service[]>()
+  services$ !: Observable<ApiResponse<Service[]>>;
 
-  services: ResourceRef<ApiResponse<Service[]> | undefined> = rxResource({
-    loader: () => this.serviceService.getAll()
-  });
+  currentPage = 1;
 
-  get serviceData(){
-    return this.services.value()!;
+  loading: boolean = true;
+
+  constructor(private serviceService: ServiceService,
+              private messageService: MessageService) {
+    this.loadService();
   }
 
-  constructor(private serviceService: ServiceService) {
-    // console.log(this.chosen())
-    // effect(() => {
-    //   this.chosen.emit([])
-    // });
-    this.setServices();
-  }
-
-
-  setServices(){
-
+  loadService(){
+    this.services$ = this.serviceService.getAll(undefined, {index: this.currentPage, limit: 10}).pipe(
+      tap(value => {
+        if (value.success){
+          this.loading = false;
+        }else{
+          this.messageService.add({severity: 'error', detail: value.message, sticky: true, closable: true})
+        }
+      }),
+      catchError((err, caught) => {
+        throw err;
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    )
   }
 
   isSelected(service: Service){
@@ -66,7 +75,6 @@ export class SelectServiceComponent {
 
   select(service: Service, selected: boolean) {
 
-    // console.log(this.chosen())
     if (selected){
       // this.chosen().splice(index, 0, service)
       this.chosen().push(service)
@@ -79,5 +87,10 @@ export class SelectServiceComponent {
     console.log("chosen: ", this.chosen())
 
     // this.chosen.emit(this.chosen())
+  }
+
+  onPageChange(index: number) {
+    this.currentPage = index;
+    this.loadService();
   }
 }

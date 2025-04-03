@@ -1,0 +1,28 @@
+<table class="table table-custom mt-2 ">
+  <tbody>
+    @for (piece of pieces(); track piece._id) {
+      <tr>
+        <td>
+          <div class="d-flex flex-column">
+            <span>{{piece.nom}}</span>
+            <div class="d-flex text-secondary">
+              <span class=" ">prix unitaire:</span>
+              <span class="ms-2">{{piece.prixunitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+            </div>
+          </div>
+
+        </td>
+        <td>
+          <div class="d-flex flex-column align-items-end">
+            <div class="d-flex flex-column">
+              <!--                              <span class="fw-medium">{{piece. | currency:'MGA ' : 'symbol': '1.2-2' }}</span>-->
+              <span class="text-secondary">{{piece.quantite | number}} PCS</span>
+            </div>
+
+          </div>
+
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -15,7 +15,6 @@ export interface Appointment{
 export interface AppointmentCreate{
   userClientId: string,
   date: Date,
-  description: string,
   vehiculeId: string,
   status: AppointmentStatus,
   services: {

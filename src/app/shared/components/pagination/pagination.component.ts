@@ -1,10 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Button} from 'primeng/button';
 
 @Component({
   selector: 'g-pagination',
   imports: [
-    CommonModule
+    CommonModule,
+    Button
   ],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss'

@@ -15,6 +15,10 @@ const ClientVehicleAddPageComponent = () =>
 const ClientVehicleDetailsPageComponent = () =>
   import('./pages/client-vehicle-details-page/client-vehicle-details-page.component').then(m => m.ClientVehicleDetailsPageComponent);
 
+
+const  ClientInvoicesPageComponent = () =>
+  import('./pages/client-invoices-page/client-invoices-page.component').then(m => m.ClientInvoicesPageComponent);
+
 export const clientRoutes: Routes = [
   {
     path: '',
@@ -49,6 +53,16 @@ export const clientRoutes: Routes = [
         path: 'new',
         loadComponent: ClientAppointmentAddPageComponent
       }
+    ]
+
+  },
+  {
+    path: 'invoices',
+    loadChildren: () => [
+      {
+        path: '',
+        loadComponent: ClientInvoicesPageComponent
+      },
     ]
 
   }
