@@ -23,6 +23,9 @@ const MechanicListComponent = () =>
 const AdminPieceListPageComponent = () =>
   import('./pages/admin-piece-list-page/admin-piece-list-page.component').then(m => m.AdminPieceListPageComponent);
 
+const AdminInterventionsListPageComponent = () =>
+  import('./pages/admin-interventions-list-page/admin-interventions-list-page.component').then(m => m.AdminInterventionsListPageComponent);
+
 export const adminRoutes: Routes = [
   {
     path: '', redirectTo: 'dashboard', pathMatch: 'full'
@@ -34,6 +37,10 @@ export const adminRoutes: Routes = [
   {
     path: 'pieces',
     loadComponent: AdminPieceListPageComponent
+  },
+  {
+    path: 'interventions',
+    loadComponent: AdminInterventionsListPageComponent
   },
   {
     path: 'clients',

@@ -7,6 +7,8 @@ import {Planning} from '../../models/planning.model';
 import {AppointmentStatus} from '../../models/appointment.model';
 import {AppointmentDetailsComponent} from '../appointment-details/appointment-details.component';
 import {DialogService, DynamicDialogModule, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {AppointmentService} from '../../services/appointment.service';
+// import { RendezvousService } from '../../../mechanic/services/rendezvous.service';
 
 @Component({
   selector: 'g-planning',
@@ -20,16 +22,19 @@ import {DialogService, DynamicDialogModule, DynamicDialogRef} from 'primeng/dyna
   templateUrl: './planning.component.html',
   styleUrl: './planning.component.scss'
 })
-export class PlanningComponent implements OnDestroy{
-  calendarOptions !: CalendarOptions
+export class PlanningComponent implements OnDestroy {
+  calendarOptions !: CalendarOptions;
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
-
-  @Input({alias: 'plannings', required: false}) plannings: Planning[] = []
+  @Input({alias: 'plannings', required: false}) plannings: Planning[] = [];
 
   ref: DynamicDialogRef | undefined;
 
-  constructor(private dialogService: DialogService) {
-    // this.initCalendarOptions();
+  constructor(
+    private dialogService: DialogService,
+    private rendezvousService: AppointmentService // Ajout du service
+  ) {}
+
+  ngOnInit() {
     this.initPlannings();
   }
 
@@ -43,29 +48,28 @@ export class PlanningComponent implements OnDestroy{
     });
   }
 
-
   initCalendarOptions(){
-      this.calendarOptions = {
-        ...planningConfig,
-        headerToolbar: {
-          left: 'title,customPrev,customNext,today',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        },
-        eventClick: this.handleEventClick.bind(this),
-        dateClick: (arg) => this.handleDateClick(arg),
-        customButtons: {
-          customPrev: {
-            click: () => {
-              this.calendarApi.prev();
-            },
+    this.calendarOptions = {
+      ...planningConfig,
+      headerToolbar: {
+        left: 'title,customPrev,customNext,today',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay',
+      },
+      eventClick: this.handleEventClick.bind(this),
+      dateClick: (arg) => this.handleDateClick(arg),
+      customButtons: {
+        customPrev: {
+          click: () => {
+            this.calendarApi.prev();
           },
-          customNext: {
-            click: () => {
-              this.calendarApi.next();
-            },
-          }
+        },
+        customNext: {
+          click: () => {
+            this.calendarApi.next();
+          },
         }
       }
+    };
   }
 
   get calendarApi() {
@@ -77,60 +81,40 @@ export class PlanningComponent implements OnDestroy{
   }
 
   handleEventClick(arg: any) {
-    this.show()
-    // console.log(arg.event.extendedProps)
-    // alert('Event clicked: ' + arg.event.title);
+    this.show();
   }
 
-  fakePlannings(){
-    // this.plannings = [
-    //   {
-    //     _id: 1,
-    //     name: 'Michel Sebastien',
-    //     status: AppointmentStatus.CANCELLED,
-    //     start: new Date('2025-03-18 08:30:00'),
-    //     // end: new Date('2025-03-18 10:00:00'),
-    //     statusClass: 'danger'
-    //   },
-    //   {
-    //     _id: 1,
-    //     name: 'Michel Sebastien',
-    //     status: AppointmentStatus.CONFIRMED,
-    //     start: new Date('2025-03-20 08:30:00'),
-    //     // end: new Date('2025-03-20 12:00:00'),
-    //     statusClass: 'success'
-    //   },
-    //   {
-    //     _id: 1,
-    //     name: 'Michel Sebastien',
-    //     status: AppointmentStatus.PENDING,
-    //     start: new Date('2025-03-21 15:30:00'),
-    //     // end: new Date('2025-03-21 18:00:00'),
-    //     statusClass: 'warning'
-    //   }
-    // ]
+  initPlannings() {
+    // this.rendezvousService.getPlanning().subscribe((plannings: Planning[]) => {
+    //   this.plannings = plannings.map(item => ({
+    //     _id: item._id,
+    //     name: item.description,
+    //     status: item.status,
+    //     start: new Date(item.start),
+    //     end: new Date(item.start),
+    //     statusClass: item.statusClass
+    //   }));
+    //
+    //   this.initCalendarOptions();
+    //   this.calendarOptions = {
+    //     ...this.calendarOptions,
+    //     events: this.plannings.map(planning => ({
+    //       id: planning._id.toString(),
+    //       title: planning.description,
+    //       start: planning.start.toISOString(),
+    //       end: planning.start.toISOString(),
+    //       allDay: false,
+    //       classNames: [`event-${planning.statusClass}`],
+    //       extendedProps: {
+    //         content: { ...planning }
+    //       }
+    //     }))
+    //   };
+    // }, error => {
+    //   console.error('Erreur lors de la récupération des plannings:', error);
+    // });
   }
 
-  initPlannings(){
-    this.fakePlannings();
-    this.initCalendarOptions();
-    this.calendarOptions = {
-      ...this.calendarOptions,
-      events: this.plannings.map(planning => ({
-        id: planning._id.toString(),
-        title: planning.description, // Nom de la personne
-        start: planning.start.toISOString(), // Conversion en format ISO
-        // end: planning.end.toISOString(),
-        allDay: false,
-        classNames: [`event-${planning.statusClass}`], // Ajoute une classe CSS pour le style
-        extendedProps: {
-          content: {
-            ...planning
-          }
-        }
-      }))
-    }
-  }
 
   ngOnDestroy() {
     if (this.ref) {

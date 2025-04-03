@@ -18,4 +18,13 @@ export class PieceService extends ResourceService<Piece, PieceAdd>{
     console.log("updates === ", updates)
     return this.http.patch(`${this.apiUrl}/bulk-update`, { updates });
   }
+
+  getNombrePieceEnRupture() {
+    const url = this.apiUrl + '/findPieceRupture';
+    return this.http.get<{
+      success: boolean;
+      data: { liste: any[]; nombre: number };
+      message: string;
+    }>(url);
+  }
 }

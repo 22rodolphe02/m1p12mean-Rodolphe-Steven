@@ -1,60 +1,36 @@
 <div class="d-flex justify-content-around align-items-center mt-5">
-  <div class=" col-auto">
+  <div class="col-auto">
     <div class="d-flex justify-content-between">
-      <div class="fw-medium fs-5 ">
-        Revenus
+      <div class="fw-medium fs-5">Revenus</div>
+      <div>
+        <p-button [text]="true" icon="pi pi-chevron-down" label="Aujourd'hui" [rounded]="true"></p-button>
       </div>
-<!--      <div>-->
-<!--        <p-button [text]="true"  icon="pi pi-chevron-down" label="Aujourd'hui" [rounded]="true"></p-button>-->
-<!--      </div>-->
     </div>
     <div class="d-flex align-items-center">
-        <span class="fs-3 fw-bold text-gray-300">
-          MGA 2500,800.02
+      <span class="fs-3 fw-bold text-gray-300">
+        MGA {{ revenueData[0]?.value || 0 }}
+      </span>
+      <div class="badge-warning ms-2 d-flex align-items-center">
+        <span>
+          <i class="pi pi-angle-double-down"></i>
         </span>
-<!--      <div class="badge-warning ms-2 d-flex align-items-center">-->
-<!--          <span>-->
-<!--            <i class="pi pi-angle-double-down"></i>-->
-<!--          </span>-->
-<!--        <span class="ms-1">-->
-<!--            7.90-->
-<!--          </span>-->
-<!--      </div>-->
-
+        <!-- <span class="ms-1">
+          10
+        </span> -->
+      </div>
     </div>
   </div>
 
   <div class="kpi-container col-9">
-    <g-kpi-card
-      title="Interventions"
-      icon="pi pi-cog"
-      [data]="interventionData"
-      actionLink="/user-space/admin/interventions"
-    >
-    </g-kpi-card>
-    <g-kpi-card
-      title="Mécaniciens"
-      icon="pi pi-users"
-      [data]="mechanicData"
-      actionLink="/user-space/"
-    >
-    </g-kpi-card>
+    <g-kpi-card title="Interventions" icon="pi pi-cog" [data]="interventionData"
+      actionLink="/interventions"></g-kpi-card>
 
-    <g-kpi-card
-      title="Rendez-vous"
-      icon="pi pi-send"
-      iconColor="var(--g-primary)"
-      [data]="appointmentData"
-      [darkMode]="true"
-      actionLink="/appointments"
-    >
-    </g-kpi-card>
-    <g-kpi-card
-      title="Pièces en rupture"
-      iconColor="var(--p-red-400)"
-      icon="pi pi-box"
-      contentColor="var(--p-red-300)"
-      [data]="appointmentData"
-    ></g-kpi-card>
+    <g-kpi-card title="Mécaniciens" icon="pi pi-users" [data]="mechanicData" actionLink="/mechanics"></g-kpi-card>
+
+    <g-kpi-card title="Rendez-vous" icon="pi pi-send" iconColor="var(--g-primary)" [data]="appointmentData"
+      [darkMode]="true" actionLink="/appointments"></g-kpi-card>
+
+    <g-kpi-card title="Pièces en rupture" iconColor="var(--p-red-400)" icon="pi pi-box" contentColor="var(--p-red-300)"
+      [data]="pieceData"></g-kpi-card>
   </div>
 </div>

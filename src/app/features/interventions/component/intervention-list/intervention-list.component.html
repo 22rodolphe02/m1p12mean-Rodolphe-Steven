@@ -4,9 +4,6 @@
     <th>
       <div class="d-flex align-items-center">
         <span>Véhicule</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
@@ -17,25 +14,21 @@
     <th>
       <div class="d-flex align-items-center">
         <span>Mécanicien</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Status</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
+      </div>
+    </th>
+    <th>
+      <div class="d-flex align-items-center">
+        <span>Avancement</span>
       </div>
     </th>
     <th>
       <div class="d-flex align-items-center">
         <span>Estimation temps restant</span>
-        <div class="d-flex flex-column ms-2">
-          <i class="pi pi-sort-up"></i>
-        </div>
       </div>
     </th>
   </tr>
@@ -90,6 +83,9 @@
               </div>
             </div>
           </div>
+        </td>
+        <td>
+          <p-progress-bar [value]="intervention.avancement" />
         </td>
         <td>
           <div class="d-flex">

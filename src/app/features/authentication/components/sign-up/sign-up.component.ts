@@ -6,14 +6,12 @@ import { AuthService } from '../../../../core/auth/auth.service';
 import { environment } from '../../../../../environments/environment';
 import { DropdownModule } from 'primeng/dropdown';
 import { UserService } from '../../../../core/services/users.service';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { Password } from 'primeng/password';
 import { Button } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { RoleService } from '../../../../core/services/role.service';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {User} from '../../../../core/models/user.model';
 import {Select} from 'primeng/select';
@@ -35,12 +33,10 @@ import {MessageService} from 'primeng/api';
   ],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-
 })
 export class SignUpComponent implements OnInit {
   inscriptionForm: FormGroup;
   roles: { label: string; value: string }[] = [];
-  private apiUrl = environment.apiUrl;
 
   constructor(
     private http: HttpClient,
@@ -48,7 +44,8 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private messageService: MessageService,
-    private userService: UserService // Injecter le service d'inscription
+    private userService: UserService,
+    private roleService: RoleService
   ) {
     this.inscriptionForm = this.fb.group({
       nom: ['', Validators.required],
@@ -61,28 +58,35 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchRoles();
-  }
-
-  fetchRoles(): void {
-    const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
-
-    // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
-    //
-    // })
-
-    this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
-      next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
-        console.log("roles = ", data)
-        this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
-
+    // this.fetchRoles();
+    this.roleService.fetchRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
       },
-      error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
+      error: (err) => console.error('Erreur lors du chargement des rôles:', err),
     });
   }
 
+  // fetchRoles(): void {
+  //   const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
+  //
+  //   // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
+  //   //
+  //   // })
+  //
+  //   this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
+  //     next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
+  //       console.log("roles = ", data)
+  //       this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
+  //
+  //     },
+  //     error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
+  //   });
+  // }
+
   onSubmit(): void {
-    const { nom, prenom, email, numero, motdepasse, role } = this.inscriptionForm.value;
+    const { nom, prenom, email, numero, motdepasse, role } =
+      this.inscriptionForm.value;
 
     this.userService.signUp(nom, prenom, email, numero, motdepasse, role).subscribe({
       next: () => {

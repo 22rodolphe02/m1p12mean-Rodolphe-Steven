@@ -1,5 +1,5 @@
 <div class="card-custom">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between mb-4">
     <div class="d-flex align-items-center">
       <div class="circle border me-2">
         <i class="pi pi-calendar"></i>
@@ -11,22 +11,24 @@
       </div>
     </div>
     <div>
-      <div class="badge-success d-flex small align-items-center">
-        <i class="pi pi-circle-on me-2" style="font-size: .5rem" ></i>
-        <span class="text-capitalize">{{item().status!}}</span>
-      </div>
+<!--      <div class="badge-success d-flex small align-items-center">-->
+<!--        <i class="pi pi-circle-on me-2" style="font-size: .5rem" ></i>-->
+<!--&lt;!&ndash;        <span class="text-capitalize">{{item().status!}}</span>&ndash;&gt;-->
+<!--      </div>-->
     </div>
   </div>
-  @if (actionLink()) {
-    <a [routerLink]="actionLink()!+'/'+ item()._id">
+  @if (withImage()){
+    @if (actionLink()) {
+      <a [routerLink]="actionLink()!+'/'+ item()._id">
+        <div class="d-flex justify-content-center">
+          <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
+        </div>
+      </a>
+    } @else {
       <div class="d-flex justify-content-center">
         <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
       </div>
-    </a>
-  } @else {
-    <div class="d-flex justify-content-center">
-      <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
-    </div>
+    }
   }
 
 

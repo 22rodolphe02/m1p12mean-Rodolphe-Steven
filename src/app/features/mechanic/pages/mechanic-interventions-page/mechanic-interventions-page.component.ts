@@ -23,13 +23,9 @@ import {tap} from 'rxjs/operators';
   selector: 'g-mechanic-interventions-page',
   imports: [
     InterventionListComponent,
-    Button,
-    RouterLink,
-    SelectButton,
     AsyncPipe,
     LoaderComponent,
-    PaginationComponent,
-    VehicleListComponent
+    PaginationComponent
   ],
   templateUrl: './mechanic-interventions-page.component.html',
   styleUrl: './mechanic-interventions-page.component.scss'
@@ -63,7 +59,7 @@ export class MechanicInterventionsPageComponent {
 
     const userId = user._id! as string
 
-    this.interventions$ = this.interventionService.getAllByMechanical(userId).pipe(
+    this.interventions$ = this.interventionService.getAllByMechanical(userId, {index: this.currentPage, limit: 10}).pipe(
       tap(value => {
         console.log("value ===== ", value)
       }),

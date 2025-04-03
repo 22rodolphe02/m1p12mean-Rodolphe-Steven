@@ -9,6 +9,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResourceService} from '../../../core/services/resource.service';
 import {ApiResponse} from '../../../core/models/response.model';
+import {StatsResponse} from '../../mechanic/models/statsforcharts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,39 +39,14 @@ export class InterventionService extends ResourceService<Intervention>{
     return  this.http.post<ApiResponse<InterventionDetail>>(preparedUrl, data);
   }
 
-
-  public getInterventions(filters: { [key: string]: string }, sort: string, pagination: { page: number, limit: number }): Observable<Intervention[]>{
-    return this.filteredInterventions(filters, sort, pagination)
-  }
-
-
-  /*
-  * GET /interventions?filter=statut:active,age:gt:30&sort=nom:asc&page=2&limit=10
-  * */
-  public filteredInterventions(filters: { [key: string]: string }, sort: string, pagination: { page: number, limit: number }, url?: string): Observable<Intervention[]>{
-    const preparedUrl = `${this.apiUrl}${url}`
-
+  public getHistoriesByClient(clientId: string, page: {index: number, limit: number} = {index: 1, limit: 5}): Observable<ApiResponse<Intervention[]>>{
     let params = new HttpParams();
+    params = params
+        .set('page', page.index.toString())
+        .set('limit', page.limit.toString());
+    const preparedUrl = `${this.apiUrl}/histories/clients/${clientId}`;
 
-    // Ajouter les filtres
-    if (filters) {
-      Object.keys(filters).forEach(key => {
-        params = params.append('filter', `${key}:${filters[key]}`);
-      });
-    }
-
-    // Ajouter le tri
-    if (sort) {
-      params = params.set('sort', sort);
-    }
-
-    // Ajouter la pagination
-    params = params.set('page', pagination.page.toString()).set('limit', pagination.limit.toString());
-
-    return this.http.get<Intervention[]>(preparedUrl, { params });
-    // return this.getAll(params)
-
-
+    return this.http.get<ApiResponse<Intervention[]>>(preparedUrl, {params});
   }
 
   public getStatusClass(status: InterventionStatus): string{
@@ -105,4 +81,64 @@ export class InterventionService extends ResourceService<Intervention>{
     return this.http.get<ApiResponse<InterventionDetail>>(preparedUrl);
   }
 
+  getNombreInterventionParEtat() {
+    const url = this.apiUrl + '/interventionNumberParEtat';
+    return this.http.get<{
+      success: boolean;
+      data: { encours: number; facturee: number; terminee: number; enattente: number }
+      message: string;
+    }>(url);
+  }
+
+  getAllIntervention(){
+    const url = this.apiUrl + '/interventionEnCours';
+    return this.http.get<{
+      success: boolean;
+      data: { encours: number; facturee: number; terminee: number; enattente: number } // change ici car je le prends ici
+      message: string;
+    }>(url);
+  }
+
+  getLatestFive(): Observable<ApiResponse<Intervention[]>>{
+    const preparedUrl = `${this.apiUrl}/latest-five`;
+
+    return this.http.get<ApiResponse<Intervention[]>>(preparedUrl);
+  }
+
+  getOngoingInterventions() {
+    const url = this.apiUrl + '/getOngoingInterventionForDashboard';
+    return this.http.get<{ success: boolean; data: Intervention[] }>(url);
+  }
+
+  getStatsForChartPie() {
+    const url = this.apiUrl + '/statChiffreAffaireByService/montant';
+    return this.http.get<StatsResponse>(url);
+  }
+
+  getStatsForChartBar() {
+    const url = this.apiUrl + '/statChiffreAffaireByService/pourcentage';
+    return this.http.get<StatsResponse>(url);
+  }
+
+  getTotalRevenueService() {
+    const url = this.apiUrl + '/totalRevenueService';
+    return this.http.get<{ success: boolean, data: { chiffreAffaire: string }, message: string }>(url);
+  }
+
+  getTotalRevenueToday() {
+    const url = this.apiUrl + '/totalRevenueToday';
+    return this.http.get<{ success: boolean, data: { chiffreAffaire: string }, message: string }>(url);
+  }
+
+    addPiece(data: {pieceId: string, quantite: number, interventionId: string}): Observable<ApiResponse<InterventionDetail>> {
+      const preparedUrl = `${this.apiUrl}/ajouterPiece`;
+
+      return this.http.post<ApiResponse<InterventionDetail>>(preparedUrl, data)
+    }
+
+  validatePiece(data: {pieceId: string, interventionId: string}): Observable<ApiResponse<InterventionDetail>> {
+    const preparedUrl = `${this.apiUrl}/approuverPiece`;
+
+    return this.http.post<ApiResponse<InterventionDetail>>(preparedUrl, data)
+  }
 }

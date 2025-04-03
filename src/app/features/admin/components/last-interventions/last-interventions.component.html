@@ -15,5 +15,14 @@
 <!--      </div>-->
 <!--    </div>-->
   </div>
-<!--  <g-intervention-list></g-intervention-list>-->
+  <div>
+    @if (loading) {
+      <g-loader></g-loader>
+    }
+
+    @if (interventions$ | async; as apiResponse) {
+      <g-intervention-list [data]="apiResponse.data" actionLink="/user-space/interventions"></g-intervention-list>
+    }
+  </div>
+
 </div>

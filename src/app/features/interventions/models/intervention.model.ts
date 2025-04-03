@@ -11,7 +11,9 @@ export interface Intervention{
   status: InterventionStatus,
   estimateTime: number,
   services?: ServicePerformed[],
-  pieces: PiecePerformed[]
+  pieces: PiecePerformed[],
+  createdAt: Date,
+  avancement: number,
 }
 
 export interface InterventionDetail{
@@ -21,19 +23,21 @@ export interface InterventionDetail{
   client: User,
   mechanical: User,
   estimateTime: number,
+  avancement: number,
   services: ServicePerformed[],
   pieces: PiecePerformed[]
 }
 
 export enum InterventionStatus {
   PENDING = 'en attente',
-  DONE = 'terminee',
+  DONE = 'facturee',
   IN_PROGRESS = 'en cours',
   PAID = 'payé'
 }
 
 export interface PiecePerformed extends Piece{
-  quantite: number
+  quantite: number,
+  etat: boolean
 }
 
 export enum ServicePerformedStatus{

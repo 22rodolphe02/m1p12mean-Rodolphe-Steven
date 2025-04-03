@@ -20,22 +20,9 @@
   <g-kpi-general></g-kpi-general>
   <!-- end:overview section -->
 
-  <!-- start:interventions section -->
   <div class="row justify-content-center mt-4">
-    <div class="col-8">
-      <g-last-interventions></g-last-interventions>
-    </div>
-    <div class="col-4" >
-      <g-revenue-by-service></g-revenue-by-service>
-    </div>
-  </div>
-  <!-- end:interventions section -->
-
-
-  <!-- start:mechanical section  -->
-<!--  <div class="row justify-content-center">-->
 <!--    <div class="col">-->
-<!--      <div class="bg-white border p-4 rounded-4 mt-4">-->
+<!--      <div class="bg-white border p-4 rounded-4">-->
 <!--        <div class="d-flex justify-content-between">-->
 <!--          <div class="d-flex align-items-center">-->
 <!--            <i class="fs-5 pi pi-users "></i>-->
@@ -51,11 +38,29 @@
 <!--          <g-planning></g-planning>-->
 <!--        </div>-->
 <!--      </div>-->
+      <div class="col h-100" >
+        <g-revenue-by-service></g-revenue-by-service>
+      </div>
 <!--    </div>-->
-<!--    <div class="col-3" >-->
-<!--      <g-interventions-stat-chart></g-interventions-stat-chart>-->
-<!--    </div>-->
-<!--  </div>-->
+    <div class="col h-100" >
+      <g-interventions-stat-chart></g-interventions-stat-chart>
+    </div>
+  </div>
+
+  <!-- start:interventions section -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-12">
+      <g-last-interventions></g-last-interventions>
+    </div>
+  </div>
+
+
+
+  <!-- end:interventions section -->
+
+
+  <!-- start:mechanical section  -->
+
 
 
 </div>

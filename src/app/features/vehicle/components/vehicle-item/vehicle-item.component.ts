@@ -18,4 +18,6 @@ export class VehicleItemComponent {
   item = input.required<Vehicle>()
 
   actionLink = input<string>()
+
+  withImage = input<boolean>(true);
 }

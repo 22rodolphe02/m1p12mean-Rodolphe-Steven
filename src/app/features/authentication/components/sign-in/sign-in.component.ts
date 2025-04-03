@@ -16,6 +16,7 @@ import { environment } from '../../../../../environments/environment';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { Dialog } from 'primeng/dialog';
+import { RoleService } from '../../../../core/services/role.service';
 import {ApiResponse} from '../../../../core/models/response.model';
 import {MessageService} from 'primeng/api';
 import {Select} from 'primeng/select';
@@ -32,6 +33,7 @@ import {Role} from '../../../../core/models/user.model';
     RouterModule,
     ReactiveFormsModule,
     DropdownModule,
+    Dialog,
     Select
   ],
   templateUrl: './sign-in.component.html',
@@ -47,11 +49,11 @@ export class SignInComponent implements OnInit {
   displayError = false;
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private roleService: RoleService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -61,18 +63,11 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchRoles();
-  }
-
-  fetchRoles(): void {
-    const url = `${this.apiUrl}/roles`;
-    this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
-      next: (data) => {
-        this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
+    this.roleService.fetchRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
       },
-      error: (err: HttpErrorResponse) =>{
-        this.messageService.add({severity: 'error', detail: err.error.message});
-      }
+      error: (err) => console.error('Erreur lors du chargement des rôles:', err),
     });
   }
 
