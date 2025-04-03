@@ -6,12 +6,15 @@ import {DatePicker} from 'primeng/datepicker';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SelectServiceComponent} from '../../components/select-service/select-service.component';
 import {Dialog} from 'primeng/dialog';
-import {RouterLink} from '@angular/router';
-import {Appointment, AppointmentCreate, AppointmentStatus} from '../../../appointment/models/appointment.model';
+import {Router, RouterLink} from '@angular/router';
+import {AppointmentCreate, AppointmentStatus} from '../../../appointment/models/appointment.model';
 import {AppointmentService} from '../../../appointment/services/appointment.service';
-import {ApiResponse} from '../../../../core/models/response.model';
-import {Select} from 'primeng/select';
 import {CommonModule} from '@angular/common';
+import {Vehicle} from '../../../vehicle/models/vehicle.model';
+import {AuthService} from '../../../../core/auth/auth.service';
+import {SelectVehicleComponent} from '../../components/select-vehicle/select-vehicle.component';
+import {MessageService} from 'primeng/api';
+import {User} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'app-client-appointment-add-page',
@@ -24,7 +27,7 @@ import {CommonModule} from '@angular/common';
     SelectServiceComponent,
     Dialog,
     RouterLink,
-    Select,
+    SelectVehicleComponent,
   ],
   templateUrl: './client-appointment-add-page.component.html',
   styleUrl: './client-appointment-add-page.component.scss'
@@ -33,16 +36,23 @@ export class ClientAppointmentAddPageComponent {
   appointmentForm!: FormGroup
   chosenServices: Service[] = []
   adding: boolean = false;
+  today: Date = new Date();
 
+  submitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private appointmentService: AppointmentService) {
-    this.initForm()
+  selectedVehicle ?: Vehicle;
+
+  constructor(private fb: FormBuilder,
+              private appointmentService: AppointmentService,
+              private messageService: MessageService,
+              private authService: AuthService,
+              private router: Router) {
+    this.initForm();
   }
 
   initForm(){
     this.appointmentForm = this.fb.group({
       date: ['', Validators.required],
-      vehicle: ['', Validators.required]
     })
   }
 
@@ -54,30 +64,58 @@ export class ClientAppointmentAddPageComponent {
     this.adding = true;
   }
 
+  selectVehicle(selected: Vehicle){
+    this.selectedVehicle = selected;
+  }
+
+  delete(serviceId: string | number) {
+    this.chosenServices = this.chosenServices.filter(service => service._id !== serviceId);
+  }
+
+
+
   submit(){
+    this.submitted = true;
+    this.appointmentForm.markAsTouched()
+
+    if (!this.appointmentForm.valid || !this.selectedVehicle || this.chosenServices.length === 0 ){
+      this.messageService.add({severity: 'error', detail: 'veuillez remplir tous les conditions', life: 4000})
+      this.submitted = false;
+      return;
+    }
+
     const formValue = this.appointmentForm.value;
 
+    const user: User = this.authService.getCurrentUser()!;
+
     let appointmentForm: AppointmentCreate = {
-      userClientId: '67dc7a91c043856f2b9c5f74',
+      userClientId: user._id as string,
       date: new Date(formValue.date),
       status: AppointmentStatus.PENDING,
       services: this.chosenServices.map((value: Service) => {
         return {serviceId: value._id + ""}
       }),
-      description: formValue.description,
-      vehiculeId: '1'
+      vehiculeId: this.selectedVehicle._id as string
     }
 
-    console.log("appointment form = ", appointmentForm)
+    console.log("formulaire ==== ", appointmentForm)
 
 
-    this.appointmentService.create(appointmentForm).subscribe((response: ApiResponse<Appointment>) => {
-      console.log("response = ", response)
+    this.appointmentService.create(appointmentForm).subscribe({
+      next: (value) => {
+        if (value.success){
+          this.messageService.add({severity: 'success', detail: value.message, life: 4000})
+          this.submitted = false;
+          this.router.navigate(['/user-space/client/appointments'])
+        }else{
+          this.messageService.add({severity: 'error', detail: value.message, closable: true, sticky: true})
+          this.submitted = false;
+        }
+      },
+      error: err => {
+        this.messageService.add({severity: 'error', detail: 'une erreur inconnu s\'est produite', closable: true, sticky: true});
+        this.submitted = false;
+      }
     })
   }
-
-  // setChosenService(services: Service[]) {
-  //   console.log("chosen service = ", services)
-  //   this.chosenServices = services;
-  // }
 }

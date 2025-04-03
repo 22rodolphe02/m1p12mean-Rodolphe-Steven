@@ -7,12 +7,8 @@ const InvoiceDetailsPageComponent = () =>
   import('../invoice/pages/invoice-details-page/invoice-details-page.component').then(m => m.InvoiceDetailsPageComponent);
 
 export const invoiceRoutes: Routes = [
-  // {
-  //   path: '',
-  //   loadComponent: InvoiceListComponent
-  // },
-  // {
-  //   path: ':_id',
-  //   loadComponent: InvoiceListComponent
-  // },
+  {
+    path: ':invoiceId',
+    loadComponent: InvoiceDetailsPageComponent
+  },
 ]

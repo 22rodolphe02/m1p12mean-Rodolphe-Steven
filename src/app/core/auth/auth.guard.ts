@@ -39,6 +39,7 @@ export class AuthGuard implements CanActivate {
   ): boolean | Observable<boolean> | Promise<boolean> {
     const requiredRoles = route.data['roles'] as Array<string>;
     if (!this.authService.isAuthenticated()){
+
       this.router.navigate(['/login']);
       return false;
     }
@@ -50,6 +51,7 @@ export class AuthGuard implements CanActivate {
     if (requiredRoles.includes(userRole)) {
       return true;
     } else {
+      console.log("connected ==== ")
       this.router.navigate(['/login']); // Rediriger vers la page de login si non autorisé
       return false;
     }

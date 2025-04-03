@@ -28,8 +28,6 @@ import {LoaderComponent} from '../../../../shared/components/loader/loader.compo
   styleUrl: './client-list-page.component.scss'
 })
 export class ClientListPageComponent {
-
-  clients: Client[] = []
   currentPage = 1;
 
   loading: boolean = false;

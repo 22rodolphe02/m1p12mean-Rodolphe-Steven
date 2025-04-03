@@ -1,0 +1,40 @@
+<div>
+  <div class="card-custom">
+    <div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-column mb-4">
+          <div class="d-flex align-items-center">
+            <i class="pi pi-receipt fs-6 text-primary me-2"></i>
+            <span class="fs-5 fw-medium ">Factures</span>
+          </div>
+          <span class="small text-muted mt-1">
+        Retrouvez ici l’ensemble des factures du client, avec leurs informations détaillées.
+      </span>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-between">
+        <!--    <div>-->
+        <!--      <g-invoice-list [actionLink]="getActionLink()"></g-invoice-list>-->
+        <!--    </div>-->
+        @if (loading){
+          <g-loader></g-loader>
+        }
+        @if (invoices$ | async; as apiResponse) {
+          <div>
+            <g-invoice-list [data]="apiResponse.data" [actionLink]="getActionLink()"></g-invoice-list>
+          </div>
+          <div class="d-flex justify-content-end mt-5">
+            <g-pagination
+              [totalItems]="apiResponse.pagination?.total || 0"
+              [pageIndex]="apiResponse.pagination?.currentPage || 1"
+              [pageSize]="apiResponse.pagination?.limit!"
+              (page)="onPageChange($event)"
+            ></g-pagination>
+          </div>
+        }
+
+      </div>
+    </div>
+
+  </div>
+</div>

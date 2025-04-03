@@ -18,7 +18,7 @@ export class AppointmentService extends ResourceService<Appointment, Appointment
   confirm(appointmentId: string): Observable<ApiResponse<Appointment>>{
     const preparedUrl = `${this.apiUrl}/confirmer/${appointmentId}`
 
-    return this.http.put<ApiResponse<Appointment>>(preparedUrl, {});
+    return this.http.post<ApiResponse<Appointment>>(preparedUrl, {});
   }
 
   canceled(appointmentId: string): Observable<ApiResponse<Appointment>> {

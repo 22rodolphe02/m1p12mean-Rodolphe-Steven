@@ -19,10 +19,10 @@ import {AsyncPipe} from '@angular/common';
     AsyncPipe
   ],
   providers: [AsyncPipe],
-  templateUrl: './client-invoices-page.component.html',
-  styleUrl: './client-invoices-page.component.scss'
+  templateUrl: './admin-clients-invoices-page.component.html',
+  styleUrl: './admin-clients-invoices-page.component.scss'
 })
-export class ClientInvoicesPageComponent {
+export class AdminClientsInvoicesPageComponent {
 
   clientId!: string;
 
@@ -32,18 +32,23 @@ export class ClientInvoicesPageComponent {
 
   currentPage = 1;
 
-  constructor(private route: ActivatedRoute,
-              private invoiceService: InvoiceService,
-              private messageService: MessageService) {
+  constructor(protected route: ActivatedRoute,
+              protected invoiceService: InvoiceService,
+              protected messageService: MessageService) {
+
+    this.setClientId();
+
+    this.loadInvoices();
+  }
+
+
+  setClientId(){
     this.route.parent?.parent?.params.subscribe(param => {
       this.clientId = param['id']
     })
-
-
-    this.loaInvoices();
   }
 
-  loaInvoices(){
+  loadInvoices(){
 
     this.invoices$ = this.invoiceService.getAllByClient(this.clientId, {index: this.currentPage, limit: 10}).pipe(
       catchError((err, caught) => {
@@ -60,10 +65,10 @@ export class ClientInvoicesPageComponent {
 
   onPageChange(newPage: number): void {
     this.currentPage = newPage;
-    this.loaInvoices();
+    this.loadInvoices();
   }
 
   getActionLink(){
-    return `/user-space/admin/clients/${this.clientId}/invoices/`
+    return `/user-space/admin/clients/${this.clientId}/invoices`
   }
 }

@@ -2,6 +2,10 @@ import {Component, Input} from '@angular/core';
 import {InvoiceDetail, InvoiceStatus} from '../../models/invoice.model';
 import {CurrencyPipe, DatePipe} from '@angular/common';
 import {Button} from 'primeng/button';
+import {InvoiceService} from '../../services/invoice.service';
+import {MessageService} from 'primeng/api';
+import {AuthService} from '../../../../core/auth/auth.service';
+import {Role} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'g-invoice-detail',
@@ -15,60 +19,11 @@ import {Button} from 'primeng/button';
 })
 export class InvoiceDetailComponent {
   @Input({alias: 'data'}) data!: InvoiceDetail
-  @Input({alias: '_id'}) id!: number
 
-  constructor() {
-    this.fakeData()
-  }
-
-  fakeData(){
-    this.data = {
-      date: new Date(),
-      factureId: 12345,
-      status: InvoiceStatus.PENDING,
-      nomClient: "John Doe",
-      emailClient: "johndoe@example.com",
-      numeroClient: "0123456789",
-      montant: 140000,
-      services: {
-        details: [
-          {
-            serviceId: 1,
-            nom: "Réparation moteur",
-            prix: 150,
-            quantite: 1,
-            montant: 150
-          },
-          {
-            serviceId: 2,
-            nom: "Changement huile",
-            prix: 50,
-            quantite: 1,
-            montant: 100
-          }
-        ],
-        total: 40000
-      },
-      pieces: {
-        details: [
-          {
-            _id: 1,
-            nom: "Filtre à huile",
-            prixUnitaire: 20,
-            quantite: 1,
-            montant: 40
-          },
-          {
-            _id: 2,
-            nom: "Plaquettes de frein",
-            prixUnitaire: 30,
-            quantite: 1,
-            montant: 30
-          }
-        ],
-        total: 20000
-      }
-    };
+  constructor(private invoiceService: InvoiceService,
+              private messageService: MessageService,
+              private authService: AuthService) {
+    console.log(this.data)
   }
 
   getClass(status: InvoiceStatus): string{
@@ -79,4 +34,30 @@ export class InvoiceDetailComponent {
     return 'warning'
   }
 
+  paid() {
+    this.invoiceService.paid(this.data.factureId as string).subscribe({
+      next: value => {
+        if (value.success){
+          this.messageService.add({severity: 'success', detail: value.message, life: 4000});
+          this.data = value.data;
+        }else{
+          this.messageService.add({severity: 'error', detail: value.message, sticky: true, closable: true})
+        }
+      },
+
+      error: err => {
+        this.messageService.add({severity: 'error', detail: 'une erreur inconnue s\'est produite', sticky: true, closable: true})
+        throw err;
+      }
+    })
+  }
+
+  showPaidButton(): boolean{
+    const role: Role = this.authService.getRole()!;
+    return role === Role.CLIENT && this.data.status !== InvoiceStatus.PAID;
+
+
+  }
+
+  protected readonly InvoiceStatus = InvoiceStatus;
 }

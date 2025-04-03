@@ -35,7 +35,7 @@
             {{invoice.total | currency: 'MGA ' : 'symbol': '1.2-2'}}
         </td>
         <td>
-          <a [routerLink]="actionLink+'/1'" class="link">
+          <a routerLink='{{actionLink}}/{{invoice._id}}' class="link">
             {{invoice.date | date: 'longDate'}}
           </a>
         </td>

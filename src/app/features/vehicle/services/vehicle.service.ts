@@ -28,5 +28,16 @@ export class VehicleService extends ResourceService<Vehicle>{
     return this.http.get<ApiResponse<Vehicle[]>>(preparedUrl, {params});
   }
 
+  getAllNotInInterventionByClient(clientId: string, page: {index: number, limit: number} = {index: 1, limit: 10}): Observable<ApiResponse<Vehicle[]>>{
+    let params = new HttpParams();
+    params = params
+      .set('page', page.index.toString())
+      .set('limit', page.limit.toString());
+
+    const preparedUrl = `${this.apiUrl}/clientsVehicleNotInIntervention/${clientId}`;
+
+    return this.http.get<ApiResponse<Vehicle[]>>(preparedUrl, {params});
+  }
+
 
 }

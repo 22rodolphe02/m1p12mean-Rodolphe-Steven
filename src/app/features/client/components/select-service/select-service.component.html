@@ -1,13 +1,26 @@
 <div class="d-flex flex-column">
-  @if (services.isLoading()) {
+  @if (loading) {
     <g-loader></g-loader>
-  } @else if (services.hasValue()){
+  }
+  @if (this.services$ | async; as apiResponse){
     <div class="row">
-      @for (service of serviceData.data; track service._id; let index = $index) {
+      @for (service of apiResponse.data; track service._id; let index = $index) {
         <div class="col-4 mb-3">
           <g-service-item [selectable]="true" [data]="service" [selected]=isSelected(service) (onClick)="select(service, $event)"></g-service-item>
         </div>
       }
+    </div>
+
+    <div class="d-flex flex-column align-items-end">
+      <div class="col-2">
+        <g-pagination
+          [totalItems]="apiResponse.pagination?.total || 0"
+          [pageIndex]="apiResponse.pagination?.currentPage || 1"
+          [pageSize]="apiResponse.pagination?.limit!"
+          (page)="onPageChange($event)"
+        ></g-pagination>
+      </div>
+
     </div>
 
   }

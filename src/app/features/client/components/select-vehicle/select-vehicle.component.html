@@ -1,0 +1,93 @@
+<div>
+  @if (loading){
+    <div class="p-4 m-4">
+      <g-loader message="chargement des voitures..."></g-loader>
+    </div>
+
+  }
+  @if (vehicles$ | async; as apiResponse) {
+    <div class=" mb-2">
+      Sectionné votre voiture
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="col-3">
+        <p-select [options]="apiResponse.data" [(ngModel)]="vehicleSelected" (onChange)="emitVal()" optionLabel="model" placeholder="Select une voiture" class="col-12 md:w-56">
+          <ng-template #selectedItem let-selectedOption>
+            <div class="d-flex align-items-center" *ngIf="selectedOption">
+              <div class="m-1 rounded-3">
+                <div class="rounded-3" >
+                  <div class="d-flex align-items-center">
+                    <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-car"></i>
+                    </span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="d-flex ms-2 text-capitalize">
+                        <span class="fw-medium fs-6 ">{{selectedOption.model}}</span>
+                        <span class="text-capitalize ms-1">{{selectedOption.marque}},</span>
+                      </div>
+
+                      <div class="d-flex ms-2">
+
+                        <span class="text-secondary ms-1">{{selectedOption.immatriculation}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template let-vehicle #item>
+            <div class="m-1 rounded-3">
+              <div class="rounded-3" >
+                <div class="d-flex align-items-center">
+                  <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-car"></i>
+                    </span>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex ms-2 text-capitalize">
+                      <span class="fw-medium fs-6 ">{{vehicle.model}}</span>
+                      <span class="text-capitalize ms-1">{{vehicle.marque}},</span>
+                    </div>
+
+                    <div class="d-flex ms-2">
+
+                      <span class="text-secondary ms-1">{{vehicle.immatriculation}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--        <div class="flex items-center gap-2">-->
+            <!--          -->
+            <!--          <div>{{ vehicle.name }}</div>-->
+            <!--        </div>-->
+          </ng-template>
+          <ng-template >
+            <i class="pi pi-map"></i>
+          </ng-template>
+          <ng-template #header>
+            <div class="font-medium p-3">Available Countries</div>
+          </ng-template>
+          <ng-template #footer>
+            <div class="p-3">
+              <g-pagination [totalItems]="10" [withNo]="false"></g-pagination>
+            </div>
+            <!--              <div class="p-3">-->
+            <!--                <p-button label="Add New" fluid severity="secondary" text size="small" icon="pi pi-plus" />-->
+            <!--              </div>-->
+          </ng-template>
+        </p-select>
+      </div>
+
+      @if (vehicleSelected) {
+        <div class="col-4">
+          <g-vehicle-item [item]="vehicleSelected"></g-vehicle-item>
+        </div>
+      }
+    </div>
+  }
+</div>
