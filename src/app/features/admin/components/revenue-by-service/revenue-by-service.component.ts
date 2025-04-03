@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApexOptions, ChartComponent } from "ng-apexcharts";
-import { InterventionService } from '../../../mechanic/services/intervention.service';
+import {InterventionService} from '../../../interventions/services/intervention.service';
 
 @Component({
   selector: 'g-revenue-by-service',

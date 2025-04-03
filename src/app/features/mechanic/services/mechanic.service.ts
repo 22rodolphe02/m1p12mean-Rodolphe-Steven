@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourceService } from '../../../core/services/resource.service';
 import { Mechanic } from '../models/mechanic.model';
-import { HttpClient } from '@angular/common/http';
 import {ResourceService} from '../../../core/services/resource.service';
 import {User} from '../../../core/models/user.model';
 import {HttpClient, HttpParams} from '@angular/common/http';

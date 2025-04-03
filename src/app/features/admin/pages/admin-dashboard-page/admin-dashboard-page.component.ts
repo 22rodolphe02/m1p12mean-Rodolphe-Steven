@@ -27,6 +27,8 @@ import {
     KpiGeneralComponent,
     LastInterventionsComponent,
     RevenueByServiceComponent,
+    InterventionsStatChartComponent,
+    PlanningComponent,
   ],
   templateUrl: './admin-dashboard-page.component.html',
   styleUrl: './admin-dashboard-page.component.scss'

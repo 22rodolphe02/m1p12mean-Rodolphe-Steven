@@ -17,6 +17,7 @@ export interface AppointmentCreate{
   date: Date,
   vehiculeId: string,
   status: AppointmentStatus,
+  description: string,
   services: {
       serviceId: string
   }[]

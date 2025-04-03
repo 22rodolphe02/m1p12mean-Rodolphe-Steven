@@ -4,49 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="447f1bdd-253f-40ae-951d-1e129499bc36" name="Changes" comment="">
+    <list default="true" id="c27f64ff-e2e1-4a14-99b8-f7c06e52d09d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/config/menu.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/config/menu.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/admin/admin.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/admin.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-appointments-list-page/admin-appointments-list-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-clients-invoices-page/admin-clients-invoices-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-clients-invoices-page/admin-clients-invoices-page.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-clients-invoices-page/admin-clients-invoices-page.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-invoices-page/client-invoices-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-clients-invoices-page/admin-clients-invoices-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-list-page/client-list-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-details/appointment-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/interventions-stat-chart/interventions-stat-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/interventions-stat-chart/interventions-stat-chart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/interventions-stat-chart/interventions-stat-chart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/interventions-stat-chart/interventions-stat-chart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/kpi-general/kpi-general.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/kpi-general/kpi-general.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/last-interventions/last-interventions.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/components/revenue-by-service/revenue-by-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/components/revenue-by-service/revenue-by-service.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/admin-dashboard-page/admin-dashboard-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-dashboard-page/admin-dashboard-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/admin-dashboard-page/admin-dashboard-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/admin-dashboard-page/admin-dashboard-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/admin/pages/client-intervention-history/client-intervention-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/planning/planning.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/appointment/models/appointment.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/models/appointment.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/appointment/services/appointment.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/services/appointment.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/client.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/client.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/components/select-service/select-service.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/select-service/select-service.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/components/select-service/select-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/components/select-service/select-service.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointments-page/client-appointments-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-detail/invoice-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/components/invoice-list/invoice-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/invoice.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/invoice.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/models/invoice.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/models/invoice.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/pages/invoice-details-page/invoice-details-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/invoice/services/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/invoice/services/invoice.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/components/mechanic-list/mechanic-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-list-page/mechanic-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-list-page/mechanic-list-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-list-page/mechanic-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-list-page/mechanic-list-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/pieces/models/piece.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/pieces/models/piece.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/service/components/service-item/service-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/components/service-item/service-item.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/service/components/service-list/service-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/components/service-list/service-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/service/pages/service-list-page/service-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-vehicle-details-page/client-vehicle-details-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/component/intervention-list/intervention-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/models/intervention.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/models/intervention.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/interventions/services/intervention.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/interventions/services/intervention.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-appointments-page/mechanic-appointments-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-appointments-page/mechanic-appointments-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-interventions-page/mechanic-interventions-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/pages/mechanic-interventions-page/mechanic-interventions-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/services/intervention.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/services/mechanic.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/mechanic/services/mechanic.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/services/piece.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/mechanic/services/rendezvous.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/pieces/services/piece.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/pieces/services/piece.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/services/vehicle.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/services/vehicle.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/pagination/pagination.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-details/vehicle-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/vehicle/components/vehicle-item/vehicle-item.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,69 +48,19 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="feature/invoice-details" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2u1yOCznI9LOrkB3M110tmc9kjL" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/client-invoices&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/data/M1/Rojo/exam/garage-m1-front/public/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Angular CLI Server.executor&quot;: &quot;Run&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\data\\M1\\Rojo\\exam\\garage-m1-front\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "integration/admin-dashboard",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "D:\\data\\M1\\Rojo\\exam\\garage-m1-front\\node_modules\\typescript\\lib"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\public\img" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\shared\components" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\core\models" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\admin\pages" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\vehicle\components" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\client\pages\client-details-page" />
-      <recent name="D:\data\M1\Rojo\exam\garage-m1-front\src\app\features\vehicle\services" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.Angular CLI Server">
-    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
-      <method v="2" />
-    </configuration>
-    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+}]]></component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -128,80 +70,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="447f1bdd-253f-40ae-951d-1e129499bc36" name="Changes" comment="" />
-      <created>1741430342944</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1741430342944</updated>
-      <workItem from="1741430345878" duration="336000" />
-      <workItem from="1741448211716" duration="1254000" />
-      <workItem from="1741449790750" duration="293000" />
-      <workItem from="1741450094101" duration="394000" />
-      <workItem from="1741450498774" duration="169000" />
-      <workItem from="1741457441984" duration="10530000" />
-      <workItem from="1741505703150" duration="638000" />
-      <workItem from="1741608748570" duration="5150000" />
-      <workItem from="1741694638850" duration="22042000" />
-      <workItem from="1741764468271" duration="11191000" />
-      <workItem from="1741795546043" duration="1209000" />
-      <workItem from="1741844553722" duration="9175000" />
-      <workItem from="1741868768603" duration="2419000" />
-      <workItem from="1741933870845" duration="15946000" />
-      <workItem from="1742191696774" duration="13352000" />
-      <workItem from="1742235695849" duration="1139000" />
-      <workItem from="1742280327443" duration="5388000" />
-      <workItem from="1742304938417" duration="13515000" />
-      <workItem from="1742366891027" duration="16190000" />
-      <workItem from="1742409821452" duration="536000" />
-      <workItem from="1742451697881" duration="1701000" />
-      <workItem from="1742460390583" duration="11180000" />
-      <workItem from="1742499270388" duration="604000" />
-      <workItem from="1742536952439" duration="4031000" />
-      <workItem from="1742565444581" duration="441000" />
-      <workItem from="1742710225490" duration="5267000" />
-      <workItem from="1742816818892" duration="324000" />
-      <workItem from="1742817290336" duration="481000" />
-      <workItem from="1742823478677" duration="3869000" />
-      <workItem from="1742833513797" duration="10161000" />
-      <workItem from="1742881258982" duration="2922000" />
-      <workItem from="1743017561969" duration="301000" />
-      <workItem from="1743055775983" duration="24341000" />
-      <workItem from="1743145121716" duration="9853000" />
-      <workItem from="1743485188822" duration="15140000" />
-      <workItem from="1743573102312" duration="20055000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>

@@ -20,6 +20,15 @@
                 </div>
               </td>
             </tr>
+
+            <tr>
+              <td class="text-capitalize text-secondary">Avancement</td>
+              <td class="fs-4 fw-semibold">
+                <div class="d-flex flex-column align-items-end">
+                  {{getIntervention()!.avancement | number}}%
+                </div>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -195,6 +204,19 @@
           <div class="col-4">
             <div class="card-custom " >
               <span class=" fs-5 fw-medium">Pièces utilisé</span>
+              <div class="d-flex flex-column my-2">
+                <div class="d-flex align-items-center">
+                  <i class="pi pi-check-circle " style="color: var(--p-green-400)"></i>
+                  <span class="ms-1 fw-bold">:</span>
+                  <span class="ms-2 text-secondary">Approuvée</span>
+                </div>
+
+                <div class="d-flex align-items-center mt-1">
+                  <i class="fa fa-clock-rotate-left " style="color: var(--p-amber-400)"></i>
+                  <span class="ms-1 fw-bold">:</span>
+                  <span class="ms-2 text-secondary">En attente d'approbation</span>
+                </div>
+              </div>
               <div>
 
                 <table class="table table-custom mt-2 ">
@@ -215,8 +237,24 @@
                         <td>
                           <div class="d-flex flex-column align-items-end">
                             <div class="d-flex flex-column">
-                              <!--                              <span class="fw-medium">{{piece. | currency:'MGA ' : 'symbol': '1.2-2' }}</span>-->
                               <span class="text-secondary">{{piece.quantite | number}} PCS</span>
+                              <div class="mt-1">
+                                @if (piece.etat) {
+                                  <div class="d-flex">
+                                    <i class="pi pi-check-circle" style="color: var(--p-green-400)"></i>
+                                  </div>
+                                } @else {
+                                  <div class="d-flex align-items-center">
+                                    <i class="fa fa-clock-rotate-left" style="color: var(--p-amber-400)"></i>
+                                    @if (isClient()) {
+                                      <div class="ms-2">
+
+                                        <p-button label="approuver" (onClick)="validatePiece(piece._id!)" [text]="true" [rounded]="true" severity="info"></p-button>
+                                      </div>
+                                    }
+                                  </div>
+                                }
+                              </div>
                             </div>
 
                           </div>
@@ -226,6 +264,94 @@
                     }
                   </tbody>
                 </table>
+
+                @if (isOwner()) {
+                  @if (!isAddingAction) {
+                    <div class="d-flex justify-content-end mb-2">
+                      <p-button label="ajout pièce" [text]="true" (onClick)="addPiece()" [rounded]="true" icon="pi pi-plus-circle"></p-button>
+                    </div>
+                  } @else {
+                    <div class="d-flex">
+                      <div class="col-12">
+                        @if (loadingPieces){
+                          <g-loader></g-loader>
+                        }
+                        @if (pieces$ | async; as apiResponse) {
+                          <form [formGroup]="pieceForm">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <div class="col-6">
+                                <p-select
+                                  [options]="apiResponse.data"
+                                  formControlName="piece"
+                                  optionLabel="model"
+                                  placeholder="Select une pièce"
+                                  class="col-12 md:w-56">
+                                  <ng-template #selectedItem let-selectedOption>
+                                    <div class="d-flex align-items-center" *ngIf="selectedOption">
+                                      <div class="m-1 rounded-3">
+                                        <div class="d-flex flex-column">
+                                          <span>{{selectedOption.nom}}</span>
+                                          <div class="d-flex text-secondary">
+                                            <span class=" ">prix unitaire:</span>
+                                            <span class="ms-2">{{selectedOption.prixunitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template let-piece #item>
+                                    <div class="m-1 rounded-3">
+                                      <div class="d-flex flex-column">
+                                        <span>{{piece.nom}}</span>
+                                        <div class="d-flex text-secondary">
+                                          <span class=" ">prix unitaire:</span>
+                                          <span class="ms-2">{{piece.prixunitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template >
+                                    <i class="pi pi-map"></i>
+                                  </ng-template>
+                                  <ng-template #header>
+                                    <div class="font-medium p-3">Pièces disponible</div>
+                                  </ng-template>
+                                  <ng-template #footer>
+                                    <div class="p-3">
+                                      <g-pagination [totalItems]="10" [withNo]="false"></g-pagination>
+                                    </div>
+                                  </ng-template>
+                                </p-select>
+                              </div>
+
+                              <div class="col-auto">
+                                <div>
+                                  <p-inputNumber
+                                    formControlName="quantite"
+                                    [showButtons]="true"
+                                    buttonLayout="horizontal"
+                                    [inputStyle]="{ width: '3rem' }">
+                                    <ng-template #incrementbuttonicon>
+                                      <span class="pi pi-plus"></span>
+                                    </ng-template>
+                                    <ng-template #decrementbuttonicon>
+                                      <span class="pi pi-minus"></span>
+                                    </ng-template>
+                                  </p-inputNumber>
+                                </div>
+                              </div>
+
+                              <div class="col-auto">
+                                <p-button icon="pi pi-plus-circle" (onClick)="onAddPiece()" [text]="true" [rounded]="true"></p-button>
+                              </div>
+                            </div>
+                          </form>
+                        }
+
+                      </div>
+                    </div>
+                  }
+                }
               </div>
             </div>
           </div>

@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {ResourceService} from '../../../core/services/resource.service';
 import {Appointment, AppointmentCreate, AppointmentStatus} from '../models/appointment.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {ApiResponse} from '../../../core/models/response.model';
+import {Planning} from '../models/planning.model';
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +84,21 @@ export class AppointmentService extends ResourceService<Appointment, Appointment
     const preparedUrl = `${this.apiUrl}/detail/${id}`
 
     return this.http.get<ApiResponse<Appointment>>(preparedUrl)
+  }
+
+  getNombreRendezVous() {
+    const url = this.apiUrl;
+    const res = this.http.get<{ success: boolean; data: any[]; message: string }>(
+      url
+    );
+    return res;
+  }
+
+  getPlanning(): Observable<Planning[]> {
+    const url = `${this.apiUrl}/getPlanning`;
+    return this.http.get<{ success: boolean; data: Planning[]; message: string }>(url)
+      .pipe(
+        map(response => response.data) // On s'assure que response.data est bien un tableau
+      );
   }
 }

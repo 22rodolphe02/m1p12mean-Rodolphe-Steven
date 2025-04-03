@@ -21,11 +21,8 @@ import {
   imports: [
     AppointmentListComponent,
     AsyncPipe,
-    Button,
     LoaderComponent,
     PaginationComponent,
-    RouterLink,
-    ClientAppointmentsPageComponent
   ],
   templateUrl: './mechanic-appointments-page.component.html',
   styleUrl: './mechanic-appointments-page.component.scss'

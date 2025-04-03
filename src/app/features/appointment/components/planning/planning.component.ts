@@ -7,7 +7,8 @@ import {Planning} from '../../models/planning.model';
 import {AppointmentStatus} from '../../models/appointment.model';
 import {AppointmentDetailsComponent} from '../appointment-details/appointment-details.component';
 import {DialogService, DynamicDialogModule, DynamicDialogRef} from 'primeng/dynamicdialog';
-import { RendezvousService } from '../../../mechanic/services/rendezvous.service';
+import {AppointmentService} from '../../services/appointment.service';
+// import { RendezvousService } from '../../../mechanic/services/rendezvous.service';
 
 @Component({
   selector: 'g-planning',
@@ -30,7 +31,7 @@ export class PlanningComponent implements OnDestroy {
 
   constructor(
     private dialogService: DialogService,
-    private rendezvousService: RendezvousService // Ajout du service
+    private rendezvousService: AppointmentService // Ajout du service
   ) {}
 
   ngOnInit() {
@@ -84,34 +85,34 @@ export class PlanningComponent implements OnDestroy {
   }
 
   initPlannings() {
-    this.rendezvousService.getPlanning().subscribe((plannings: Planning[]) => {
-      this.plannings = plannings.map(item => ({
-        id: item.id,
-        name: item.name,
-        status: item.status,
-        start: new Date(item.start),
-        end: new Date(item.end),
-        statusClass: item.statusClass
-      }));
-
-      this.initCalendarOptions();
-      this.calendarOptions = {
-        ...this.calendarOptions,
-        events: this.plannings.map(planning => ({
-          id: planning.id.toString(),
-          title: planning.name,
-          start: planning.start.toISOString(),
-          end: planning.end.toISOString(),
-          allDay: false,
-          classNames: [`event-${planning.statusClass}`],
-          extendedProps: {
-            content: { ...planning }
-          }
-        }))
-      };
-    }, error => {
-      console.error('Erreur lors de la récupération des plannings:', error);
-    });
+    // this.rendezvousService.getPlanning().subscribe((plannings: Planning[]) => {
+    //   this.plannings = plannings.map(item => ({
+    //     _id: item._id,
+    //     name: item.description,
+    //     status: item.status,
+    //     start: new Date(item.start),
+    //     end: new Date(item.start),
+    //     statusClass: item.statusClass
+    //   }));
+    //
+    //   this.initCalendarOptions();
+    //   this.calendarOptions = {
+    //     ...this.calendarOptions,
+    //     events: this.plannings.map(planning => ({
+    //       id: planning._id.toString(),
+    //       title: planning.description,
+    //       start: planning.start.toISOString(),
+    //       end: planning.start.toISOString(),
+    //       allDay: false,
+    //       classNames: [`event-${planning.statusClass}`],
+    //       extendedProps: {
+    //         content: { ...planning }
+    //       }
+    //     }))
+    //   };
+    // }, error => {
+    //   console.error('Erreur lors de la récupération des plannings:', error);
+    // });
   }
 
 

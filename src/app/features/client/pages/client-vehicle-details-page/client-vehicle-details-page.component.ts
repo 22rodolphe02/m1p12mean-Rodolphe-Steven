@@ -17,7 +17,6 @@ import {VehicleService} from "../../../vehicle/services/vehicle.service";
   selector: 'g-client-vehicle-details-page',
   imports: [
     Button,
-    RouterLink,
     VehicleDetailsComponent,
     LoaderComponent,
     AsyncPipe

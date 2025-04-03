@@ -15,6 +15,7 @@ import {AuthService} from '../../../../core/auth/auth.service';
 import {SelectVehicleComponent} from '../../components/select-vehicle/select-vehicle.component';
 import {MessageService} from 'primeng/api';
 import {User} from '../../../../core/models/user.model';
+import {Textarea} from 'primeng/textarea';
 
 @Component({
   selector: 'app-client-appointment-add-page',
@@ -28,6 +29,7 @@ import {User} from '../../../../core/models/user.model';
     Dialog,
     RouterLink,
     SelectVehicleComponent,
+    Textarea,
   ],
   templateUrl: './client-appointment-add-page.component.html',
   styleUrl: './client-appointment-add-page.component.scss'
@@ -53,6 +55,7 @@ export class ClientAppointmentAddPageComponent {
   initForm(){
     this.appointmentForm = this.fb.group({
       date: ['', Validators.required],
+      description: ['', Validators.required]
     })
   }
 
@@ -91,14 +94,13 @@ export class ClientAppointmentAddPageComponent {
     let appointmentForm: AppointmentCreate = {
       userClientId: user._id as string,
       date: new Date(formValue.date),
+      description: formValue.description,
       status: AppointmentStatus.PENDING,
       services: this.chosenServices.map((value: Service) => {
         return {serviceId: value._id + ""}
       }),
       vehiculeId: this.selectedVehicle._id as string
     }
-
-    console.log("formulaire ==== ", appointmentForm)
 
 
     this.appointmentService.create(appointmentForm).subscribe({
@@ -108,6 +110,7 @@ export class ClientAppointmentAddPageComponent {
           this.submitted = false;
           this.router.navigate(['/user-space/client/appointments'])
         }else{
+          console.log("vl ==== ", value)
           this.messageService.add({severity: 'error', detail: value.message, closable: true, sticky: true})
           this.submitted = false;
         }

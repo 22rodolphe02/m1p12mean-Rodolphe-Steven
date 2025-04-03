@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Button } from 'primeng/button';
 import { KpiCardComponent } from '../../../../shared/components/kpi-card/kpi-card.component';
 import { Kpi } from '../../../../core/models/kpi.model';
 import { HttpClient } from '@angular/common/http';
 import { MechanicService } from '../../../mechanic/services/mechanic.service';
-import { RendezvousService } from '../../../mechanic/services/rendezvous.service';
-import { PieceService } from '../../../mechanic/services/piece.service';
-import { InterventionService } from '../../../mechanic/services/intervention.service';
+import {PieceService} from '../../../pieces/services/piece.service';
+import {AppointmentService} from '../../../appointment/services/appointment.service';
+import {InterventionService} from '../../../interventions/services/intervention.service';
 @Component({
   selector: 'g-kpi-general',
   imports: [Button, KpiCardComponent],
   templateUrl: './kpi-general.component.html',
   styleUrl: './kpi-general.component.scss',
 })
-export class KpiGeneralComponent {
+export class KpiGeneralComponent implements OnInit{
   constructor(
     private mechanicService: MechanicService,
-    private rendezVousService: RendezvousService,
+    private rendezVousService: AppointmentService,
     private pieceService: PieceService,
     private interventionService: InterventionService
   ) {

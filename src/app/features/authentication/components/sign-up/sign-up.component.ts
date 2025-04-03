@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchRoles();
+    // this.fetchRoles();
     this.roleService.fetchRoles().subscribe({
       next: (roles) => {
         this.roles = roles;
@@ -67,22 +67,22 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  fetchRoles(): void {
-    const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
-
-    // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
-    //
-    // })
-
-    this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
-      next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
-        console.log("roles = ", data)
-        this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
-
-      },
-      error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
-    });
-  }
+  // fetchRoles(): void {
+  //   const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
+  //
+  //   // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
+  //   //
+  //   // })
+  //
+  //   this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
+  //     next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
+  //       console.log("roles = ", data)
+  //       this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
+  //
+  //     },
+  //     error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
+  //   });
+  // }
 
   onSubmit(): void {
     const { nom, prenom, email, numero, motdepasse, role } =
