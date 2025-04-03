@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c27f64ff-e2e1-4a14-99b8-f7c06e52d09d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/appointment/components/appointment-list/appointment-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/client/pages/client-appointment-add-page/client-appointment-add-page.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +20,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "integration/admin-dashboard",
+    "git-widget-placeholder": "release/development",
     "node.js.selected.package.tslint": "(autodetect)",
     "npm.start.executor": "Run",
     "ts.external.directory.path": "D:\\data\\M1\\Rojo\\exam\\garage-m1-front\\node_modules\\typescript\\lib"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -41,6 +49,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
