@@ -1,0 +1,71 @@
+<div class="card-custom">
+  <div class="d-flex justify-content-between mb-4">
+    <div class="d-flex align-items-center">
+      <div class="circle border me-2">
+        <i class="pi pi-calendar"></i>
+      </div>
+      <div class="d-flex flex-column">
+        <span class="small text-muted">Date d'ajout</span>
+<!--        <span class="fw-medium">Nov, 12 2024</span>-->
+        <span class="fw-medium">{{item().createdAt | date}}</span>
+      </div>
+    </div>
+    <div>
+<!--      <div class="badge-success d-flex small align-items-center">-->
+<!--        <i class="pi pi-circle-on me-2" style="font-size: .5rem" ></i>-->
+<!--&lt;!&ndash;        <span class="text-capitalize">{{item().status!}}</span>&ndash;&gt;-->
+<!--      </div>-->
+    </div>
+  </div>
+  @if (withImage()){
+    @if (actionLink()) {
+      <a [routerLink]="actionLink()!+'/'+ item()._id">
+        <div class="d-flex justify-content-center">
+          <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
+        </div>
+      </a>
+    } @else {
+      <div class="d-flex justify-content-center">
+        <img alt="Card" style="width: 35%" src="/img/vehicle.png" />
+      </div>
+    }
+  }
+
+
+  <div class="border-top pt-3">
+
+    <div class="d-flex align-items-center">
+      <i class="pi pi-circle-off me-2" style="color: var(--p-red-500)"></i>
+      <span class="text-capitalize ">Kilométrage</span>
+      <span class="text-muted ms-2">{{item().kilometrage | number}} Km</span>
+    </div>
+
+    <div class="d-flex align-items-center mt-1">
+      <i class="pi pi-circle-off me-2" style="color: var(--p-blue-500)"></i>
+      <span class="text-capitalize ">Modèle</span>
+      <span class="text-muted ms-2">{{item().model}}</span>
+    </div>
+
+    <div class="d-flex align-items-center mt-1">
+      <i class="pi pi-circle-off me-2 " style="color: var(--p-amber-500)"></i>
+      <span class="text-capitalize ">Immatriculation</span>
+      <span class="text-muted ms-2">{{item().immatriculation}}</span>
+    </div>
+
+    <div class="d-flex align-items-center mt-1">
+      <i class="pi pi-circle-off me-2 " style="color: var(--p-cyan-500)"></i>
+      <span class="text-capitalize ">Marque</span>
+      <span class="text-muted ms-2">{{item().marque}}</span>
+    </div>
+
+    @if (item().lastVisit) {
+      <div class="d-flex align-items-center mt-1">
+        <i class="pi pi-circle-off me-2 " style="color: var(--p-emerald-500)"></i>
+        <span class="text-capitalize ">Dernier visite</span>
+        <div class="badge-secondary small fw-medium ms-2">
+          <span>{{item().lastVisit | date}}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

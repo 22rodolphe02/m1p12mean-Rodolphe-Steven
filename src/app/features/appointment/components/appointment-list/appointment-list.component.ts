@@ -2,19 +2,19 @@ import {Component, Input} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {Appointment, AppointmentStatus} from '../../models/appointment.model';
 import {Button} from 'primeng/button';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'g-appointment-list',
   imports: [
     DatePipe,
-    Button
+    RouterLink,
   ],
   templateUrl: './appointment-list.component.html',
   styleUrl: './appointment-list.component.scss'
 })
 export class AppointmentListComponent {
   numbers: number[] = []
-  dateTest: Date = new Date();
 
   @Input({alias: 'data'}) appointments: Appointment[] = []
 
@@ -36,50 +36,50 @@ export class AppointmentListComponent {
 
   fakeData(){
 
-    this.appointments = [
-      {
-        id: 1,
-        start: new Date(),
-        end: new Date(),
-        status: AppointmentStatus.PENDING,
-        clientName: 'Johann bris',
-      },
-      {
-        id: 2,
-        start: new Date('2025-03-26 10:00:00'),
-        end: new Date('2025-03-26 12:00:00'),
-        status: AppointmentStatus.CONFIRMED,
-        clientName: 'Johann bris',
-        mechanical: 'John Billing'
-      },
-      {
-        id: 3,
-        start: new Date(),
-        end: new Date(),
-        status: AppointmentStatus.CANCELLED,
-        clientName: 'Reparation pneu',
-      },
-      {
-        id: 4,
-        start: new Date(),
-        end: new Date(),
-        status: AppointmentStatus.CANCELLED,
-        clientName: 'Reparation pneu',
-      },
-      {
-        id: 5,
-        start: new Date(),
-        end: new Date(),
-        status: AppointmentStatus.PENDING,
-        clientName: 'Reparation pneu',
-      }
-    ]
+    // this.appointments = [
+    //   {
+    //     _id: 1,
+    //     start: new Date(),
+    //     end: new Date(),
+    //     statut: AppointmentStatus.PENDING,
+    //     clientName: 'Johann bris',
+    //   },
+    //   {
+    //     _id: 2,
+    //     start: new Date('2025-03-26 10:00:00'),
+    //     end: new Date('2025-03-26 12:00:00'),
+    //     statut: AppointmentStatus.CONFIRMED,
+    //     clientName: 'Johann bris',
+    //     mechanical: 'John Billing'
+    //   },
+    //   {
+    //     _id: 3,
+    //     start: new Date(),
+    //     end: new Date(),
+    //     statut: AppointmentStatus.CANCELLED,
+    //     clientName: 'Reparation pneu',
+    //   },
+    //   {
+    //     _id: 4,
+    //     start: new Date(),
+    //     end: new Date(),
+    //     statut: AppointmentStatus.CANCELLED,
+    //     clientName: 'Reparation pneu',
+    //   },
+    //   {
+    //     _id: 5,
+    //     start: new Date(),
+    //     end: new Date(),
+    //     statut: AppointmentStatus.PENDING,
+    //     clientName: 'Reparation pneu',
+    //   }
+    // ]
   }
 
-  checkAssignation(appointment: Appointment): boolean{
-    return ((!appointment.mechanical && appointment.status == AppointmentStatus.PENDING) || appointment.status == AppointmentStatus.PENDING);
-
-  }
+  // checkAssignation(appointment: Appointment): boolean{
+  //   return ((!appointment.mechanical && appointment.statut == AppointmentStatus.PENDING) || appointment.statut == AppointmentStatus.PENDING);
+  //
+  // }
 
   // protected readonly AppointmentStatus = AppointmentStatus;
 }

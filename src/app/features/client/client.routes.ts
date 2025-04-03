@@ -1,60 +1,69 @@
 import {Routes} from '@angular/router';
-import {invoiceRoutes} from '../invoice/invoice.routes';
-import {vehicleRoutes} from '../vehicle/vehicle.routes';
 
-const ClientDetailComponent = () =>
-  import('../admin/pages/client-details-page/client-details-page.component').then(m => m.ClientDetailsPageComponent);
+const ClientAppointmentsPageComponent = () =>
+  import('../client/pages/client-appointments-page/client-appointments-page.component').then(m => m.ClientAppointmentsPageComponent);
 
-const InterventionHistory = () =>
-  import('../interventions/pages/intervention-history/intervention-history.component').then(m => m.InterventionHistoryComponent);
+const ClientAppointmentAddPageComponent = () =>
+  import('../client/pages/client-appointment-add-page/client-appointment-add-page.component').then(m => m.ClientAppointmentAddPageComponent);
 
-const ClientDetailsInvoiceListPageComponent = () =>
-  import('../admin/pages/client-invoices-page/client-invoices-page.component').then(m => m.ClientInvoicesPageComponent);
+const ClientVehiclesListPageComponent = () =>
+  import('../client/pages/client-vehicles-list-page/client-vehicles-list-page.component').then(m => m.ClientVehiclesListPageComponent);
+
+const ClientVehicleAddPageComponent = () =>
+  import('../client/pages/client-vehicle-add-page/client-vehicle-add-page.component').then(m => m.ClientVehicleAddPageComponent);
+
+const ClientVehicleDetailsPageComponent = () =>
+  import('./pages/client-vehicle-details-page/client-vehicle-details-page.component').then(m => m.ClientVehicleDetailsPageComponent);
 
 
-const InvoiceDetailsPageComponent = () =>
-  import('../invoice/pages/invoice-details-page/invoice-details-page.component').then(m => m.InvoiceDetailsPageComponent);
+const  ClientInvoicesPageComponent = () =>
+  import('./pages/client-invoices-page/client-invoices-page.component').then(m => m.ClientInvoicesPageComponent);
 
 export const clientRoutes: Routes = [
   {
-    path: '', loadComponent: () =>
-      import('../admin/pages/client-list-page/client-list-page.component').then(c => c.ClientListPageComponent),
+    path: '',
+    redirectTo: 'appointments',
+    pathMatch: 'full'
   },
   {
-    path: ':id',
-    children: [
+    path: 'vehicles',
+    loadChildren: () => [
       {
         path: '',
-        loadComponent: ClientDetailComponent,
-        children: [
-          {
-            path: 'vehicles',
-            children: vehicleRoutes,
-          },
-          {
-            path: 'interventions-history',
-            loadComponent: InterventionHistory
-          },
-          {
-            path: 'invoices',
-            children: [
-              {
-                path: '',
-                loadComponent: ClientDetailsInvoiceListPageComponent
-              },
-              {
-                path: ':id',
-                loadComponent: InvoiceDetailsPageComponent
-              },
-            ]
-          },
-          {
-            path: '',
-            pathMatch: "full",
-            redirectTo: 'vehicles'
-          }
-        ]
+        loadComponent: ClientVehiclesListPageComponent
+      },
+      {
+        path: 'new',
+        loadComponent: ClientVehicleAddPageComponent
+      },
+      {
+        path: ':id',
+        loadComponent: ClientVehicleDetailsPageComponent
       }
     ]
+  },
+  {
+    path: 'appointments',
+    loadChildren: () => [
+      {
+        path: '',
+        loadComponent: ClientAppointmentsPageComponent
+      },
+      {
+        path: 'new',
+        loadComponent: ClientAppointmentAddPageComponent
+      }
+    ]
+
+  },
+  {
+    path: 'invoices',
+    loadChildren: () => [
+      {
+        path: '',
+        loadComponent: ClientInvoicesPageComponent
+      },
+    ]
+
   }
 ];

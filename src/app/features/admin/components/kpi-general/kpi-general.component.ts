@@ -1,33 +1,126 @@
-import { Component } from '@angular/core';
-import {Button} from "primeng/button";
-import {KpiCardComponent} from "../../../../shared/components/kpi-card/kpi-card.component";
-import {Kpi} from '../../../../core/models/kpi.model';
-
+import {Component, OnInit} from '@angular/core';
+import { Button } from 'primeng/button';
+import { KpiCardComponent } from '../../../../shared/components/kpi-card/kpi-card.component';
+import { Kpi } from '../../../../core/models/kpi.model';
+import { HttpClient } from '@angular/common/http';
+import { MechanicService } from '../../../mechanic/services/mechanic.service';
+import {PieceService} from '../../../pieces/services/piece.service';
+import {AppointmentService} from '../../../appointment/services/appointment.service';
+import {InterventionService} from '../../../interventions/services/intervention.service';
 @Component({
   selector: 'g-kpi-general',
-    imports: [
-        Button,
-        KpiCardComponent
-    ],
+  imports: [Button, KpiCardComponent],
   templateUrl: './kpi-general.component.html',
-  styleUrl: './kpi-general.component.scss'
+  styleUrl: './kpi-general.component.scss',
 })
-export class KpiGeneralComponent {
+export class KpiGeneralComponent implements OnInit{
+  constructor(
+    private mechanicService: MechanicService,
+    private rendezVousService: AppointmentService,
+    private pieceService: PieceService,
+    private interventionService: InterventionService
+  ) {
+    this.setMechanicDataNumber();
+  }
+
+  mechanicData: Kpi[] = [];
 
   interventionData: Kpi[] = [
     { value: 20, label: 'En cours', color: 'primary' },
     { value: 3, label: 'En attente', color: 'warning' },
-    { value: 6, label: 'Terminés', color: 'success' }
+    { value: 6, label: 'Terminés', color: 'success' },
+    { value: 6, label: 'Facturés', color: 'success' },
   ];
-
-  mechanicData: Kpi[] = [
-    { value: 4, label: 'Occupé', color: 'danger' },
-    { value: 6, label: 'Libre', color: 'success' }
-  ]
 
   appointmentData: Kpi[] = [
     {
-      value: 25, label: ''
-    }
-  ]
+      value: 25,
+      label: '',
+    },
+  ];
+
+  pieceData: Kpi[] = [
+    {
+      value: 25,
+      label: '',
+    },
+  ];
+
+  revenueData: Kpi[] = [
+    /// et c'est icie que je veux le mettre stp
+    {
+      value: 25,
+      label: '',
+    },
+  ];
+
+  ngOnInit(): void {
+    this.setAppoitmentData();
+    this.setMechanicDataNumber();
+    this.setPieceData();
+    this.setInterventionData();
+    this.setRevenueData();
+  }
+
+  setMechanicDataNumber() {
+    this.mechanicService
+      .getNombreMechanic()
+      .subscribe((data: { data: number }) => {
+        this.mechanicData = [{ value: data.data }];
+      });
+  }
+
+  setAppoitmentData() {
+    this.rendezVousService
+      .getNombreRendezVous()
+      .subscribe((data: { data: any[] }) => {
+        this.appointmentData = [{ value: data.data.length }];
+      });
+  }
+
+  setPieceData() {
+    this.pieceService.getNombrePieceEnRupture().subscribe(
+      (data) => {
+        this.pieceData = [{ value: data.data.nombre }];
+      },
+      (error) => {
+        console.error('Erreur API :', error);
+      }
+    );
+  }
+
+  setInterventionData() {
+    this.interventionService.getNombreInterventionParEtat().subscribe(
+      (data) => {
+        console.log('Données reçues :', data); // Vérifier la structure de la réponse
+        this.interventionData = [
+          { value: data.data.encours, label: 'En cours', color: 'primary' },
+          { value: data.data.enattente, label: 'En attente', color: 'warning' },
+          // { value: data.data.terminee, label: 'Terminés', color: 'success' },
+          { value: data.data.facturee, label: 'Facturés', color: 'success' },
+        ];
+        console.log(
+          'Nouvelle valeur de interventionData :',
+          this.interventionData
+        );
+      },
+      (error) => {
+        console.error('Erreur API :', error);
+      }
+    );
+  }
+
+  setRevenueData() {
+    this.interventionService.getTotalRevenueToday().subscribe(
+      (data) => {
+        console.log('Revenus reçus :', data);
+        this.revenueData = [
+          { value: data.data.chiffreAffaire, label: "Aujourd'hui" },
+        ];
+      },
+      (error) => {
+        console.error('Erreur API :', error);
+      }
+    );
+  }
 }

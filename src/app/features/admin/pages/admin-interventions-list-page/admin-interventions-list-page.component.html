@@ -1,0 +1,42 @@
+<div class="d-flex flex-column">
+  <div class="col-12 card-custom">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column mb-4">
+        <div class="d-flex align-items-center">
+          <i class="pi pi-cog fs-6 text-primary me-2"></i>
+          <span class="fs-5 fw-medium ">Interventions</span>
+        </div>
+        <span class="small text-muted mt-1">
+        Retrouvez ici l’ensemble des interventions.
+      </span>
+      </div>
+
+    </div>
+    <div class="my-3 d-flex flex-column ">
+      @if (loading) {
+        <div class="d-flex justify-content-center align-items-center">
+          <g-loader ></g-loader>
+        </div>
+      }
+      @if (interventions$ | async; as apiResponse) {
+        <div>
+          <g-intervention-list [data]="apiResponse.data" actionLink="/user-space/interventions/"></g-intervention-list>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-end">
+          <g-pagination
+            [totalItems]="apiResponse.pagination?.total || 0"
+            [pageIndex]="apiResponse.pagination?.currentPage || 1"
+            [pageSize]="apiResponse.pagination?.limit!"
+            (page)="onPageChange($event)"
+          ></g-pagination>
+        </div>
+      }
+
+
+
+
+
+    </div>
+  </div>
+</div>

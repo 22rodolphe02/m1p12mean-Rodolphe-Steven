@@ -5,7 +5,10 @@
       <div class="row">
         <div class="d-flex flex-column">
           <label class="mb-2">Nom</label>
-          <input type="text" class="col-10" pInputText formControlName="nom">
+<!--          {{isValid('nom')}}-->
+          <input type="text" class="col-10" pInputText
+                 [ngClass]="{'ng-dirty': !isValid('nom'), 'ng-invalid': !isValid('nom')}"
+                 formControlName="nom">
         </div>
 
         <div class="d-flex flex-column mt-2">
@@ -20,7 +23,10 @@
               <p-floatlabel variant="on">
                 <p-inputNumber
                   inputStyleClass="form-number search-control"
-                  [minFractionDigits]="2" />
+                  [minFractionDigits]="2"
+                  [ngClass]="{'ng-dirty': !isValid('prix'), 'ng-invalid': !isValid('prix')}"
+                  formControlName="prix"
+                />
                 <label >Prix</label>
               </p-floatlabel>
             </p-inputgroup>
@@ -31,9 +37,13 @@
                 <i class="pi pi-clock"></i>
               </p-inputgroup-addon>
               <p-floatlabel variant="on">
-                <p-inputNumber class="d-flex col-12"
-                               inputStyleClass="form-number col-12 search-control"
-                               [minFractionDigits]="2" />
+                <p-inputNumber
+                  class="d-flex col-12 "
+                  formControlName="duree"
+                  inputStyleClass="form-number col-12 search-control"
+                  [ngClass]="{'ng-dirty': !isValid('duree'), 'ng-invalid': !isValid('duree')}"
+                  [useGrouping]="false"
+                />
                 <label >Durée</label>
               </p-floatlabel>
             </p-inputgroup>
@@ -42,7 +52,7 @@
       </div>
 
       <div class="mt-4">
-        <p-button (click)="submit()" [rounded]="true" severity="success" label="enregistrer"></p-button>
+        <p-button (click)="submit()" [loading]="submitted" [rounded]="true" severity="success" label="enregistrer"></p-button>
       </div>
     </div>
   </form>

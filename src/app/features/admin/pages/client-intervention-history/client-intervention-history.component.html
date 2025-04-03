@@ -1,0 +1,117 @@
+
+
+<div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex flex-column mb-4">
+      <div class="d-flex align-items-center">
+        <i class="pi pi-cog fs-6 text-primary me-2"></i>
+        <span class="fs-5 fw-medium ">Historique des interventions</span>
+      </div>
+      <span class="small text-muted mt-1">
+        Consultez l'historique complet des interventions effectuées sur les véhicules du client.
+      </span>
+    </div>
+<!--    <div class="d-flex align-items-center">-->
+<!--      <p-select-button [options]="statusList" [(ngModel)]="filter"  />-->
+<!--    </div>-->
+  </div>
+
+  @if (loading){
+
+  }
+  @if (history$ | async; as apiResponse) {
+    <div class="d-flex justify-content-center">
+      <div class="col-9">
+
+        <p-timeline [value]="apiResponse.data" class="w-100">
+          <ng-template #content let-event >
+            <!--            {{event | json}}-->
+            <div class="pt-2 ">
+              <small class="text-surface-500 dark:text-surface-400">{{ event.createdAt | date }}</small>
+              <div class="card-custom" >
+                <div class="d-flex">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <div class="mb-2 text-secondary d-flex align-items-center">
+                        <i class="pi pi-link me-2"></i>
+                        <span>Person :</span>
+                      </div>
+                      <div class="d-flex">
+                        <div class="col-auto">
+                          <div class="border m-1 p-1 rounded-3">
+                            <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                              <div class="d-flex align-items-center">
+                                <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                              <span class="fw-medium fs-4">
+                                <i class="pi pi-user"></i>
+                              </span>
+                                </div>
+                                <div class="d-flex flex-column">
+                              <span class="fw-medium fs-6 ms-2">
+                                Mécanicien
+                              </span>
+                                  <div class="d-flex ms-2">
+                                    <span class="text-capitalize">{{event.mecanicien.name}},</span>
+                                    <span class="text-secondary ms-1">{{event.mecanicien.email}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="border m-1 p-1 rounded-3">
+                            <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+                              <div class="d-flex align-items-center">
+                                <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                              <span class="fw-medium fs-4">
+                                <i class="pi pi-user"></i>
+                              </span>
+                                </div>
+                                <div class="d-flex flex-column">
+                              <span class="fw-medium fs-6 ms-2">
+                                Client
+                              </span>
+                                  <div class="d-flex ms-2">
+                                    <span class="text-capitalize">{{event.client.name}},</span>
+                                    <span class="text-secondary ms-1">{{event.client.email}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mb-2 mt-3 text-secondary d-flex align-items-center">
+                        <i class="pi pi-car me-2"></i>
+                        <span>Voiture :</span>
+                      </div>
+                      <g-vehicle-item [withImage]="false" [item]="event.vehicle"></g-vehicle-item>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </ng-template>
+        </p-timeline>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <g-pagination
+        [totalItems]="apiResponse.pagination?.total || 0"
+        [pageIndex]="apiResponse.pagination?.currentPage || 1"
+        [pageSize]="apiResponse.pagination?.limit!"
+        (page)="onPageChange($event)"
+      ></g-pagination>
+    </div>
+  }
+
+</div>

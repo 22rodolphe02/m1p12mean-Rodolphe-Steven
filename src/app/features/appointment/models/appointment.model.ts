@@ -1,16 +1,30 @@
+import {Service} from '../../service/models/service.model';
+import {User} from '../../../core/models/user.model';
+
 export interface Appointment{
-  id: number,
-  name?: string,
-  clientName?: string,
+  _id: number | string,
+  client?: User,
   description?:string,
   start: Date,
-  end: Date,
   status: AppointmentStatus,
-  mechanical?: string
+  mechanical?: User,
+  serviceTime?: number,
+  services ?: Service[]
+}
+
+export interface AppointmentCreate{
+  userClientId: string,
+  date: Date,
+  vehiculeId: string,
+  status: AppointmentStatus,
+  description: string,
+  services: {
+      serviceId: string
+  }[]
 }
 
 export enum AppointmentStatus {
-  PENDING = 'PENDING',
-  CONFIRMED = 'CONFIRMED',
-  CANCELLED = 'CANCELLED',
+  PENDING = 'en attente',
+  CONFIRMED = 'confirmé',
+  CANCELLED = 'annulé',
 }

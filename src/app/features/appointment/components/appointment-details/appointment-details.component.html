@@ -1,33 +1,237 @@
-<div class="row">
-  <div class="col-12">
-    <div class="d-flex justify-content-between align-items-end">
-        <div class="d-flex">
-          <div class="circle circle-xl avatar">
-            <span>H</span>
+<div class="d-flex flex-column">
+  <div class="d-flex justify-content-between">
+    <div class="col">
+      <div class="row bg-white" >
+        <div class="col-2 card-custom d-flex align-items-center justify-content-center"
+             style="border-style: dashed; border-color: var(--p-emerald-400); background: var(--p-emerald-50)">
+          <span class="fs-4 fw-medium">RDV</span>
+<!--          <div class="d-flex flex-column align-items-center justify-content-between">-->
+<!--            -->
+<!--          </div>-->
+
+          <!--    <g-upload-image></g-upload-image>-->
+        </div>
+        <div class="col-5 d-flex flex-column justify-content-between">
+          <div class="d-flex justify-content-between">
+            <div class="col-12 d-flex flex-column">
+              <div class=" d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                  <div class="circle border me-2">
+                    <i class="pi pi-calendar"></i>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span class="small text-muted">Date de rendez-vous</span>
+                    <span class="fw-medium">{{data().start | date}}</span>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <div class="d-flex align-items-center justify-content-center badge-{{getStatusClass(data().status)}}">
+                    <i class="pi pi-circle-on me-2" style="font-size: .5rem"></i>
+                    <span>{{data().status}}</span>
+                  </div>
+                  <div class="ms-3 d-flex">
+                    @if (isMechanic()){
+                      @if (showCanceledButton) {
+                        <div class="ms-1">
+                          <p-button [outlined]="true" label="annuler" severity="danger" (onClick)="canceled()"></p-button>
+                        </div>
+                      }
+                      @if (showConfirmButton) {
+                        <div class="ms-1">
+                          <p-button [outlined]="true" label="confirmer" severity="success" (onClick)="validate()"></p-button>
+                        </div>
+                      }
+                    }
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="mt-5 ">
+                <div class="card-custom">
+                  <span>{{data().description}}</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div class="d-flex flex-column ms-3">
-            <span class="fw-medium">Harry walker</span>
-            <span class="mt-1">
-              <i class="pi pi-phone"></i>
-              <span class="ms-2 text-muted">+123 456 789</span>
-            </span>
-          </div>
         </div>
-        <div class="d-flex">
-        <span>
-          <i class="pi pi-envelope"></i>
-          <span class="ms-2 text-muted">
-            {{'hary@gmail.com'}}
-          </span>
-        </span>
-        </div>
+      </div>
+
     </div>
+    <div class="col-3" >
 
-    <div class="mt-3 ms-2">
-      <span class="pi pi-calendar"></span>
-      <span class="ms-2 text-muted">{{dateTest | date : 'longDate'}}</span>
+      <div class="card-custom total-card" >
+        <div class="mb-3">
+          <span class="fs-6 fw-medium">Estimation de l'intervention</span>
+        </div>
+        <table class="table table-borderless total-table">
+          <tbody>
+          <tr>
+            <td class="text-capitalize text-secondary">Total</td>
+            <td class="fs-4 fw-semibold">
+              <div class="d-flex flex-column align-items-end">
+                {{data()!.serviceTime | number}} Min
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  <div class="p-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column mb-4">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="pi pi-cog fs-6 text-primary me-2"></i>
+            <span class="fs-5 fw-medium ">Service</span>
+          </div>
+        </div>
+        <span class="small text-muted mt-1">
+          Vos services pour cette rendez-vous.
+        </span>
+      </div>
+    </div>
 
+    <div class="d-flex flex-column">
+      <div class="mb-2 text-secondary d-flex align-items-center">
+        <i class="pi pi-link me-2"></i>
+        <span>Person :</span>
+      </div>
+      <div class="d-flex">
+        <div class="col-auto">
+          <div class="border m-1 p-1 rounded-3">
+            <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+              <div class="d-flex align-items-center">
+                <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="fw-medium fs-6 ms-2">
+                    Mécanicien
+                  </span>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex ms-2 text-capitalize mt-1">
+<!--                      {{data().mechanical | json}}-->
+                      <span class="">{{data().mechanical?.firstName}}</span>
+                      <span class=" ms-1">{{data().mechanical?.name}},</span>
+
+                      <div class="d-flex text-secondary align-items-center ms-2">
+                        <i class="pi pi-envelope"></i>
+                        <span class="ms-2">{{data().mechanical?.email}}</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="border m-1 p-1 rounded-3">
+            <div class="p-2 rounded-3" style="background: var(--p-zinc-50)">
+              <div class="d-flex align-items-center">
+                <div class="circle-xl circle border" style=" color: var(--p-amber-500)">
+                    <span class="fw-medium fs-4">
+                      <i class="pi pi-user"></i>
+                    </span>
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="fw-medium fs-6 ms-2">Client</span>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex ms-2 text-capitalize mt-1">
+                      <span class="">{{data().client?.firstName}}</span>
+                      <span class=" ms-1">{{data().client?.name}},</span>
+
+                      <div class="d-flex text-secondary align-items-center ms-2">
+                        <i class="pi pi-envelope"></i>
+                        <span class="ms-2">{{data().client?.email}}</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column mt-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="col-7">
+          <div class="">
+            <span class="fs-5 ">Services </span>
+          </div>
+          <div class="mt-2">
+            <table class="table table-custom">
+              <thead class="table-header">
+              <tr>
+                <th>
+                  <div class="d-flex">
+                    info
+                  </div>
+                </th>
+                <th>
+                  <div class="d-flex">
+                    prix unitaire
+                  </div>
+                </th>
+                <th>
+                  <div class="d-flex">
+                    durée
+                  </div>
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+                @for (service of data().services; track service._id) {
+                  <tr>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span>{{service.nom}}</span>
+                        <div class="d-flex mt-2"  >
+                          <div class=" border p-2 rounded-3 text-secondary"
+                               style="border-style: dashed !important; border-color: var(--p-blue-400) !important;">
+                            {{service.description}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="width: 12rem;">
+                      <span>{{service.prix | currency : 'MGA ': 'symbol': '1.2-2'}}</span>
+                    </td>
+                    <td>
+                      <div class=" d-flex">
+                        <div class="badge-secondary fw-medium">
+                          <span class="">{{service.duree | number}}</span>
+                          <span class="ms-1">min</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
 </div>

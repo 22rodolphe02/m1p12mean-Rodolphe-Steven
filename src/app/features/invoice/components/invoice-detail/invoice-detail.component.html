@@ -11,14 +11,14 @@
       </div>
       <div class="d-flex flex-column align-items-start">
         <div class="d-flex">
-          <span class="text-secondary text-uppercase">id:</span>
+          <span class="text-secondary text-uppercase">_id:</span>
           <span class="ms-2 d-flex align-items-center">
             <i class="pi pi-hashtag"></i>
             {{data.factureId}}
           </span>
         </div>
         <div class="d-flex">
-          <span class="text-secondary text-capitalize">date de création:</span>
+          <span class="text-secondary text-capitalize">start de création:</span>
           <span class="ms-2">{{data.date | date: 'longDate'}}</span>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <span class="sub-title text-uppercase">facture</span>
         <div class="ms-3 d-flex align-items-center badge-{{getClass(data.status)}}">
           <span class="pi pi-circle-on" style="font-size: .5rem"></span>
-          <span class="ms-2 text-capitalize">{{data.status}}</span>
+          <span class="ms-2 ">{{data.status}}</span>
         </div>
       </div>
       <div class="d-flex flex-column align-items-end">
@@ -73,9 +73,7 @@
         <tbody>
           @for (service of data.services.details; track service.serviceId) {
             <tr>
-              <td>
-                {{service.nom}}
-              </td>
+              <td>{{service.nom}}</td>
               <td>
                 <span >{{service.quantite}}</span>
               </td>
@@ -107,14 +105,14 @@
           <table class="table table-custom mt-2 ">
 
             <tbody>
-              @for (piece of data.pieces.details; track piece.pieceId) {
+              @for (piece of data.pieces.details; track piece._id) {
                 <tr>
                   <td>
                     <div class="d-flex flex-column">
                       <span>{{piece.nom}}</span>
                       <div class="d-flex text-secondary">
                         <span class=" ">prix unitaire:</span>
-                        <span class="ms-2">{{piece.prixUnitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                        <span class="ms-2">{{piece.prixunitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
                       </div>
                     </div>
 
@@ -177,9 +175,11 @@
         </table>
       </div>
 
-      <div class="d-flex flex-column align-items-end mt-3">
-        <p-button label="payé" [rounded]="true" [outlined]="true" severity="success"></p-button>
-      </div>
+      @if (showPaidButton()) {
+        <div class="d-flex flex-column align-items-end mt-3">
+          <p-button label="payé" [rounded]="true" (onClick)="paid()" [outlined]="true" severity="success"></p-button>
+        </div>
+      }
     </div>
   </div>
 

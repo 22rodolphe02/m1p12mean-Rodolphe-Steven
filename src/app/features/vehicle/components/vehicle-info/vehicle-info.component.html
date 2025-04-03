@@ -1,0 +1,56 @@
+<div class="row z-1 bg-white" >
+  <div class="col-2">
+    <div class="d-flex flex-column card-custom align-items-center justify-content-between"
+         style="border-style: dashed; border-color: var(--p-emerald-400)">
+      <img src="/img/vehicle.png" class="w-50" alt="">
+    </div>
+
+<!--    <g-upload-image></g-upload-image>-->
+  </div>
+  <div class="col d-flex flex-column justify-content-between">
+    <div class="d-flex justify-content-between">
+      <div class=" col-3 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <div class="circle border me-2">
+            <i class="pi pi-calendar"></i>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="small text-muted">Date d'ajout</span>
+            <!--        <span class="fw-medium">Nov, 12 2024</span>-->
+            <span class="fw-medium">{{data().createdAt | date}}</span>
+          </div>
+        </div>
+<!--        <div class=" fs-4 fw-medium text-capitalize"></div>-->
+
+      </div>
+
+    </div>
+    <div class="mt-5 d-flex align-items-end">
+      <div class="col-6 card-container box-shadow">
+        <div class="d-flex align-items-center">
+          <i class="pi pi-circle-off me-2" style="color: var(--p-red-300)"></i>
+          <span class="text-capitalize ">Kilométrage</span>
+          <span class="text-muted ms-2">{{data().kilometrage | number}} Km</span>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="pi pi-circle-off me-2" style="color: var(--p-blue-300)"></i>
+          <span class="text-capitalize ">Modèle</span>
+          <span class="text-muted ms-2">{{data().model}}</span>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="pi pi-circle-off me-2 " style="color: var(--p-amber-300)"></i>
+          <span class="text-capitalize ">Immatriculation</span>
+          <span class="text-muted ms-2">{{data().immatriculation}}</span>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="pi pi-circle-off me-2 " style="color: var(--p-cyan-300)"></i>
+          <span class="text-capitalize ">Marque</span>
+          <span class="text-muted ms-2">{{data().marque}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

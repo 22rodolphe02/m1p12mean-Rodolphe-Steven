@@ -1,11 +1,11 @@
 import {Routes} from '@angular/router';
 
-const PlanningComponent = () =>
-  import('../appointment/pages/planning-page/planning-page.component').then(m => m.PlanningPageComponent);
+const PlanningPageComponent = () =>
+  import('../admin/pages/admin-appointments-list-page/admin-appointments-list-page.component').then(m => m.AdminAppointmentsListPageComponent);
 
 export const planningRoutes: Routes = [
   {
     path: '',
-    loadComponent: PlanningComponent
+    loadComponent: PlanningPageComponent
   }
 ]

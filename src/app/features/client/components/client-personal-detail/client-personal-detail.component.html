@@ -2,67 +2,63 @@
   <div class="col-auto">
     <g-upload-image></g-upload-image>
   </div>
-  <div class="col d-flex flex-column justify-content-between">
-    <div class="d-flex justify-content-between">
-      <div class=" col-3 d-flex justify-content-between align-items-center">
-        <div class=" fs-4 fw-medium text-capitalize">Johan Anderson</div>
+  @if (loading){
+    <g-loader></g-loader>
+  }
+  @if (detail$ | async; as apiResponse){
+    <div class="col d-flex flex-column justify-content-between">
+      <div class="d-flex justify-content-between">
+        <div class=" col-3 d-flex justify-content-between align-items-center">
+          <div class=" fs-4 fw-medium text-capitalize">
+            <span>{{apiResponse.data.firstName}}</span>
+            <span class="ms-2">{{apiResponse.data.name}}</span>
+          </div>
 
+        </div>
+<!--        <div class="col-auto d-flex ">-->
+<!--          <div>-->
+<!--            <button class="btn">-->
+<!--              <i class="pi pi-trash text-danger"></i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
-      <div class="col-auto d-flex ">
-        <div>
-          <button class="btn">
-            <i class="pi pi-trash text-danger"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="mt-5 d-flex align-items-end">
-      <div class="col-6 card-container box-shadow">
-        <div class="d-flex align-items-center">
-                <span class="icon-rounded me-3">
-                  <i class="pi pi-car"></i>
-                </span>
-          <span class="text-capitalize fw-medium">2</span>
-          <span class="text-muted ms-2">véhicule</span>
-        </div>
-        <div class="d-flex align-items-center mt-2">
-              <span class="icon-rounded me-3">
-                <i class="pi pi-phone"></i>
+      <div class="mt-5 d-flex align-items-end">
+        <div class="col-6 ">
+          <div class="d-flex align-items-center mt-2">
+            <span class="icon-rounded me-3">
+              <i class="pi pi-info-circle"></i>
+            </span>
+            <div class="d-flex text-secondary">
+              <span class="text-capitalize ">Inscrit le</span>
+              <span class="badge-secondary fw-medium small ms-3">
+                {{apiResponse.data.createdAt | date:'longDate'}}
               </span>
-          <span class="text-capitalize fw-medium">+261 32 00 001 02</span>
-        </div>
-        <div class="d-flex align-items-center mt-2">
-              <span class="icon-rounded me-3">
-                <i class="pi pi-info-circle"></i>
-              </span>
-          <div>
-            <span class="text-capitalize fw-medium">Inscrit le</span>
-            <span class="badge-secondary small ms-4">
-                  {{dateTest | date:'longDate'}}
-                </span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-2">
+          <span class="icon-rounded me-3">
+            <i class="pi pi-envelope"></i>
+          </span>
+            <span class="text-secondary">{{apiResponse.data.email}}</span>
           </div>
         </div>
-        <div class="d-flex align-items-center mt-2">
-              <span class="icon-rounded me-3">
-                <i class="pi pi-envelope"></i>
-              </span>
-          <span class="fw-medium">{{'test.g@gmail.com'}}</span>
+
+        <div class="bg-white sticky-below-header z-3 pt-2\">
+          <!--      <app-tab-menu [menu]="tabMenu"></app-tab-menu>-->
+          <p-tabs [value]="tabs[0].link">
+            <p-tablist>
+              @for(tab of tabs; track tab.link){
+                <p-tab [value]="tab.link" [routerLink]="tab.link">
+                  <i [class]="tab.icon"></i>
+                  <span>{{ tab.label }}</span>
+                </p-tab>
+              }
+            </p-tablist>
+          </p-tabs>
         </div>
       </div>
-
-      <div class="bg-white sticky-below-header z-3 pt-2\">
-        <!--      <app-tab-menu [menu]="tabMenu"></app-tab-menu>-->
-        <p-tabs [value]="tabs[0].link">
-          <p-tablist>
-            @for(tab of tabs; track tab.link){
-              <p-tab [value]="tab.link" [routerLink]="tab.link">
-                <i [class]="tab.icon"></i>
-                <span>{{ tab.label }}</span>
-              </p-tab>
-            }
-          </p-tablist>
-        </p-tabs>
-      </div>
     </div>
-  </div>
+  }
+
 </div>

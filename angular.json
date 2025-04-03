@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "g",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -34,6 +34,9 @@
               "src/styles.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["public/css/alpino/alpino.css"]
+            },
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
             ]

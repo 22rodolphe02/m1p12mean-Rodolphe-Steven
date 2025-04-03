@@ -1,19 +1,19 @@
 export interface User {
-  id?: number;
-  nom?: string;
-  prenom?: string,
-  motdepasse?: string,
-  numero?: string,
+  _id?: number | string;
+  name: string;
+  firstName: string,
+  password?: string,
   email: string;
-  registrationDate?: Date,
-  token?: string; // Token JWT (optionnel)
+  createdAt: Date,
+  token: string; // Token JWT (optionnel)
   role: Role,
+  roleId?: string,
 }
 
 export enum Role{
   ADMIN = 'admin',
   CLIENT = 'client',
-  MECHANICAL = 'mecanicien'
+  MECHANICAL = 'mechanic'
 }
 
 // export interface UserLogin{

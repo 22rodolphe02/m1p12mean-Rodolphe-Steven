@@ -1,0 +1,99 @@
+<div class="card-custom">
+  <div class="d-flex justify-content-between mb-4">
+    <div class="d-flex flex-column ">
+      <div class="d-flex align-items-center">
+        <i class="pi pi-wrench fs-6 text-primary me-2"></i>
+        <span class="fs-5 fw-medium ">Pièces</span>
+      </div>
+      <span class="small text-muted mt-1">
+        Accédez en un clin d'œil à tous les pièces existants.
+      </span>
+    </div>
+    <div class="">
+      <p-button label="Pièces" [rounded]="true" (onClick)="addingMode()" [outlined]="true" icon="pi pi-plus"></p-button>
+    </div>
+  </div>
+
+  @if (adding){
+    <div class="d-flex ">
+      <div class="card-custom total-card">
+        <g-piece-add [data]="pieceSelected" (success)="isAddingMode($event)"></g-piece-add>
+      </div>
+
+    </div>
+  }
+
+  <div class="d-flex flex-column justify-content-between align-items-end">
+    <div class="col-12">
+      @if (loading) {
+        <div class="d-flex justify-content-center align-items-center">
+          <g-loader ></g-loader>
+        </div>
+      }
+      @if (pieces$ | async; as apiResponse) {
+        @if (apiResponse.data.length > 0) {
+          <div>
+<!--            <g-piece-list [pieces]="apiResponse.data"></g-piece-list>-->
+              <table class="table table-custom mt-2 ">
+                <tbody>
+                  @for (piece of apiResponse.data; track piece._id) {
+                    <tr>
+                      <td>
+                        <div class="d-flex flex-column">
+                          <span>{{piece.nom}}</span>
+                          <div class="d-flex text-secondary">
+                            <span class=" ">prix unitaire:</span>
+                            <span class="ms-2">{{piece.prixunitaire | currency: 'MGA ' : 'symbol': '1.2-2'}}</span>
+                          </div>
+                        </div>
+
+                      </td>
+                      <td>
+                        <div class="d-flex flex-column align-items-end">
+                          <div class="d-flex flex-column">
+                            <p-inputNumber
+                              [showButtons]="true"
+                              buttonLayout="horizontal"
+                              [inputStyle]="{ width: '3rem' }"
+                              [(ngModel)]="piece.quantite"
+                              (onInput)="onQuantityChange(piece)"
+                              [ngModelOptions]="{standalone: true}">
+                              <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                              </ng-template>
+                              <ng-template #decrementbuttonicon>
+                                <span class="pi pi-minus"></span>
+                              </ng-template>
+                            </p-inputNumber>
+                          </div>
+
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex justify-content-start">
+                          <p-button [text]="true" (onClick)="edit(piece)" icon="pi pi-pencil" severity="info" [rounded]="true"></p-button>
+                        </div>
+
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+
+          </div>
+
+          <div class="mt-4 d-flex justify-content-end">
+            <g-pagination
+              [totalItems]="apiResponse.pagination?.total || 0"
+              [pageIndex]="apiResponse.pagination?.currentPage || 1"
+              [pageSize]="apiResponse.pagination?.limit!"
+              (page)="onPageChange($event)"
+            ></g-pagination>
+          </div>
+        }
+
+      }
+    </div>
+  </div>
+</div>

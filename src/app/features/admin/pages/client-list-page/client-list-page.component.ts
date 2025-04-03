@@ -1,53 +1,60 @@
 import {Component, Input} from '@angular/core';
-import {Intervention} from '../../../interventions/models/intervention.model';
-import {Button} from 'primeng/button';
 import {ClientListComponent} from '../../../client/components/client-list/client-list.component';
 import {PaginationComponent} from '../../../../shared/components/pagination/pagination.component';
-import {ClientFilterComponent} from '../../../client/components/client-filter/client-filter.component';
-import {Chip} from 'primeng/chip';
-import {FloatLabel} from "primeng/floatlabel";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {InputText} from "primeng/inputtext";
-import {InputGroup} from 'primeng/inputgroup';
-import {InputGroupAddon} from 'primeng/inputgroupaddon';
-import {Router, RouterLink, RouterModule, RouterOutlet} from '@angular/router';
-import {Dialog} from 'primeng/dialog';
-import {Avatar} from 'primeng/avatar';
-import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {AsyncPipe, CommonModule} from '@angular/common';
+import {Client} from '../../../client/models/client.model';
+import {ClientService} from '../../../client/services/client.service';
+import {catchError, finalize, Observable, throwError} from 'rxjs';
+import {ApiResponse} from '../../../../core/models/response.model';
+import {tap} from 'rxjs/operators';
+import {LoaderComponent} from '../../../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-client-list-page',
   imports: [
     CommonModule,
     RouterModule,
-    Button,
     ClientListComponent,
     PaginationComponent,
-    ClientFilterComponent,
-    Chip,
     FormsModule,
-    InputText,
     ReactiveFormsModule,
-    InputGroup,
-    InputGroupAddon,
+    LoaderComponent,
+
   ],
+  providers: [AsyncPipe],
   templateUrl: './client-list-page.component.html',
   styleUrl: './client-list-page.component.scss'
 })
 export class ClientListPageComponent {
+  currentPage = 1;
 
-  @Input({alias: 'data'}) clients: Intervention[] = []
-  visible: boolean = false;
+  loading: boolean = false;
 
-  constructor(private router: Router) {
+  clients$ !: Observable<ApiResponse<Client[]>>
+
+  constructor(private clientService: ClientService) {
+    this.loadClientsData();
   }
 
-  clickRow(id: number){
-    this.visible = true;
-    this.router.navigate([`user-space/admin/clients/${id}`])
+
+  loadClientsData(){
+
+    this.clients$ = this.clientService.getAll(undefined, {index: this.currentPage, limit: 10}).pipe(
+      tap(value => {
+      }),
+      catchError(error => {
+        return throwError(() => error);
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    )
   }
 
-  closeDetail() {
-    this.router.navigate(['user-space/admin/clients'])
+  onPageChange(index: number) {
+    this.currentPage = index;
+    this.loadClientsData();
   }
 }

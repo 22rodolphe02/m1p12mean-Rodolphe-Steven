@@ -2,19 +2,19 @@ import {Service, ServiceDetail} from '../../service/models/service.model';
 import {Piece, PieceDetail} from '../../pieces/models/piece.model';
 
 export interface Invoice{
-  id: number,
+  _id: number,
   date: Date,
-  status: InvoiceStatus,
+  statut: InvoiceStatus,
   clientId: number,
   clientName: string,
   interventionId: number,
-  amount: number
+  total: number
 }
 
 export interface InvoiceDetail{
   date: Date,
   status: InvoiceStatus,
-  factureId: number,
+  factureId: number | string,
   nomClient: string,
   emailClient: string,
   numeroClient: string,
@@ -30,8 +30,8 @@ export interface InvoiceDetail{
 }
 
 export enum InvoiceStatus{
-  PAID = 'payé',
-  PENDING = 'non payé'
+  PAID = 'payee',
+  PENDING = 'non payee'
 }
 
 // export interface Invoice

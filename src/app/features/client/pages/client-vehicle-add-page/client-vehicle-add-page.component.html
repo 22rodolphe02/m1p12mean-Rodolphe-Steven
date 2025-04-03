@@ -1,0 +1,139 @@
+<div class="">
+<!--  <div class="d-flex align-items-center mb-3">-->
+<!--    <div>-->
+<!--      <p-button [rounded]="true" severity="secondary" routerLink="/user-space/client/appointments" [outlined]="true" icon="pi pi-arrow-left"></p-button>-->
+<!--    </div>-->
+<!--    <div class="sub-title ms-2">-->
+<!--      Ajout du véhicule-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class=" card-custom shadow p-5">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="d-flex justify-content-between">
+          <div class="col-4">
+            <div class="">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column mb-4">
+                  <div class="d-flex align-items-center">
+                    <span class="fs-5 fw-medium ">Informations géneral</span>
+                  </div>
+                  <span class="small text-muted mt-1">
+                  Entrer les informations concernant votre voiture.
+                </span>
+                </div>
+              </div>
+              <form [formGroup]="vehicleForm"  (ngSubmit)="onSubmit()">
+
+                <div class="field mb-3">
+                  <div class="mb-1">
+<!--                    <i class="pi pi-car text-secondary me-2"></i>-->
+                    <label for="marque">Marque</label>
+                  </div>
+                  <span class="w-100">
+                    <input pInputText id="marque"
+                     [ngClass]="{'ng-invalid ng-dirty' : !isValid('marque')}"
+                     formControlName="marque" class="p-inputtext w-100" placeholder="Ex: Toyota">
+                  </span>
+                </div>
+
+                <div class="field mb-3">
+                  <div class="mb-1">
+                    <label for="modele">Modèle</label>
+                  </div>
+                  <span class="p-input-icon-left w-100">
+                    <input pInputText id="modele"
+                           [ngClass]="{'ng-invalid ng-dirty' : !isValid('model')}"
+                           formControlName="model" class="p-inputtext w-100" placeholder="Ex: Corolla">
+                  </span>
+                </div>
+
+                <div class="row justify-content-between mb-3">
+                  <div class="field col-6 ">
+                    <div class="mb-1">
+                      <label for="annee">Année</label>
+                    </div>
+                    <p-datePicker  [readonlyInput]="true" [inputStyleClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''"  id="annee" formControlName="year" view="year" dateFormat="yy" inputStyleClass="w-100" />
+<!--                    <p-calendar [readonlyInput]="true" [inputStyleClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''"  _id="annee" formControlName="year" view="year" dateFormat="yy" inputStyleClass="w-100"></p-calendar>-->
+                  </div>
+                  <div class="col-6">
+                    <div class="field ">
+                      <div class="mb-1">
+                        <label >Kilométrage</label>
+                      </div>
+                      <span class="p-input-icon-left w-100">
+                      <p-inputNumber [inputStyleClass]="!isValid('kilometrage') ? 'ng-invalid ng-dirty' : ''" formControlName="kilometrage"></p-inputNumber>
+                    </span>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="mb-1 text-secondary">
+<!--                    <i class="pi pi-key me-1"></i>-->
+                    <label for="immatriculation">Immatriculation</label>
+                  </div>
+                  <span class="p-input-icon-left w-100">
+                <input pInputText id="immatriculation" [ngClass]="!isValid('year') ? 'ng-invalid ng-dirty' : ''" formControlName="immatriculation" class="p-inputtext w-100" placeholder="Ex: AB-123-CD">
+              </span>
+                </div>
+
+                <div class="mt-5 d-flex justify-content-between">
+                  <div>
+                    <p-button [rounded]="true" routerLink="/user-space/client/vehicles" label="Annuler" severity="secondary" icon="pi pi-times" ></p-button>
+                  </div>
+                  <div class="ms-3">
+                    <p-button [rounded]="true" [loading]="submitted" label="Ajouter le Véhicule" (click)="onSubmit()" icon="pi pi-check" ></p-button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="col-4" >
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="d-flex flex-column ">
+                <div class="d-flex align-items-center">
+                  <i class="pi pi-eye fs-6 text-primary me-2"></i>
+                  <span class="fs-5 fw-medium ">Aperçu du voiture</span>
+                </div>
+              </div>
+              <div>
+                <p-button label="Mettre à jour" [text]="true" [rounded]="true" (click)="preview()"></p-button>
+              </div>
+            </div>
+
+<!--            @if (!vehiclePreview){-->
+<!--              <div class="border rounded-4 " style="border-style: dashed !important;" >-->
+<!--                <div class="d-flex h-100 justify-content-center align-items-center">-->
+<!--                  <img src="/img/vehicle.png" class="img-fluid w-25" alt="">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            } @else if (vehiclePreview) {-->
+              <div>
+                <g-vehicle-item [item]="vehiclePreview"></g-vehicle-item>
+              </div>
+<!--            }-->
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  <div class="d-flex justify-content-center">-->
+<!--    <div class="col-12">-->
+<!--      <div class="d-flex justify-content-between card-custom shadow p-5" >-->
+<!--        <div></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+</div>

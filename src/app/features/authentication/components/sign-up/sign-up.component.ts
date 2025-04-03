@@ -1,60 +1,100 @@
-import { Component } from '@angular/core';
-import {Button} from "primeng/button";
-import {InputText} from "primeng/inputtext";
-import {Password} from "primeng/password";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from '../../../../core/auth/auth.service';
-import {Router, RouterLink} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { environment } from '../../../../../environments/environment';
+import { DropdownModule } from 'primeng/dropdown';
+import { UserService } from '../../../../core/services/users.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { Password } from 'primeng/password';
+import { Button } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { RoleService } from '../../../../core/services/role.service';
+import {ApiResponse} from '../../../../core/models/response.model';
+import {User} from '../../../../core/models/user.model';
 import {Select} from 'primeng/select';
 import {InputMask} from 'primeng/inputmask';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-sign-up',
   imports: [
-    Button,
+    CommonModule,
+    FormsModule,
     InputText,
     Password,
+    Button,
+    RouterModule,
     ReactiveFormsModule,
-    RouterLink,
+    DropdownModule,
     Select,
-    InputMask
+    InputMask,
   ],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   inscriptionForm: FormGroup;
-
-  roles: string[] = [
-    "Admin",
-    "Mécanicien",
-    "Client"
-  ]
+  roles: { label: string; value: string }[] = [];
 
   constructor(
+    private http: HttpClient,
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
-    private router: Router
+    private messageService: MessageService,
+    private userService: UserService,
+    private roleService: RoleService
   ) {
     this.inscriptionForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      numero: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      motdepasse: ['', Validators.required],
-      role: ['', Validators.required]
+      numero: ['', [Validators.required]],
+      motdepasse: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required],
     });
   }
 
+  ngOnInit(): void {
+    // this.fetchRoles();
+    this.roleService.fetchRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
+      },
+      error: (err) => console.error('Erreur lors du chargement des rôles:', err),
+    });
+  }
+
+  // fetchRoles(): void {
+  //   const url = `${this.apiUrl}/roles`; // Récupérer les rôles pour le dropdown
+  //
+  //   // this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe((value: ApiResponse<{_id: string, nom: string}[]>) => {
+  //   //
+  //   // })
+  //
+  //   this.http.get<ApiResponse<{ _id: string; nom: string }[]>>(url).subscribe({
+  //     next: (data: ApiResponse<{nom: string, _id: string}[]>) => {
+  //       console.log("roles = ", data)
+  //       this.roles = data.data.map((role) => ({ label: role.nom, value: role._id }));
+  //
+  //     },
+  //     error: (err) => console.error('Erreur lors de la récupération des rôles:', err),
+  //   });
+  // }
+
   onSubmit(): void {
+    const { nom, prenom, email, numero, motdepasse, role } =
+      this.inscriptionForm.value;
 
-    console.log("form value = ", this.inscriptionForm.value)
-
-    if (this.inscriptionForm.valid) {
-      const { email, password } = this.inscriptionForm.value;
-      this.authService.login(email, password).subscribe(() => {
-        this.router.navigate(['/']); // Rediriger vers la page d'accueil après connexion
-      });
-    }
+    this.userService.signUp(nom, prenom, email, numero, motdepasse, role).subscribe({
+      next: () => {
+        this.messageService.add({severity: 'success', detail:'votre inscription réussie', life: 5000})
+        // Rediriger vers la page de connexion après l'inscription réussie
+        this.router.navigate(['/sign-in']);
+      },
+      error: (err) => console.error('Erreur lors de l\'inscription:', err),
+    });
   }
 }

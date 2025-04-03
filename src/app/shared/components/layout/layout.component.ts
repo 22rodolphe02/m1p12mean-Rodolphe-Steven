@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {HeaderComponent} from '../header/header.component';
 import {FooterComponent} from '../footer/footer.component';
-import {adminHeaderMenuData} from '../../../core/config/menu.config';
+import {menuByRole} from '../../../core/config/menu.config';
+import {AuthService} from '../../../core/auth/auth.service';
+import {HeaderMenu} from '../../../core/models/menu.model';
+import {Role} from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-layout',
@@ -16,5 +19,24 @@ import {adminHeaderMenuData} from '../../../core/config/menu.config';
 })
 export class LayoutComponent {
 
-  protected readonly adminHeaderMenuData = adminHeaderMenuData;
+  protected menus!: HeaderMenu[] ;
+
+  constructor(private authService: AuthService) {
+    this.setMenus();
+  }
+
+  setMenus(): void{
+    const role = this.authService.getRole();
+
+    if (role === Role.MECHANICAL){
+      this.menus = menuByRole.mechanical;
+      return ;
+    }else if(role === Role.CLIENT){
+      this.menus = menuByRole.client
+    }else if(role === Role.ADMIN) {
+      this.menus = menuByRole.admin;
+    }
+
+    // this.menus = menuByRole.client
+  }
 }

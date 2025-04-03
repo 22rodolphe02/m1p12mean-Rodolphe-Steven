@@ -1,38 +1,7 @@
 <div class="row">
-  @for (service of services; track service.id) {
+  @for (service of services(); track service._id) {
     <div class="col-3 mb-3 ">
-      <div class="card-custom">
-        <div class="d-flex align-items-center rounded">
-          <img src="/img/service-bg.jpg" class="img-fluid" loading="lazy">
-        </div>
-        <div class="d-flex flex-column mt-3 py-3 border-top">
-          <span class="fw-medium fs-5 mb-2">{{service.nom}}</span>
-          <div>
-            <div class="d-flex align-items-center">
-              <span class="pi pi-clock text-muted"></span>
-              <span class="ms-1 text-muted">Durée</span>
-              <span class="ms-2 fw-medium">{{service.duree}} min</span>
-            </div>
-            <div class="d-flex align-items-center mt-2">
-              <span class="pi pi-money-bill text-muted"></span>
-              <span class="ms-1 text-muted">Prix</span>
-              <span class="ms-2 fw-medium">{{service.prix | currency}}</span>
-            </div>
-            <div class="d-flex align-items-center mt-2">
-              <span class="pi pi- text-muted"></span>
-              <span class="ms-1 text-muted">Durée</span>
-              <span class="ms-2 fw-medium">{{service.duree}} min</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex flex-column pt-3 align-items-end border-top">
-          <div class="">
-            <p-button label="selectionner" [rounded]="true" [outlined]="true" severity="success"></p-button>
-          </div>
-        </div>
-      </div>
-
+      <g-service-item [data]="service"></g-service-item>
     </div>
   }
 </div>
