@@ -76,49 +76,146 @@ export class ClientAppointmentAddPageComponent {
   }
 
 
-
-  submit(){
+  submit() {
     this.submitted = true;
-    this.appointmentForm.markAsTouched()
+    this.appointmentForm.markAllAsTouched();
 
-    if (!this.appointmentForm.valid || !this.selectedVehicle || this.chosenServices.length === 0 ){
-      this.messageService.add({severity: 'error', detail: 'veuillez remplir tous les conditions', life: 4000})
+    // Validation plus complète
+    if (!this.appointmentForm.valid || !this.selectedVehicle || this.chosenServices.length === 0) {
+      this.messageService.add({
+        severity: 'error',
+        detail: 'Veuillez remplir tous les champs obligatoires et sélectionner au moins un service',
+        life: 4000
+      });
       this.submitted = false;
       return;
     }
 
-    const formValue = this.appointmentForm.value;
-
-    const user: User = this.authService.getCurrentUser()!;
-
-    let appointmentForm: AppointmentCreate = {
-      userClientId: user._id as string,
-      date: new Date(formValue.date),
-      description: formValue.description,
-      status: AppointmentStatus.PENDING,
-      services: this.chosenServices.map((value: Service) => {
-        return {serviceId: value._id + ""}
-      }),
-      vehiculeId: this.selectedVehicle._id as string
+    // Vérification que la date n'est pas dans le passé
+    const selectedDate = new Date(this.appointmentForm.value.date);
+    if (selectedDate < new Date()) {
+      this.messageService.add({
+        severity: 'error',
+        detail: 'La date du rendez-vous ne peut pas être dans le passé',
+        life: 4000
+      });
+      this.submitted = false;
+      return;
     }
 
+    const user: User = this.authService.getCurrentUser()!;
+    const formValue = this.appointmentForm.value;
 
+    // Création de l'objet rendez-vous
+    const appointmentForm: AppointmentCreate = {
+      userClientId: user._id as string,
+      date: selectedDate,
+      description: formValue.description,
+      status: AppointmentStatus.PENDING,
+      services: this.chosenServices.map((value: Service) => ({
+        serviceId: value._id.toString() // Conversion plus sûre
+      })),
+      vehiculeId: this.selectedVehicle._id as string
+    };
+
+    // Appel au service
     this.appointmentService.create(appointmentForm).subscribe({
-      next: (value) => {
-        if (value.success){
-          this.messageService.add({severity: 'success', detail: value.message, life: 4000})
-          this.submitted = false;
-          this.router.navigate(['/user-space/client/appointments'])
-        }else{
-          console.log("vl ==== ", value)
-          this.messageService.add({severity: 'error', detail: value.message, closable: true, sticky: true})
-          this.submitted = false;
+      next: (response) => {
+        if (response.success) {
+          this.messageService.add({
+            severity: 'success',
+            detail: response.message || 'Rendez-vous créé avec succès',
+            life: 4000
+          });
+
+          // Réinitialisation du formulaire après succès
+          this.appointmentForm.reset();
+          this.chosenServices = [];
+          this.selectedVehicle = undefined;
+
+          // Navigation optionnelle vers la liste des rendez-vous
+          this.router.navigate(['/user-space/client/appointments']);
+
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            detail: response.message || 'Erreur lors de la création du rendez-vous',
+            closable: true,
+            sticky: true
+          });
         }
+        this.submitted = false;
       },
-      error: err => {
-        this.messageService.add({severity: 'error', detail: 'une erreur inconnu s\'est produite', closable: true, sticky: true});
+      error: (err) => {
+        console.error('Erreur lors de la création du rendez-vous:', err);
+
+        let errorMessage = 'Une erreur inconnue s\'est produite';
+
+        // Gestion des différents types d'erreurs
+        if (err.error?.message) {
+          errorMessage = err.error.message;
+        } else if (err.status === 409) {
+          errorMessage = 'Aucun mécanicien disponible a cette heure';
+        } else if (err.status === 400) {
+          errorMessage = 'Données invalides. Veuillez vérifier les informations saisies';
+        }
+
+        this.messageService.add({
+          severity: 'error',
+          detail: errorMessage,
+          closable: true,
+          sticky: true
+        });
+
         this.submitted = false;
       }
-    })
+    });
   }
+
+
+
+  // submit(){
+  //   this.submitted = true;
+  //   this.appointmentForm.markAsTouched()
+  //
+  //   if (!this.appointmentForm.valid || !this.selectedVehicle || this.chosenServices.length === 0 ){
+  //     this.messageService.add({severity: 'error', detail: 'veuillez remplir tous les conditions', life: 4000})
+  //     this.submitted = false;
+  //     return;
+  //   }
+  //
+  //   const formValue = this.appointmentForm.value;
+  //
+  //   const user: User = this.authService.getCurrentUser()!;
+  //
+  //   let appointmentForm: AppointmentCreate = {
+  //     userClientId: user._id as string,
+  //     date: new Date(formValue.date),
+  //     description: formValue.description,
+  //     status: AppointmentStatus.PENDING,
+  //     services: this.chosenServices.map((value: Service) => {
+  //       return {serviceId: value._id + ""}
+  //     }),
+  //     vehiculeId: this.selectedVehicle._id as string
+  //   }
+  //
+  //
+  //   this.appointmentService.create(appointmentForm).subscribe({
+  //     next: (value) => {
+  //       if (value.success){
+  //         this.messageService.add({severity: 'success', detail: value.message, life: 4000})
+  //         this.submitted = false;
+  //         // this.router.navigate(['/user-space/client/appointments'])
+  //       }else{
+  //         this.messageService.add({severity: 'error', detail: value.message, closable: true, sticky: true})
+  //         this.submitted = false;
+  //       }
+  //     },
+  //     error: err => {
+  //       console.log("err ==== ", err)
+  //       this.messageService.add({severity: 'error', detail: 'une erreur inconnu s\'est produite', closable: true, sticky: true});
+  //       this.submitted = false;
+  //     }
+  //   })
+  // }
 }
