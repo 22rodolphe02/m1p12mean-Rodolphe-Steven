@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c27f64ff-e2e1-4a14-99b8-f7c06e52d09d" name="Changes" comment="" />
+    <list default="true" id="c27f64ff-e2e1-4a14-99b8-f7c06e52d09d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-in/sign-in.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/authentication/components/sign-up/sign-up.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.development.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.development.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,14 +28,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;integration/admin-dashboard&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\data\\M1\\Rojo\\exam\\garage-m1-front\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "fix/client-appointment",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "D:\\data\\M1\\Rojo\\exam\\garage-m1-front\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -52,8 +59,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>

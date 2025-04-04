@@ -38,6 +38,8 @@ export class SignUpComponent implements OnInit {
   inscriptionForm: FormGroup;
   roles: { label: string; value: string }[] = [];
 
+  submitted: boolean = false;
+
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
@@ -85,8 +87,8 @@ export class SignUpComponent implements OnInit {
   // }
 
   onSubmit(): void {
-    const { nom, prenom, email, numero, motdepasse, role } =
-      this.inscriptionForm.value;
+    this.submitted = true;
+    const { nom, prenom, email, numero, motdepasse, role } = this.inscriptionForm.value;
 
     this.userService.signUp(nom, prenom, email, numero, motdepasse, role).subscribe({
       next: () => {
@@ -94,7 +96,10 @@ export class SignUpComponent implements OnInit {
         // Rediriger vers la page de connexion après l'inscription réussie
         this.router.navigate(['/sign-in']);
       },
-      error: (err) => console.error('Erreur lors de l\'inscription:', err),
+      error: (err) => {
+        console.error('Erreur lors de l\'inscription:', err);
+        this.messageService.add({severity: 'error', detail: 'une erreur inconnue s\'est produite', life: 4000})
+      }
     });
   }
 }

@@ -56,8 +56,8 @@ export class SignInComponent implements OnInit {
     private roleService: RoleService
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['jean@gmail.com', [Validators.required, Validators.email]],
+      password: ['j', Validators.required],
       role: ['', Validators.required],
     });
   }
@@ -82,10 +82,7 @@ export class SignInComponent implements OnInit {
 
     this.authService.login(email, password, roleId).subscribe({
       next: () => {
-        console.log("salut")
         const role = this.findRole(roleId);
-
-        console.log("role ==== ", role.label === Role.MECHANICAL)
 
         this.submitted = false;
         if (Role.CLIENT === role.label){
